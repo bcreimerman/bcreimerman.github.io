@@ -1,24 +1,30 @@
-<manifest alg="2" build="2017.0.3.363" opt="false" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive,cachebuster,textStyling" exportTarget="other" domain="boriscreimerman.com" resolutions="1x" timestamp="1537133611583">
+<manifest alg="2" build="2017.0.3.363" opt="false" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive,cachebuster,textStyling" exportTarget="other" domain="boriscreimerman.com" resolutions="1x" timestamp="1537133889710">
+  <folder name="tablet">
+    <folder name="css">
+      <file name="index.css" crc="4018710467" ref="tablet>index"/>
+    </folder>
+    <file name="index.html" crc="229103235" seo="true" mt="1537133826314" redirect="true"/>
+  </folder>
   <folder name="css">
     <file name="site_global.css" crc="443350757"/>
-    <file name="index.css" crc="254562333" ref="index"/>
+    <file name="index.css" crc="3901139001" ref="index"/>
   </folder>
   <folder name="scripts">
-    <file name="jquery-1.8.3.min.js" crc="209076791" ref="phone>index:index"/>
-    <file name="museutils.js" crc="46400467" ref="phone>index:index"/>
-    <file name="whatinput.js" crc="86476730" ref="phone>index:index"/>
-    <file name="museconfig.js" crc="436936948" ref="phone>index:index"/>
-    <file name="jquery.watch.js" crc="4178585335" ref="phone>index:index"/>
-    <file name="require.js" crc="85721165" ref="phone>index:index"/>
+    <file name="jquery-1.8.3.min.js" crc="209076791" ref="phone>index:index:tablet>index"/>
+    <file name="museutils.js" crc="46400467" ref="phone>index:index:tablet>index"/>
+    <file name="whatinput.js" crc="86476730" ref="phone>index:index:tablet>index"/>
+    <file name="museconfig.js" crc="436936948" ref="phone>index:index:tablet>index"/>
+    <file name="jquery.watch.js" crc="4178585335" ref="phone>index:index:tablet>index"/>
+    <file name="require.js" crc="85721165" ref="phone>index:index:tablet>index"/>
   </folder>
   <folder name="images">
     <file name="favicon.ico" crc="217104693" ref="phone>index"/>
   </folder>
   <folder name="phone">
     <folder name="css">
-      <file name="index.css" crc="234860189" ref="phone>index"/>
+      <file name="index.css" crc="3765948346" ref="phone>index"/>
     </folder>
-    <file name="index.html" crc="413766214" seo="true" mt="1537133578749" redirect="true"/>
+    <file name="index.html" crc="3887241698" seo="true" mt="1537133854566" redirect="true"/>
   </folder>
-  <file name="index.html" crc="4240110898" seo="true" mt="1537133305524" redirect="true"/>
+  <file name="index.html" crc="93781716" seo="true" mt="1537133880073" redirect="true"/>
 </manifest>
