@@ -1,9 +1,9 @@
-<manifest alg="2" build="2017.0.3.363" opt="false" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive,cachebuster,textStyling" exportTarget="other" domain="boriscreimerman.com" resolutions="1x" timestamp="1537133889710">
+<manifest alg="2" build="2017.0.3.363" opt="false" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive,cachebuster,textStyling" exportTarget="other" domain="boriscreimerman.com" resolutions="1x" timestamp="1537134111877">
   <folder name="tablet">
     <folder name="css">
       <file name="index.css" crc="4018710467" ref="tablet>index"/>
     </folder>
-    <file name="index.html" crc="229103235" seo="true" mt="1537133826314" redirect="true"/>
+    <file name="index.html" crc="357942588" seo="true" mt="1537134025398" redirect="true"/>
   </folder>
   <folder name="css">
     <file name="site_global.css" crc="443350757"/>
@@ -24,7 +24,7 @@
     <folder name="css">
       <file name="index.css" crc="3765948346" ref="phone>index"/>
     </folder>
-    <file name="index.html" crc="3887241698" seo="true" mt="1537133854566" redirect="true"/>
+    <file name="index.html" crc="4282419805" seo="true" mt="1537134043577" redirect="true"/>
   </folder>
-  <file name="index.html" crc="93781716" seo="true" mt="1537133880073" redirect="true"/>
+  <file name="index.html" crc="164874013" seo="true" mt="1537134010925" redirect="true"/>
 </manifest>
