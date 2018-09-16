@@ -7,41 +7,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   
   <script type="text/javascript">
-   // Redirect to phone/tablet as necessary
-(function(a,b,c){var d=function(){if(navigator.maxTouchPoints>1)return!0;if(window.matchMedia&&window.matchMedia("(-moz-touch-enabled)").matches)return!0;for(var a=["Webkit","Moz","O","ms","Khtml"],b=0,c=a.length;b<c;b++){var f=a[b]+"MaxTouchPoints";if(f in navigator&&navigator[f])return!0}try{return document.createEvent("TouchEvent"),!0}catch(d){}return!1}(),g=function(a){a+="=";for(var b=document.cookie.split(";"),c=0;c<b.length;c++){for(var f=b[c];f.charAt(0)==" ";)f=f.substring(1,f.length);if(f.indexOf(a)==
-0)return f.substring(a.length,f.length)}return null};if(g("inbrowserediting")!="true"){var f,g=g("devicelock");g=="phone"&&c?f=c:g=="tablet"&&b&&(f=b);if(g!=a&&!f)if(window.matchMedia)window.matchMedia("(max-device-width: 415px)").matches&&c?f=c:window.matchMedia("(max-device-width: 960px)").matches&&b&&d&&(f=b);else{var a=Math.min(screen.width,screen.height)/(window.devicePixelRatio||1),g=window.screen.systemXDPI||0,i=window.screen.systemYDPI||0,g=g>0&&i>0?Math.min(screen.width/g,screen.height/i):
-0;(a<=370||g!=0&&g<=3)&&c?f=c:a<=960&&b&&d&&(f=b)}if(f)document.location=f+(document.location.search||"")+(document.location.hash||""),document.write('<style type="text/css">body {visibility:hidden}</style>')}})("desktop","","phone/index.html");
-
-// Update the 'nojs'/'js' class on the html node
+   // Update the 'nojs'/'js' class on the html node
 document.documentElement.className = document.documentElement.className.replace(/\bnojs\b/g, 'js');
 
 // Check that all required assets are uploaded and up-to-date
 if(typeof Muse == "undefined") window.Muse = {}; window.Muse.assets = {"required":["museutils.js", "museconfig.js", "jquery.watch.js", "require.js", "index.css"], "outOfDate":[]};
 </script>
   
-  <link media="only screen and (max-width: 370px)" rel="alternate" href="http://boriscreimerman.com/phone/index.html"/>
-  <link rel="shortcut icon" href="images/favicon.ico?crc=217104693"/>
+  <link rel="canonical" href="http://boriscreimerman.com/index.html"/>
+  <link rel="shortcut icon" href="../images/favicon.ico?crc=217104693"/>
   <title>Boris Creimerman</title>
   <!-- CSS -->
-  <link rel="stylesheet" type="text/css" href="css/site_global.css?crc=443350757"/>
-  <link rel="stylesheet" type="text/css" href="css/index.css?crc=254562333" id="pagesheet"/>
+  <link rel="stylesheet" type="text/css" href="../css/site_global.css?crc=443350757"/>
+  <link rel="stylesheet" type="text/css" href="css/index.css?crc=234860189" id="pagesheet"/>
     <!--HTML Widget code-->
-  <style type="text/css">#u112.size_fluid_width_height iframe { position:absolute; left:0; top:0; }</style>
+  <style type="text/css">#u171.size_fluid_width_height iframe { position:absolute; left:0; top:0; }</style>
  </head>
  <body>
 
   <div class="clearfix borderbox" id="page"><!-- column -->
-   <div class="clearfix colelem" id="u99-4"><!-- content -->
-    <p><span id="u99">boris CREIMERMAN</span></p>
+   <div class="browser_width colelem" id="u168-4-bw">
+    <div class="clearfix" id="u168-4"><!-- content -->
+     <p>boris CREIMERMAN</p>
+    </div>
    </div>
-   <div class="browser_width colelem" id="u112-bw">
-    <div class="size_browser_width" id="u112"><!-- custom html -->
+   <div class="browser_width colelem" id="u171-bw">
+    <div class="size_browser_width" id="u171"><!-- custom html -->
      
 <iframe class="actAsDiv" style="width:100%;height:100%;" src="//www.youtube.com/embed/96mX4_wzc6U?autoplay=0&loop=0&showinfo=0&theme=dark&color=white&controls=1&modestbranding=1&start=0&fs=1&iv_load_policy=3&wmode=transparent&rel=0" frameborder="0" allowfullscreen></iframe>
 
     </div>
    </div>
-   <div class="verticalspacer" data-offset-top="644" data-content-above-spacer="643" data-content-below-spacer="62"></div>
+   <div class="verticalspacer" data-offset-top="246" data-content-above-spacer="246" data-content-below-spacer="324"></div>
   </div>
   <!-- Other scripts -->
   <script type="text/javascript">
@@ -54,7 +51,7 @@ var suppressMissingFileError = false
 l[1]:null,l=l&&l[2]?l[2]:null;switch(l.toLowerCase()){case "css":k=k.replace(/\W/gi,"_").replace(/^([^a-z])/gi,"_$1");f.className+=" "+k;k=a(c(f,"color"));l=a(c(f,"backgroundColor"));k!=0||l!=0?(Muse.assets.required.splice(h,1),"undefined"!=typeof b[i]&&(k!=b[i]>>>24||l!=(b[i]&16777215))&&Muse.assets.outOfDate.push(i)):h++;f.className="version";break;case "js":h++;break;default:throw Error("Unsupported file type: "+l);}}d?d().jquery!="1.8.3"&&Muse.assets.outOfDate.push("jquery-1.8.3.min.js"):Muse.assets.required.push("jquery-1.8.3.min.js");
 f.parentNode.removeChild(f);if(Muse.assets.outOfDate.length||Muse.assets.required.length)f="Some files on the server may be missing or incorrect. Clear browser cache and try again. If the problem persists please contact website author.",g&&Muse.assets.outOfDate.length&&(f+="\nOut of date: "+Muse.assets.outOfDate.join(",")),g&&Muse.assets.required.length&&(f+="\nMissing: "+Muse.assets.required.join(",")),suppressMissingFileError?(f+="\nUse SuppressMissingFileError key in AppPrefs.xml to show missing file error pop up.",console.log(f)):alert(f)};location&&location.search&&location.search.match&&location.search.match(/muse_debug/gi)?
 setTimeout(function(){g(!0)},5E3):g()}};
-var muse_init=function(){require.config({baseUrl:""});require(["jquery","museutils","whatinput","jquery.watch"],function(d){var $ = d;$(document).ready(function(){try{
+var muse_init=function(){require.config({baseUrl:"../"});require(["jquery","museutils","whatinput","jquery.watch"],function(d){var $ = d;$(document).ready(function(){try{
 window.Muse.assets.check($);/* body */
 Muse.Utils.transformMarkupToFixBrowserProblemsPreInit();/* body */
 Muse.Utils.prepHyperlinks(true);/* body */
@@ -67,6 +64,6 @@ Muse.Utils.transformMarkupToFixBrowserProblems();/* body */
 
 </script>
   <!-- RequireJS script -->
-  <script src="scripts/require.js?crc=85721165" type="text/javascript" async data-main="scripts/museconfig.js?crc=436936948" onload="if (requirejs) requirejs.onError = function(requireType, requireModule) { if (requireType && requireType.toString && requireType.toString().indexOf && 0 <= requireType.toString().indexOf('#scripterror')) window.Muse.assets.check(); }" onerror="window.Muse.assets.check();"></script>
+  <script src="../scripts/require.js?crc=85721165" type="text/javascript" async data-main="../scripts/museconfig.js?crc=436936948" onload="if (requirejs) requirejs.onError = function(requireType, requireModule) { if (requireType && requireType.toString && requireType.toString().indexOf && 0 <= requireType.toString().indexOf('#scripterror')) window.Muse.assets.check(); }" onerror="window.Muse.assets.check();"></script>
    </body>
 </html>
