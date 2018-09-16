@@ -1,4 +1,4 @@
-<manifest alg="2" build="2017.0.3.363" opt="false" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive,cachebuster,textStyling" exportTarget="other" domain="boriscreimerman.com" resolutions="1x" timestamp="1537129600626">
+<manifest alg="2" build="2017.0.3.363" opt="false" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive,cachebuster,textStyling" exportTarget="other" domain="boriscreimerman.com" resolutions="1x" timestamp="1537130515959">
   <folder name="css">
     <file name="site_global.css" crc="443350757"/>
     <file name="index.css" crc="217796611" ref="index"/>
@@ -11,5 +11,8 @@
     <file name="jquery.watch.js" crc="4178585335" ref="index"/>
     <file name="require.js" crc="85721165" ref="index"/>
   </folder>
-  <file name="index.html" crc="270483592" seo="true" mt="1537129583165" redirect="true"/>
+  <folder name="images">
+    <file name="favicon.ico" crc="320080044" ref="index"/>
+  </folder>
+  <file name="index.html" crc="479179476" seo="true" mt="1537130400097" redirect="true"/>
 </manifest>
