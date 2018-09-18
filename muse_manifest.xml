@@ -1,4 +1,4 @@
-<manifest alg="2" build="2017.0.3.363" opt="false" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive,cachebuster,textStyling" exportTarget="other" domain="boriscreimerman.com" resolutions="1x" timestamp="1537296627518">
+<manifest alg="2" build="2017.0.3.363" opt="false" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive,cachebuster,textStyling" exportTarget="other" domain="boriscreimerman.com" resolutions="1x" timestamp="1537298002142">
   <folder name="tablet">
     <folder name="css">
       <file name="index.css" crc="4200066685" ref="tablet>index"/>
@@ -51,30 +51,30 @@
       <caption webpage="index" alt=""/>
     </file>
     <file name="instagram-logo_poster_.png" crc="4190184675" ref="index:phone>index"/>
-    <file name="r-8359x239.jpg" crc="229859192" seo="true" ref="phone>index">
+    <file name="r-8352x234.jpg" crc="4244294158" seo="true" ref="phone>index">
       <caption webpage="index" alt=""/>
     </file>
-    <file name="r-1359x239.jpg" crc="193593177" seo="true" ref="phone>index">
+    <file name="r-1352x234.jpg" crc="4220079842" seo="true" ref="phone>index">
       <caption webpage="index" alt=""/>
     </file>
-    <file name="r-2402x239.jpg" crc="293902127" seo="true" ref="phone>index">
+    <file name="r-2393x234.jpg" crc="102297435" seo="true" ref="phone>index">
       <caption webpage="index" alt=""/>
     </file>
-    <file name="r-3359x239.jpg" crc="232707277" seo="true" ref="phone>index">
+    <file name="r-3352x234.jpg" crc="4251931229" seo="true" ref="phone>index">
       <caption webpage="index" alt=""/>
     </file>
-    <file name="r-7359x239.jpg" crc="4161934616" seo="true" ref="phone>index">
+    <file name="r-7352x234.jpg" crc="4219371679" seo="true" ref="phone>index">
       <caption webpage="index" alt=""/>
     </file>
-    <file name="r-11359x239.jpg" crc="28401763" seo="true" ref="phone>index">
+    <file name="r-11352x234.jpg" crc="3856951059" seo="true" ref="phone>index">
       <caption webpage="index" alt=""/>
     </file>
   </folder>
   <folder name="phone">
     <folder name="css">
-      <file name="index.css" crc="296785247" ref="phone>index"/>
+      <file name="index.css" crc="458542190" ref="phone>index"/>
     </folder>
-    <file name="index.html" crc="108493962" seo="true" mt="1537296613913" redirect="true"/>
+    <file name="index.html" crc="522178426" seo="true" mt="1537297987281" redirect="true"/>
   </folder>
   <file name="index.html" crc="117940986" seo="true" mt="1537292318975" redirect="true"/>
 </manifest>
