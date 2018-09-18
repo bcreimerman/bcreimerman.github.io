@@ -1,13 +1,13 @@
-<manifest alg="2" build="2017.0.3.363" opt="false" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive,cachebuster,textStyling" exportTarget="other" domain="boriscreimerman.com" resolutions="1x" timestamp="1537134111877">
+<manifest alg="2" build="2017.0.3.363" opt="false" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive,cachebuster,textStyling" exportTarget="other" domain="boriscreimerman.com" resolutions="1x" timestamp="1537290459601">
   <folder name="tablet">
     <folder name="css">
-      <file name="index.css" crc="4018710467" ref="tablet>index"/>
+      <file name="index.css" crc="4200066685" ref="tablet>index"/>
     </folder>
-    <file name="index.html" crc="357942588" seo="true" mt="1537134025398" redirect="true"/>
+    <file name="index.html" crc="412575059" seo="true" mt="1537279805644" redirect="true"/>
   </folder>
   <folder name="css">
     <file name="site_global.css" crc="443350757"/>
-    <file name="index.css" crc="3901139001" ref="index"/>
+    <file name="index.css" crc="308154034" ref="index"/>
   </folder>
   <folder name="scripts">
     <file name="jquery-1.8.3.min.js" crc="209076791" ref="phone>index:index:tablet>index"/>
@@ -16,15 +16,43 @@
     <file name="museconfig.js" crc="436936948" ref="phone>index:index:tablet>index"/>
     <file name="jquery.watch.js" crc="4178585335" ref="phone>index:index:tablet>index"/>
     <file name="require.js" crc="85721165" ref="phone>index:index:tablet>index"/>
+    <file name="webpro.js" crc="4152390327" ref="index"/>
+    <file name="musewpslideshow.js" crc="380562115" ref="index"/>
+    <file name="jquery.museoverlay.js" crc="3986278607" ref="index"/>
+    <file name="touchswipe.js" crc="4228958816" ref="index"/>
   </folder>
   <folder name="images">
-    <file name="favicon.ico" crc="217104693" ref="phone>index"/>
+    <file name="favicon.ico" crc="320080044" ref="phone>index:index"/>
+    <file name="blank.gif" crc="4208392903" ref="index"/>
+    <file name="r-2.jpg" crc="382268513" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="loading.gif" crc="3815509949" ref="index"/>
+    <file name="r-8.jpg" crc="4069013" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="r-1.jpg" crc="339928402" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="r-3.jpg" crc="342882549" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="r-7.jpg" crc="4289720836" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="r-11.jpg" crc="4207981948" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="youtube_social_white_circle_(2017).svg" crc="293326364" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="youtube_social_white_circle_(2017)_poster_.png" crc="4294023206" ref="index"/>
   </folder>
   <folder name="phone">
     <folder name="css">
-      <file name="index.css" crc="3765948346" ref="phone>index"/>
+      <file name="index.css" crc="218625633" ref="phone>index"/>
     </folder>
-    <file name="index.html" crc="4282419805" seo="true" mt="1537134043577" redirect="true"/>
+    <file name="index.html" crc="4107118584" seo="true" mt="1537279805645" redirect="true"/>
   </folder>
-  <file name="index.html" crc="164874013" seo="true" mt="1537134010925" redirect="true"/>
+  <file name="index.html" crc="383482127" seo="true" mt="1537290438250" redirect="true"/>
 </manifest>
