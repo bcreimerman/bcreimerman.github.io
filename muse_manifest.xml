@@ -1,4 +1,4 @@
-<manifest alg="2" build="2017.0.3.363" opt="false" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive,cachebuster,textStyling" exportTarget="other" domain="boriscreimerman.com" resolutions="1x" timestamp="1537298002142">
+<manifest alg="2" build="2017.0.3.363" opt="false" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive,cachebuster,textStyling" exportTarget="other" domain="boriscreimerman.com" resolutions="1x" timestamp="1537299522475">
   <folder name="tablet">
     <folder name="css">
       <file name="index.css" crc="4200066685" ref="tablet>index"/>
@@ -7,7 +7,7 @@
   </folder>
   <folder name="css">
     <file name="site_global.css" crc="443350757"/>
-    <file name="index.css" crc="4088588933" ref="index"/>
+    <file name="index.css" crc="432151010" ref="index"/>
   </folder>
   <folder name="scripts">
     <file name="jquery-1.8.3.min.js" crc="209076791" ref="phone>index:index:tablet>index"/>
@@ -22,7 +22,7 @@
     <file name="touchswipe.js" crc="4228958816" ref="index:phone>index"/>
   </folder>
   <folder name="images">
-    <file name="favicon.ico" crc="217104693" ref="phone>index:index"/>
+    <file name="favicon.ico" crc="320080044" ref="phone>index:index"/>
     <file name="blank.gif" crc="4208392903" ref="index:phone>index"/>
     <file name="r-2.jpg" crc="382268513" seo="true" ref="index">
       <caption webpage="index" alt=""/>
@@ -76,5 +76,5 @@
     </folder>
     <file name="index.html" crc="522178426" seo="true" mt="1537297987281" redirect="true"/>
   </folder>
-  <file name="index.html" crc="117940986" seo="true" mt="1537292318975" redirect="true"/>
+  <file name="index.html" crc="296035210" seo="true" mt="1537299512198" redirect="true"/>
 </manifest>
