@@ -1,9 +1,9 @@
-<manifest alg="2" build="2017.0.3.363" opt="false" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive,cachebuster,textStyling" exportTarget="other" domain="boriscreimerman.com" resolutions="1x" timestamp="1537352205350">
+<manifest alg="2" build="2017.0.3.363" opt="false" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive,cachebuster,textStyling" exportTarget="other" domain="boriscreimerman.com" resolutions="1x" timestamp="1537352796060">
   <folder name="tablet">
     <folder name="css">
-      <file name="index.css" crc="4200066685" ref="tablet>index"/>
+      <file name="index.css" crc="3965674410" ref="tablet>index"/>
     </folder>
-    <file name="index.html" crc="412575059" seo="true" mt="1537279805644" redirect="true"/>
+    <file name="index.html" crc="462958293" seo="true" mt="1537352744110" redirect="true"/>
   </folder>
   <folder name="css">
     <file name="site_global.css" crc="443350757"/>
@@ -16,29 +16,32 @@
     <file name="museconfig.js" crc="436936948" ref="phone>index:index:tablet>index"/>
     <file name="jquery.watch.js" crc="4178585335" ref="phone>index:index:tablet>index"/>
     <file name="require.js" crc="85721165" ref="phone>index:index:tablet>index"/>
-    <file name="webpro.js" crc="4152390327" ref="index:phone>index"/>
-    <file name="musewpslideshow.js" crc="380562115" ref="index:phone>index"/>
-    <file name="jquery.museoverlay.js" crc="3986278607" ref="index:phone>index"/>
-    <file name="touchswipe.js" crc="4228958816" ref="index:phone>index"/>
+    <file name="webpro.js" crc="4152390327" ref="index:phone>index:tablet>index"/>
+    <file name="musewpslideshow.js" crc="380562115" ref="index:phone>index:tablet>index"/>
+    <file name="jquery.museoverlay.js" crc="3986278607" ref="index:phone>index:tablet>index"/>
+    <file name="touchswipe.js" crc="4228958816" ref="index:phone>index:tablet>index"/>
   </folder>
   <folder name="images">
     <file name="favicon.ico" crc="217104693" ref="phone>index"/>
-    <file name="blank.gif" crc="4208392903" ref="index:phone>index"/>
-    <file name="r-2.jpg" crc="382268513" seo="true" ref="index">
+    <file name="blank.gif" crc="4208392903" ref="index:phone>index:tablet>index"/>
+    <file name="r-2.jpg" crc="382268513" seo="true" ref="index:tablet>index">
+      <caption webpage="index" alt=""/>
       <caption webpage="index" alt=""/>
     </file>
-    <file name="loading.gif" crc="3815509949" ref="index:phone>index"/>
+    <file name="loading.gif" crc="3815509949" ref="index:phone>index:tablet>index"/>
     <file name="r-8.jpg" crc="4069013" seo="true" ref="index">
       <caption webpage="index" alt=""/>
     </file>
     <file name="r-7.jpg" crc="4289720836" seo="true" ref="index">
       <caption webpage="index" alt=""/>
     </file>
-    <file name="youtube_social_white_circle_(2017).svg" crc="3959308221" seo="true" ref="index">
+    <file name="youtube_social_white_circle_(2017).svg" crc="3959308221" seo="true" ref="index:phone>index:tablet>index">
+      <caption webpage="index" alt=""/>
+      <caption webpage="index" alt=""/>
       <caption webpage="index" alt=""/>
     </file>
-    <file name="youtube_social_white_circle_(2017)_poster_.png" crc="485683172" ref="index"/>
-    <file name="instagram-logo.svg" crc="4207710368" seo="true" ref="index:phone>index">
+    <file name="youtube_social_white_circle_(2017)_poster_.png" crc="19404613" ref="phone>index"/>
+    <file name="instagram-logo.svg" crc="4207710368" seo="true" ref="index:phone>index:tablet>index">
       <caption webpage="index" alt=""/>
       <caption webpage="index" alt=""/>
       <caption webpage="index" alt=""/>
@@ -47,7 +50,8 @@
     <file name="r-2393x234.jpg" crc="102297435" seo="true" ref="phone>index">
       <caption webpage="index" alt=""/>
     </file>
-    <file name="000026-edit.jpg" crc="3970632027" seo="true" ref="index">
+    <file name="000026-edit.jpg" crc="3970632027" seo="true" ref="index:tablet>index">
+      <caption webpage="index" alt=""/>
       <caption webpage="index" alt=""/>
     </file>
     <file name="000003-edit.jpg" crc="3806050277" seo="true" ref="index">
@@ -77,12 +81,27 @@
     <file name="000028351x236.jpg" crc="515764273" seo="true" ref="phone>index">
       <caption webpage="index" alt=""/>
     </file>
+    <file name="r-8558x372.jpg" crc="3772416468" seo="true" ref="tablet>index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="000003-edit-crop-u1909.jpg" crc="299297154" seo="true" ref="tablet>index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="000009555x372.jpg" crc="4025081718" seo="true" ref="tablet>index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="r-7558x372.jpg" crc="24218331" seo="true" ref="tablet>index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="000028555x372.jpg" crc="339948224" seo="true" ref="tablet>index">
+      <caption webpage="index" alt=""/>
+    </file>
   </folder>
   <folder name="phone">
     <folder name="css">
-      <file name="index.css" crc="209534256" ref="phone>index"/>
+      <file name="index.css" crc="461977998" ref="phone>index"/>
     </folder>
-    <file name="index.html" crc="3768703891" seo="true" mt="1537352192037" redirect="true"/>
+    <file name="index.html" crc="4240413285" seo="true" mt="1537352674641" redirect="true"/>
   </folder>
-  <file name="index.html" crc="203660314" seo="true" mt="1537352002787" redirect="true"/>
+  <file name="index.html" crc="4128061346" seo="true" mt="1537352674638" redirect="true"/>
 </manifest>
