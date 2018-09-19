@@ -1,4 +1,4 @@
-<manifest alg="2" build="2017.0.3.363" opt="false" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive,cachebuster,textStyling" exportTarget="other" domain="boriscreimerman.com" resolutions="1x" timestamp="1537299522475">
+<manifest alg="2" build="2017.0.3.363" opt="false" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive,cachebuster,textStyling" exportTarget="other" domain="boriscreimerman.com" resolutions="1x" timestamp="1537349930074">
   <folder name="tablet">
     <folder name="css">
       <file name="index.css" crc="4200066685" ref="tablet>index"/>
@@ -7,7 +7,7 @@
   </folder>
   <folder name="css">
     <file name="site_global.css" crc="443350757"/>
-    <file name="index.css" crc="432151010" ref="index"/>
+    <file name="index.css" crc="4152699085" ref="index"/>
   </folder>
   <folder name="scripts">
     <file name="jquery-1.8.3.min.js" crc="209076791" ref="phone>index:index:tablet>index"/>
@@ -31,50 +31,53 @@
     <file name="r-8.jpg" crc="4069013" seo="true" ref="index">
       <caption webpage="index" alt=""/>
     </file>
-    <file name="r-1.jpg" crc="339928402" seo="true" ref="index">
+    <file name="r-1.jpg" crc="4220079842" seo="true" ref="phone>index">
       <caption webpage="index" alt=""/>
     </file>
-    <file name="r-3.jpg" crc="342882549" seo="true" ref="index">
+    <file name="r-3.jpg" crc="4251931229" seo="true" ref="phone>index">
       <caption webpage="index" alt=""/>
     </file>
     <file name="r-7.jpg" crc="4289720836" seo="true" ref="index">
       <caption webpage="index" alt=""/>
     </file>
-    <file name="r-11.jpg" crc="4207981948" seo="true" ref="index">
+    <file name="r-11.jpg" crc="3856951059" seo="true" ref="phone>index">
       <caption webpage="index" alt=""/>
     </file>
-    <file name="youtube_social_white_circle_(2017).svg" crc="3959308221" seo="true" ref="index:phone>index">
+    <file name="youtube_social_white_circle_(2017).svg" crc="3959308221" seo="true" ref="index">
       <caption webpage="index" alt=""/>
     </file>
-    <file name="youtube_social_white_circle_(2017)_poster_.png" crc="19404613" ref="index:phone>index"/>
+    <file name="youtube_social_white_circle_(2017)_poster_.png" crc="485683172" ref="index"/>
     <file name="instagram-logo.svg" crc="4207710368" seo="true" ref="index:phone>index">
       <caption webpage="index" alt=""/>
     </file>
-    <file name="instagram-logo_poster_.png" crc="4190184675" ref="index:phone>index"/>
+    <file name="instagram-logo_poster_.png" crc="3862602677" ref="phone>index:index"/>
     <file name="r-8352x234.jpg" crc="4244294158" seo="true" ref="phone>index">
-      <caption webpage="index" alt=""/>
-    </file>
-    <file name="r-1352x234.jpg" crc="4220079842" seo="true" ref="phone>index">
       <caption webpage="index" alt=""/>
     </file>
     <file name="r-2393x234.jpg" crc="102297435" seo="true" ref="phone>index">
       <caption webpage="index" alt=""/>
     </file>
-    <file name="r-3352x234.jpg" crc="4251931229" seo="true" ref="phone>index">
-      <caption webpage="index" alt=""/>
-    </file>
     <file name="r-7352x234.jpg" crc="4219371679" seo="true" ref="phone>index">
       <caption webpage="index" alt=""/>
     </file>
-    <file name="r-11352x234.jpg" crc="3856951059" seo="true" ref="phone>index">
+    <file name="000026-edit.jpg" crc="3970632027" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="000003-edit.jpg" crc="3806050277" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="000009.jpg" crc="46117019" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="000028.jpg" crc="114596032" seo="true" ref="index">
       <caption webpage="index" alt=""/>
     </file>
   </folder>
   <folder name="phone">
     <folder name="css">
-      <file name="index.css" crc="458542190" ref="phone>index"/>
+      <file name="index.css" crc="76758782" ref="phone>index"/>
     </folder>
-    <file name="index.html" crc="522178426" seo="true" mt="1537297987281" redirect="true"/>
+    <file name="index.html" crc="327184367" seo="true" mt="1537349366335" redirect="true"/>
   </folder>
-  <file name="index.html" crc="296035210" seo="true" mt="1537299512198" redirect="true"/>
+  <file name="index.html" crc="109672370" seo="true" mt="1537349840621" redirect="true"/>
 </manifest>
