@@ -1,13 +1,13 @@
-<manifest alg="2" build="2017.0.3.363" opt="false" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive,cachebuster,textStyling" exportTarget="other" domain="boriscreimerman.com" resolutions="1x" timestamp="1537353068768">
+<manifest alg="2" build="2017.0.3.363" opt="false" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive,cachebuster,textStyling" exportTarget="other" domain="boriscreimerman.com" resolutions="1x" timestamp="1537523530497">
   <folder name="tablet">
     <folder name="css">
-      <file name="index.css" crc="3965674410" ref="tablet>index"/>
+      <file name="index.css" crc="263184131" ref="tablet>index"/>
     </folder>
-    <file name="index.html" crc="462958293" seo="true" mt="1537352744110" redirect="true"/>
+    <file name="index.html" crc="4000135590" seo="true" mt="1537523209467" redirect="true"/>
   </folder>
   <folder name="css">
     <file name="site_global.css" crc="443350757"/>
-    <file name="index.css" crc="3828395989" ref="index"/>
+    <file name="index.css" crc="4081690212" ref="index"/>
   </folder>
   <folder name="scripts">
     <file name="jquery-1.8.3.min.js" crc="209076791" ref="phone>index:index:tablet>index"/>
@@ -37,15 +37,16 @@
     </file>
     <file name="youtube_social_white_circle_(2017).svg" crc="3959308221" seo="true" ref="index:phone>index:tablet>index">
       <caption webpage="index" alt=""/>
+      <caption webpage="index" alt=""/>
+      <caption webpage="index" alt=""/>
     </file>
     <file name="youtube_social_white_circle_(2017)_poster_.png" crc="19404613" ref="phone>index"/>
     <file name="instagram-logo.svg" crc="4207710368" seo="true" ref="index:phone>index:tablet>index">
       <caption webpage="index" alt=""/>
-    </file>
-    <file name="instagram-logo_poster_.png" crc="4190184675" ref="phone>index"/>
-    <file name="r-2393x234.jpg" crc="102297435" seo="true" ref="phone>index">
+      <caption webpage="index" alt=""/>
       <caption webpage="index" alt=""/>
     </file>
+    <file name="instagram-logo_poster_.png" crc="4190184675" ref="phone>index"/>
     <file name="000026-edit.jpg" crc="3970632027" seo="true" ref="index:tablet>index">
       <caption webpage="index" alt=""/>
       <caption webpage="index" alt=""/>
@@ -59,13 +60,7 @@
     <file name="000028.jpg" crc="114596032" seo="true" ref="index">
       <caption webpage="index" alt=""/>
     </file>
-    <file name="000026-edit409x234.jpg" crc="215268364" seo="true" ref="phone>index">
-      <caption webpage="index" alt=""/>
-    </file>
     <file name="r-8351x234.jpg" crc="4244294158" seo="true" ref="phone>index">
-      <caption webpage="index" alt=""/>
-    </file>
-    <file name="000003-edit-crop-u1763.jpg" crc="3846042580" seo="true" ref="phone>index">
       <caption webpage="index" alt=""/>
     </file>
     <file name="000009351x236.jpg" crc="4159538805" seo="true" ref="phone>index">
@@ -80,7 +75,7 @@
     <file name="r-8558x372.jpg" crc="3772416468" seo="true" ref="tablet>index">
       <caption webpage="index" alt=""/>
     </file>
-    <file name="000003-edit-crop-u1909.jpg" crc="299297154" seo="true" ref="tablet>index">
+    <file name="000003-edit-crop-u1909.jpg" crc="4279987817" seo="true" ref="tablet>index">
       <caption webpage="index" alt=""/>
     </file>
     <file name="000009555x372.jpg" crc="4025081718" seo="true" ref="tablet>index">
@@ -92,12 +87,21 @@
     <file name="000028555x372.jpg" crc="339948224" seo="true" ref="tablet>index">
       <caption webpage="index" alt=""/>
     </file>
+    <file name="000003-edit350x181.jpg" crc="3957066250" seo="true" ref="phone>index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="r-2351x209.jpg" crc="3843666665" seo="true" ref="phone>index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="000026-edit350x201.jpg" crc="4270819277" seo="true" ref="phone>index">
+      <caption webpage="index" alt=""/>
+    </file>
   </folder>
   <folder name="phone">
     <folder name="css">
-      <file name="index.css" crc="478511429" ref="phone>index"/>
+      <file name="index.css" crc="515420298" ref="phone>index"/>
     </folder>
-    <file name="index.html" crc="420903209" seo="true" mt="1537353038539" redirect="true"/>
+    <file name="index.html" crc="4259041819" seo="true" mt="1537523448566" redirect="true"/>
   </folder>
-  <file name="index.html" crc="4128061346" seo="true" mt="1537352674638" redirect="true"/>
+  <file name="index.html" crc="4215811795" seo="true" mt="1537523097626" redirect="true"/>
 </manifest>
