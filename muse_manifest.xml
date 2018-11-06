@@ -1,4 +1,4 @@
-<manifest alg="2" build="2017.0.3.363" opt="false" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive,cachebuster,textStyling" exportTarget="other" domain="boriscreimerman.com" resolutions="1x" timestamp="1541499909040">
+<manifest alg="2" build="2017.0.3.363" opt="false" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive,cachebuster,textStyling" exportTarget="other" domain="boriscreimerman.com" resolutions="1x" timestamp="1541500342793">
   <folder name="assets">
     <file name="booklet_threesome_2.pdf" crc="4054487551" seo="true" mt="1541448992000"/>
     <file name="booklet_threesome_2.html" crc="3968227570" seo="true" mt="1541452552000"/>
@@ -11,7 +11,7 @@
   </folder>
   <folder name="css">
     <file name="site_global.css" crc="443350757"/>
-    <file name="index.css" crc="4081690212" ref="index"/>
+    <file name="index.css" crc="4051211600" ref="index"/>
     <file name="threesome.css" crc="182946055" ref="threesome"/>
   </folder>
   <folder name="scripts">
@@ -27,10 +27,9 @@
     <file name="touchswipe.js" crc="4228958816" ref="index:phone>index:tablet>index"/>
   </folder>
   <folder name="images">
-    <file name="favicon.ico" crc="320080044" ref="phone>index:threesome"/>
+    <file name="favicon.ico" crc="320080044" ref="phone>index:threesome:index"/>
     <file name="blank.gif" crc="4208392903" ref="index:phone>index:tablet>index"/>
     <file name="r-2.jpg" crc="382268513" seo="true" ref="index:tablet>index">
-      <caption webpage="index" alt=""/>
       <caption webpage="index" alt=""/>
     </file>
     <file name="loading.gif" crc="3815509949" ref="index:phone>index:tablet>index"/>
@@ -42,18 +41,13 @@
     </file>
     <file name="youtube_social_white_circle_(2017).svg" crc="3959308221" seo="true" ref="index:phone>index:tablet>index">
       <caption webpage="index" alt=""/>
-      <caption webpage="index" alt=""/>
-      <caption webpage="index" alt=""/>
     </file>
-    <file name="youtube_social_white_circle_(2017)_poster_.png" crc="19404613" ref="phone>index"/>
+    <file name="youtube_social_white_circle_(2017)_poster_.png" crc="485683172" ref="phone>index:index"/>
     <file name="instagram-logo.svg" crc="4207710368" seo="true" ref="index:phone>index:tablet>index">
       <caption webpage="index" alt=""/>
-      <caption webpage="index" alt=""/>
-      <caption webpage="index" alt=""/>
     </file>
-    <file name="instagram-logo_poster_.png" crc="4190184675" ref="phone>index"/>
+    <file name="instagram-logo_poster_.png" crc="3862602677" ref="phone>index:index"/>
     <file name="000026-edit.jpg" crc="3970632027" seo="true" ref="index:tablet>index">
-      <caption webpage="index" alt=""/>
       <caption webpage="index" alt=""/>
     </file>
     <file name="000003-edit.jpg" crc="3806050277" seo="true" ref="index">
@@ -111,6 +105,6 @@
     </folder>
     <file name="index.html" crc="4259041819" seo="true" mt="1537523448566" redirect="true"/>
   </folder>
-  <file name="index.html" crc="4215811795" seo="true" mt="1537523097626" redirect="true"/>
+  <file name="index.html" crc="3979311441" seo="true" mt="1541500327998" redirect="true"/>
   <file name="threesome.html" crc="149642472" seo="true" mt="1541499813931" redirect="true"/>
 </manifest>
