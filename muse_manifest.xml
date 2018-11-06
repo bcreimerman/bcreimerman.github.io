@@ -1,4 +1,4 @@
-<manifest alg="2" build="2017.0.3.363" opt="false" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive,cachebuster,textStyling" exportTarget="other" domain="boriscreimerman.com" resolutions="1x" timestamp="1541500853126">
+<manifest alg="2" build="2017.0.3.363" opt="false" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive,cachebuster,textStyling" exportTarget="other" domain="boriscreimerman.com" resolutions="1x" timestamp="1541501882125">
   <folder name="assets">
     <file name="booklet_threesome_2.pdf" crc="4054487551" seo="true" mt="1541448992000"/>
     <file name="booklet_threesome_2.html" crc="3968227570" seo="true" mt="1541452552000"/>
@@ -105,6 +105,6 @@
     </folder>
     <file name="index.html" crc="4259041819" seo="true" mt="1537523448566" redirect="true"/>
   </folder>
-  <file name="index.html" crc="3914912595" seo="true" mt="1541500845054" redirect="true"/>
+  <file name="index.html" crc="3987405718" seo="true" mt="1541501874921" redirect="true"/>
   <file name="threesome.html" crc="149642472" seo="true" mt="1541499813931" redirect="true"/>
 </manifest>
