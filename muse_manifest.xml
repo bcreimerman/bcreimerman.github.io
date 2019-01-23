@@ -1,4 +1,4 @@
-<manifest alg="2" build="2017.0.3.363" opt="false" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive,cachebuster,textStyling" exportTarget="other" domain="boriscreimerman.com" resolutions="1x" timestamp="1548255829587">
+<manifest alg="2" build="2017.0.3.363" opt="false" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive,cachebuster,textStyling" exportTarget="other" domain="boriscreimerman.com" resolutions="1x" timestamp="1548256120921">
   <folder name="tablet">
     <folder name="css">
       <file name="index.css" crc="3334183" ref="tablet>index"/>
@@ -40,13 +40,9 @@
     </file>
     <file name="youtube_social_white_circle_(2017).svg" crc="3959308221" seo="true" ref="index:phone>index:tablet>index">
       <caption webpage="index" alt=""/>
-      <caption webpage="index" alt=""/>
-      <caption webpage="index" alt=""/>
     </file>
     <file name="youtube_social_white_circle_(2017)_poster_.png" crc="19404613" ref="phone>index"/>
     <file name="instagram-logo.svg" crc="4207710368" seo="true" ref="index:phone>index:tablet>index">
-      <caption webpage="index" alt=""/>
-      <caption webpage="index" alt=""/>
       <caption webpage="index" alt=""/>
     </file>
     <file name="instagram-logo_poster_.png" crc="4190184675" ref="phone>index"/>
@@ -111,10 +107,10 @@
   </folder>
   <folder name="phone">
     <folder name="css">
-      <file name="index.css" crc="4115502358" ref="phone>index"/>
+      <file name="index.css" crc="3986231343" ref="phone>index"/>
       <file name="threesome.css" crc="4084719574" ref="phone>threesome"/>
     </folder>
-    <file name="index.html" crc="202027935" seo="true" mt="1548255453776" redirect="true"/>
+    <file name="index.html" crc="4113209834" seo="true" mt="1548256110725" redirect="true"/>
     <file name="threesome.html" crc="353214543" seo="true" mt="1541503600920" redirect="true"/>
   </folder>
   <file name="index.html" crc="432707714" seo="true" mt="1548249552695" redirect="true"/>
