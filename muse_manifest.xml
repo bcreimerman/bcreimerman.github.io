@@ -1,89 +1,33 @@
-<manifest alg="2" build="2017.0.3.363" opt="false" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive,cachebuster,textStyling" exportTarget="other" domain="boriscreimerman.com" resolutions="1x" timestamp="1548256120921">
-  <folder name="tablet">
-    <folder name="css">
-      <file name="index.css" crc="3334183" ref="tablet>index"/>
-      <file name="threesome.css" crc="3871600078" ref="tablet>threesome"/>
-    </folder>
-    <file name="index.html" crc="3797274446" seo="true" mt="1548255811451" redirect="true"/>
-    <file name="threesome.html" crc="3889160922" seo="true" mt="1541503550126" redirect="true"/>
-  </folder>
+<manifest alg="2" build="2018.1.1.386" opt="false" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive,cachebuster,textStyling" exportTarget="other" domain="boriscreimerman.com" resolutions="1x" timestamp="1591791791664">
   <folder name="css">
-    <file name="site_global.css" crc="443350757"/>
-    <file name="index.css" crc="3906701333" ref="index"/>
-    <file name="threesome.css" crc="4031550370" ref="threesome"/>
+    <file name="site_global.css" crc="444006867"/>
+    <file name="index.css" crc="146551583" ref="index"/>
+    <file name="threesome.css" crc="479886162" ref="threesome"/>
+    <file name="wohnung.css" crc="243352866" ref="wohnung"/>
   </folder>
   <folder name="scripts">
-    <file name="jquery-1.8.3.min.js" crc="209076791" ref="phone>index:index:tablet>index:threesome:phone>threesome:tablet>threesome"/>
-    <file name="museutils.js" crc="46400467" ref="phone>index:index:tablet>index:threesome:phone>threesome:tablet>threesome"/>
-    <file name="whatinput.js" crc="86476730" ref="phone>index:index:tablet>index:threesome:phone>threesome:tablet>threesome"/>
-    <file name="museconfig.js" crc="436936948" ref="phone>index:index:tablet>index:threesome:phone>threesome:tablet>threesome"/>
-    <file name="jquery.watch.js" crc="4178585335" ref="phone>index:index:tablet>index:threesome:phone>threesome:tablet>threesome"/>
-    <file name="require.js" crc="85721165" ref="phone>index:index:tablet>index:threesome:phone>threesome:tablet>threesome"/>
-    <file name="webpro.js" crc="4152390327" ref="index:phone>index:tablet>index"/>
-    <file name="musewpslideshow.js" crc="380562115" ref="index:phone>index:tablet>index"/>
-    <file name="jquery.museoverlay.js" crc="3986278607" ref="index:phone>index:tablet>index"/>
-    <file name="touchswipe.js" crc="4228958816" ref="index:phone>index:tablet>index"/>
+    <file name="jquery-1.8.3.min.js" crc="209076791" ref="phone>index:phone>threesome:tablet>index:tablet>threesome:index:threesome:wohnung"/>
+    <file name="museutils.js" crc="3939489907" ref="phone>index:phone>threesome:tablet>index:tablet>threesome:index:threesome:wohnung"/>
+    <file name="whatinput.js" crc="86476730" ref="phone>index:phone>threesome:tablet>index:tablet>threesome:index:threesome:wohnung"/>
+    <file name="museconfig.js" crc="3936894949" ref="phone>index:phone>threesome:tablet>index:tablet>threesome:index:threesome:wohnung"/>
+    <file name="webpro.js" crc="3856315280" ref="phone>index:tablet>index:index:wohnung"/>
+    <file name="musewpslideshow.js" crc="244150766" ref="phone>index:tablet>index:index"/>
+    <file name="jquery.museoverlay.js" crc="3877667098" ref="phone>index:tablet>index:index"/>
+    <file name="touchswipe.js" crc="3888935200" ref="phone>index:tablet>index:index"/>
+    <file name="jquery.watch.js" crc="522499760" ref="phone>index:phone>threesome:tablet>index:tablet>threesome:index:threesome:wohnung"/>
+    <file name="require.js" crc="4177726516" ref="phone>index:phone>threesome:tablet>index:tablet>threesome:index:threesome:wohnung"/>
+    <file name="form_check.php" crc="4108222811" ref="wohnung"/>
+    <file name="form_throttle.php" crc="503802655" ref="wohnung"/>
+    <file name="form_process.php" crc="260214869" ref="wohnung"/>
+    <file name="form-u3347.php" crc="237104204" ref="wohnung"/>
   </folder>
   <folder name="images">
-    <file name="favicon.ico" crc="217104693" ref="phone>index"/>
-    <file name="blank.gif" crc="4208392903" ref="index:phone>index:tablet>index"/>
-    <file name="r-2.jpg" crc="382268513" seo="true" ref="index:tablet>index">
-      <caption webpage="index" alt=""/>
-      <caption webpage="index" alt=""/>
-    </file>
-    <file name="loading.gif" crc="3815509949" ref="index:phone>index:tablet>index"/>
-    <file name="r-8.jpg" crc="4069013" seo="true" ref="index">
-      <caption webpage="index" alt=""/>
-    </file>
-    <file name="r-7.jpg" crc="4289720836" seo="true" ref="index">
-      <caption webpage="index" alt=""/>
-    </file>
-    <file name="youtube_social_white_circle_(2017).svg" crc="3959308221" seo="true" ref="index:phone>index:tablet>index">
-      <caption webpage="index" alt=""/>
-    </file>
-    <file name="youtube_social_white_circle_(2017)_poster_.png" crc="19404613" ref="phone>index"/>
-    <file name="instagram-logo.svg" crc="4207710368" seo="true" ref="index:phone>index:tablet>index">
-      <caption webpage="index" alt=""/>
-    </file>
-    <file name="instagram-logo_poster_.png" crc="4190184675" ref="phone>index"/>
-    <file name="000026-edit.jpg" crc="3970632027" seo="true" ref="index:tablet>index">
-      <caption webpage="index" alt=""/>
-      <caption webpage="index" alt=""/>
-    </file>
-    <file name="000003-edit.jpg" crc="3806050277" seo="true" ref="index">
-      <caption webpage="index" alt=""/>
-    </file>
-    <file name="000009.jpg" crc="46117019" seo="true" ref="index">
-      <caption webpage="index" alt=""/>
-    </file>
-    <file name="000028.jpg" crc="114596032" seo="true" ref="index">
-      <caption webpage="index" alt=""/>
-    </file>
-    <file name="r-8351x234.jpg" crc="4244294158" seo="true" ref="phone>index">
-      <caption webpage="index" alt=""/>
-    </file>
-    <file name="000009351x236.jpg" crc="4159538805" seo="true" ref="phone>index">
-      <caption webpage="index" alt=""/>
-    </file>
-    <file name="r-7351x234.jpg" crc="4219371679" seo="true" ref="phone>index">
-      <caption webpage="index" alt=""/>
-    </file>
+    <file name="favicon.ico" crc="320080044" ref="phone>index:wohnung"/>
     <file name="000028351x236.jpg" crc="515764273" seo="true" ref="phone>index">
       <caption webpage="index" alt=""/>
     </file>
-    <file name="r-8558x372.jpg" crc="3772416468" seo="true" ref="tablet>index">
-      <caption webpage="index" alt=""/>
-    </file>
-    <file name="000003-edit-crop-u1909.jpg" crc="299297154" seo="true" ref="tablet>index">
-      <caption webpage="index" alt=""/>
-    </file>
-    <file name="000009555x372.jpg" crc="4025081718" seo="true" ref="tablet>index">
-      <caption webpage="index" alt=""/>
-    </file>
-    <file name="r-7558x372.jpg" crc="24218331" seo="true" ref="tablet>index">
-      <caption webpage="index" alt=""/>
-    </file>
-    <file name="000028555x372.jpg" crc="339948224" seo="true" ref="tablet>index">
+    <file name="blank.gif" crc="4208392903" ref="phone>index:tablet>index:index"/>
+    <file name="r-8351x234.jpg" crc="4244294158" seo="true" ref="phone>index">
       <caption webpage="index" alt=""/>
     </file>
     <file name="000003-edit350x181.jpg" crc="3957066250" seo="true" ref="phone>index">
@@ -92,27 +36,93 @@
     <file name="r-2351x209.jpg" crc="3843666665" seo="true" ref="phone>index">
       <caption webpage="index" alt=""/>
     </file>
+    <file name="000009351x236.jpg" crc="4159538805" seo="true" ref="phone>index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="r-7351x234.jpg" crc="4219371679" seo="true" ref="phone>index">
+      <caption webpage="index" alt=""/>
+    </file>
     <file name="000026-edit350x201.jpg" crc="4270819277" seo="true" ref="phone>index">
       <caption webpage="index" alt=""/>
     </file>
-    <file name="booklet_threesome_2-1-crop-u2259.jpg" crc="385250915" seo="true" ref="threesome">
-      <caption webpage="threesome" alt=""/>
+    <file name="loading.gif" crc="3815509949" ref="phone>index:tablet>index:index"/>
+    <file name="youtube_social_white_circle_(2017).svg" crc="3959308221" seo="true" ref="phone>index:tablet>index:index">
+      <caption webpage="index" alt=""/>
+      <caption webpage="index" alt=""/>
+      <caption webpage="index" alt=""/>
     </file>
+    <file name="youtube_social_white_circle_(2017)_poster_.png" crc="19404613" ref="phone>index"/>
+    <file name="instagram-logo.svg" crc="4207710368" seo="true" ref="phone>index:tablet>index:index">
+      <caption webpage="index" alt=""/>
+      <caption webpage="index" alt=""/>
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="instagram-logo_poster_.png" crc="4190184675" ref="phone>index"/>
     <file name="booklet_threesome_2-1-crop-u2330.jpg" crc="78399967" seo="true" ref="phone>threesome">
       <caption webpage="threesome" alt=""/>
+    </file>
+    <file name="000028555x372.jpg" crc="339948224" seo="true" ref="tablet>index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="r-8558x372.jpg" crc="3772416468" seo="true" ref="tablet>index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="000003-edit-crop-u1909.jpg" crc="479911985" seo="true" ref="tablet>index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="r-2.jpg" crc="382268513" seo="true" ref="tablet>index:index">
+      <caption webpage="index" alt=""/>
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="000009555x372.jpg" crc="4025081718" seo="true" ref="tablet>index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="r-7558x372.jpg" crc="24218331" seo="true" ref="tablet>index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="000026-edit.jpg" crc="3970632027" seo="true" ref="tablet>index:index">
+      <caption webpage="index" alt=""/>
+      <caption webpage="index" alt=""/>
     </file>
     <file name="booklet_threesome_2-1-crop-u2284.jpg" crc="83684937" seo="true" ref="tablet>threesome">
       <caption webpage="threesome" alt=""/>
     </file>
+    <file name="000028.jpg" crc="114596032" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="r-8.jpg" crc="4069013" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="000003-edit.jpg" crc="3806050277" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="000009.jpg" crc="46117019" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="r-7.jpg" crc="4289720836" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="booklet threesome-crop-u2908.jpg" crc="84251803" seo="true" ref="threesome">
+      <caption webpage="threesome" alt=""/>
+    </file>
+  </folder>
+  <folder name="tablet">
+    <folder name="css">
+      <file name="index.css" crc="4019661705" ref="tablet>index"/>
+      <file name="threesome.css" crc="4074854268" ref="tablet>threesome"/>
+    </folder>
+    <file name="index.html" crc="132678323" seo="true" mt="1548255811451" redirect="true"/>
+    <file name="threesome.html" crc="4236446531" seo="true" mt="1541503550126" redirect="true"/>
   </folder>
   <folder name="phone">
     <folder name="css">
-      <file name="index.css" crc="3986231343" ref="phone>index"/>
-      <file name="threesome.css" crc="4084719574" ref="phone>threesome"/>
+      <file name="threesome.css" crc="341907009" ref="phone>threesome"/>
+      <file name="index.css" crc="26617278" ref="phone>index"/>
     </folder>
-    <file name="index.html" crc="4113209834" seo="true" mt="1548256110725" redirect="true"/>
-    <file name="threesome.html" crc="353214543" seo="true" mt="1541503600920" redirect="true"/>
+    <file name="index.html" crc="4214841591" seo="true" mt="1548256110725" redirect="true"/>
+    <file name="threesome.html" crc="215756033" seo="true" mt="1541503600920" redirect="true"/>
   </folder>
-  <file name="index.html" crc="432707714" seo="true" mt="1548249552695" redirect="true"/>
-  <file name="threesome.html" crc="468307613" seo="true" mt="1548244734629" redirect="true"/>
+  <file name="index.html" crc="525276867" seo="true" mt="1548249552695" redirect="true"/>
+  <file name="threesome.html" crc="3818079492" seo="true" mt="1591785850483" redirect="true"/>
+  <file name="wohnung.html" crc="21928720" seo="true" mt="1591791564582" redirect="true"/>
 </manifest>

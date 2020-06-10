@@ -8,22 +8,22 @@
     <xhtml:link rel="alternate" media="only screen and (max-width: 370px)" href="http://boriscreimerman.com/phone/index.html"/>
     <xhtml:link rel="alternate" media="only screen and (max-width: 960px)" href="http://boriscreimerman.com/tablet/index.html"/>
     <image:image>
-      <image:loc>http://boriscreimerman.com/images/r-2.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>http://boriscreimerman.com/images/r-8.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>http://boriscreimerman.com/images/r-7.jpg</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>http://boriscreimerman.com/images/youtube_social_white_circle_(2017).svg</image:loc>
     </image:image>
     <image:image>
       <image:loc>http://boriscreimerman.com/images/instagram-logo.svg</image:loc>
     </image:image>
     <image:image>
+      <image:loc>http://boriscreimerman.com/images/r-2.jpg</image:loc>
+    </image:image>
+    <image:image>
       <image:loc>http://boriscreimerman.com/images/000026-edit.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://boriscreimerman.com/images/000028.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://boriscreimerman.com/images/r-8.jpg</image:loc>
     </image:image>
     <image:image>
       <image:loc>http://boriscreimerman.com/images/000003-edit.jpg</image:loc>
@@ -32,18 +32,24 @@
       <image:loc>http://boriscreimerman.com/images/000009.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>http://boriscreimerman.com/images/000028.jpg</image:loc>
+      <image:loc>http://boriscreimerman.com/images/r-7.jpg</image:loc>
     </image:image>
   </url>
   <url>
     <loc>http://boriscreimerman.com/threesome.html</loc>
-    <lastmod>2019-01-23</lastmod>
+    <lastmod>2020-06-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" media="only screen and (max-width: 370px)" href="http://boriscreimerman.com/phone/threesome.html"/>
     <xhtml:link rel="alternate" media="only screen and (max-width: 960px)" href="http://boriscreimerman.com/tablet/threesome.html"/>
     <image:image>
-      <image:loc>http://boriscreimerman.com/images/booklet_threesome_2-1-crop-u2259.jpg</image:loc>
+      <image:loc>http://boriscreimerman.com/images/booklet%20threesome-crop-u2908.jpg</image:loc>
     </image:image>
+  </url>
+  <url>
+    <loc>http://boriscreimerman.com/wohnung.html</loc>
+    <lastmod>2020-06-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>
