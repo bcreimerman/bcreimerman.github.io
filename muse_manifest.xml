@@ -1,8 +1,8 @@
-<manifest alg="2" build="2018.1.1.386" opt="false" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive,cachebuster,textStyling" exportTarget="other" domain="boriscreimerman.com" resolutions="1x" timestamp="1592234359479">
+<manifest alg="2" build="2018.1.1.386" opt="false" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive,cachebuster,textStyling" exportTarget="other" domain="boriscreimerman.com" resolutions="1x" timestamp="1592239073542">
   <folder name="css">
     <file name="site_global.css" crc="444006867"/>
     <file name="index.css" crc="413104600" ref="index"/>
-    <file name="wohnung.css" crc="3948900080" ref="wohnung"/>
+    <file name="wohnung.css" crc="433660761" ref="wohnung"/>
     <file name="threesome.css" crc="479886162" ref="threesome"/>
   </folder>
   <folder name="scripts">
@@ -101,31 +101,31 @@
     <file name="booklet threesome-crop-u3757.jpg" crc="4273470640" seo="true" ref="phone>threesome">
       <caption webpage="threesome" alt=""/>
     </file>
-    <file name="1.jpg" crc="4095004317" seo="true" ref="phone>wohnung">
+    <file name="1.jpg" crc="94999886" seo="true" ref="phone>wohnung:wohnung">
       <caption webpage="wohnung" alt=""/>
     </file>
-    <file name="2.jpg" crc="309562911" seo="true" ref="phone>wohnung">
+    <file name="2.jpg" crc="4231752695" seo="true" ref="phone>wohnung:wohnung">
       <caption webpage="wohnung" alt=""/>
     </file>
-    <file name="3.jpg" crc="4162125242" seo="true" ref="phone>wohnung">
+    <file name="3.jpg" crc="518790488" seo="true" ref="phone>wohnung:wohnung">
       <caption webpage="wohnung" alt=""/>
     </file>
-    <file name="4.jpg" crc="362835883" seo="true" ref="phone>wohnung">
+    <file name="4.jpg" crc="365832404" seo="true" ref="phone>wohnung:wohnung">
       <caption webpage="wohnung" alt=""/>
     </file>
-    <file name="5.jpg" crc="374438687" seo="true" ref="phone>wohnung">
+    <file name="5.jpg" crc="4291820897" seo="true" ref="phone>wohnung:wohnung">
       <caption webpage="wohnung" alt=""/>
     </file>
-    <file name="6.jpg" crc="460444422" seo="true" ref="phone>wohnung">
+    <file name="6.jpg" crc="86022311" seo="true" ref="phone>wohnung:wohnung">
       <caption webpage="wohnung" alt=""/>
     </file>
-    <file name="7.jpg" crc="4011225315" seo="true" ref="phone>wohnung">
+    <file name="7.jpg" crc="24331152" seo="true" ref="phone>wohnung:wohnung">
       <caption webpage="wohnung" alt=""/>
     </file>
-    <file name="8.jpg" crc="459305396" seo="true" ref="phone>wohnung">
+    <file name="8.jpg" crc="3868519874" seo="true" ref="phone>wohnung:wohnung">
       <caption webpage="wohnung" alt=""/>
     </file>
-    <file name="9.jpg" crc="514194984" seo="true" ref="phone>wohnung">
+    <file name="9.jpg" crc="4240390235" seo="true" ref="phone>wohnung:wohnung">
       <caption webpage="wohnung" alt=""/>
     </file>
     <file name="1-crop-u5720.jpg" crc="4033192430" seo="true" ref="phone>wohnung">
@@ -182,33 +182,6 @@
     <file name="9-crop-u5575.jpg" crc="3824249745" seo="true" ref="wohnung">
       <caption webpage="wohnung" alt=""/>
     </file>
-    <file name="12.jpg" crc="94999886" seo="true" ref="wohnung">
-      <caption webpage="wohnung" alt=""/>
-    </file>
-    <file name="22.jpg" crc="4231752695" seo="true" ref="wohnung">
-      <caption webpage="wohnung" alt=""/>
-    </file>
-    <file name="32.jpg" crc="518790488" seo="true" ref="wohnung">
-      <caption webpage="wohnung" alt=""/>
-    </file>
-    <file name="42.jpg" crc="365832404" seo="true" ref="wohnung">
-      <caption webpage="wohnung" alt=""/>
-    </file>
-    <file name="52.jpg" crc="4291820897" seo="true" ref="wohnung">
-      <caption webpage="wohnung" alt=""/>
-    </file>
-    <file name="62.jpg" crc="86022311" seo="true" ref="wohnung">
-      <caption webpage="wohnung" alt=""/>
-    </file>
-    <file name="72.jpg" crc="24331152" seo="true" ref="wohnung">
-      <caption webpage="wohnung" alt=""/>
-    </file>
-    <file name="82.jpg" crc="3868519874" seo="true" ref="wohnung">
-      <caption webpage="wohnung" alt=""/>
-    </file>
-    <file name="92.jpg" crc="4240390235" seo="true" ref="wohnung">
-      <caption webpage="wohnung" alt=""/>
-    </file>
   </folder>
   <folder name="tablet">
     <folder name="css">
@@ -225,10 +198,10 @@
       <file name="wohnung.css" crc="4077007275" ref="phone>wohnung"/>
     </folder>
     <file name="index.html" crc="4100697773" seo="true" mt="1548256110725" redirect="true"/>
-    <file name="threesome.html" crc="512442490" seo="true" mt="1592228730288" redirect="true"/>
+    <file name="threesome.html" crc="512442490" seo="true" mt="1592238255955" redirect="true"/>
     <file name="wohnung.html" crc="282617559" seo="true" mt="1592233982393" redirect="true"/>
   </folder>
   <file name="index.html" crc="426939922" seo="true" mt="1548249552695" redirect="true"/>
   <file name="threesome.html" crc="3818079492" seo="true" mt="1591785850483" redirect="true"/>
-  <file name="wohnung.html" crc="171374015" seo="true" mt="1592233956260" redirect="true"/>
+  <file name="wohnung.html" crc="529780501" seo="true" mt="1592238278439" redirect="true"/>
 </manifest>
