@@ -48,8 +48,63 @@
   </url>
   <url>
     <loc>http://boriscreimerman.com/wohnung.html</loc>
-    <lastmod>2020-06-10</lastmod>
+    <lastmod>2020-06-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
+    <xhtml:link rel="alternate" media="only screen and (max-width: 370px)" href="http://boriscreimerman.com/phone/wohnung.html"/>
+    <image:image>
+      <image:loc>http://boriscreimerman.com/images/1-crop-u4748.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://boriscreimerman.com/images/2-crop-u5435.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://boriscreimerman.com/images/3-crop-u5455.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://boriscreimerman.com/images/4-crop-u5475.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://boriscreimerman.com/images/5-crop-u5495.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://boriscreimerman.com/images/6-crop-u5515.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://boriscreimerman.com/images/7-crop-u5535.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://boriscreimerman.com/images/8-crop-u5555.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://boriscreimerman.com/images/9-crop-u5575.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://boriscreimerman.com/images/12.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://boriscreimerman.com/images/22.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://boriscreimerman.com/images/32.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://boriscreimerman.com/images/42.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://boriscreimerman.com/images/52.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://boriscreimerman.com/images/62.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://boriscreimerman.com/images/72.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://boriscreimerman.com/images/82.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://boriscreimerman.com/images/92.jpg</image:loc>
+    </image:image>
   </url>
 </urlset>
