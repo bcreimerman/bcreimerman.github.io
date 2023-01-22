@@ -70,8 +70,7 @@ body {
 
 .h2{
   font-family: Misto;
-  font-size: 3vmax;
-  
+  font-size: 3vmax;  
   color: white;
   max-width: 95vw;
   display: block;
@@ -82,8 +81,7 @@ body {
    }
 .p2{
   font-family: Butler;
-  font-size: 3vmax;
- 
+  font-size: 3vmax; 
   color: white;
   max-width: 95vw;
   display: block;
@@ -95,8 +93,6 @@ body {
 
 #navbar {
   overflow: hidden;
-  background-color: #f1f1f1;
-  padding: 90px 10px;
   transition: 0.4s;
   position: fixed;
   width: 100%;
@@ -106,48 +102,44 @@ body {
 
 #navbar a {
   float: left;
-  color: black;
-  text-align: center;
-  padding: 12px;
+  color: yellow;
+  display: block;
+  text-align: left;
+  padding: 1vh;
   text-decoration: none;
-  font-size: 18px; 
-  line-height: 25px;
+  line-height: 3vh;
   border-radius: 4px;
 }
 
 #navbar #logo {
-  font-size: 35px;
-  font-weight: bold;
+  font-family: Butler;
+  font-size: 5vh;
+  color: yellow;
   transition: 0.4s;
 }
-
-#navbar a:hover {
-  background-color: #ddd;
-  color: black;
+#navbar #logo2 {
+  font-family: Misto;
+  font-size: 4vh;
+  color: yellow;
+  transition: 0.4s;
 }
-
-#navbar a.active {
-  background-color: dodgerblue;
-  color: white;
-}
-
+#menu1{}
+#menu2{}
+#menu3{}
 #navbar-right {
-  float: right;
+  float: left;
+  font-size: 2vh;
 }
 
-@media screen and (max-width: 580px) {
-  #navbar {
-    padding: 20px 10px !important;
+@media screen and (min-aspect-ratio: 1.184) {
+  #navbar {    
   }
   #navbar a {
     float: none;
-    display: block;
     text-align: left;
   }
-  #navbar-right {
-    float: none;
+
   }
-}
 
 @media screen and (min-aspect-ratio: 1.184){
 
@@ -269,23 +261,26 @@ body {
 
 <body>
 
-<!-- nav disabled
+<!-- navbar -->
 <div id="navbar">
-  <a href="#default" id="logo">CompanyLogo</a>
+  <a href="#default" id="logo">robert</a>
+  <a href="#default" id="logo2">creimerman</a>
   <div id="navbar-right">
-    <a class="active" href="#home">Home</a>
-    <a href="#contact">Contact</a>
-    <a href="#about">About</a>
+    <a href="#about" id="menu1">about me</a>
+    <a href="#music"id="menu2">my music</a>
+    <a href="#concerts"id="menu3">my concerts</a>
+    <a href="#videos"id="menu4">videos</a>
+    <a href="#contact"id="menu5">contact</a>
   </div>
 </div>
--->
+
 
 <!-- Title Image -->
 <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/Robert/D2N04106low%20exp.jpg" class=responsivePhotoSingle>
 
 <!-- Video 1 - Rahmaninov -->
 <div class="container-iframe"> 
-  <iframe class="responsive-iframe" src="https://www.youtube.com/embed/cihdeUB-l28?start=53&autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <iframe class="responsive-iframe" src="https://www.youtube.com/embed/cihdeUB-l28?start=53&autoplay=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
 <!-- About me -->
@@ -330,12 +325,29 @@ window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
   if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-    document.getElementById("navbar").style.padding = "10px 5px";
-    document.getElementById("logo").style.fontSize = "15px";
-    document.getElementById("navbar").style.fontSize = "10px";
+    document.getElementById("logo").style.fontSize = "2.5vh";
+    document.getElementById("logo2").style.fontSize = "2vh";
+    document.getElementById("navbar").style.fontSize = "1vh";
+    document.getElementById("logo2").style.display = "inline";
+    document.getElementById("logo").style.display = "inline";
+    document.getElementById("menu1").style.fontSize = "1.5vh";
+    document.getElementById("menu2").style.fontSize = "1.5vh";
+    document.getElementById("menu3").style.fontSize = "1.5vh";
+    document.getElementById("menu4").style.fontSize = "1.5vh";
+    document.getElementById("menu5").style.fontSize = "1.5vh";
+    document.getElementById("navbar-right").style.float = "none";
+
   } else {
-    document.getElementById("navbar").style.padding = "80px 10px";
-    document.getElementById("logo").style.fontSize = "35px";
+    
+    document.getElementById("logo").style.fontSize = "5vh";
+    document.getElementById("logo2").style.fontSize = "4vh";
+    document.getElementById("logo2").style.display = "block";
+    document.getElementById("logo").style.display = "block";
+    document.getElementById("menu1").style.fontSize = "2vh";
+    document.getElementById("menu2").style.fontSize = "2vh";
+    document.getElementById("menu3").style.fontSize = "2vh";
+    document.getElementById("menu4").style.fontSize = "2vh";
+    document.getElementById("menu5").style.fontSize = "2vh";
   }
 }
 </script>
