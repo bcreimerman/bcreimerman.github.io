@@ -1,72 +1,140 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-.responsive {
-  width: auto;
-  max-width: 90vw;	
-  height: auto;
-  max-height: 90vh;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 1vh;
-  margin-bottom: auto;
-}
-</style>
-<style>
-h2 {
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        :root {
+            --ar;
+        }
+      h2 {
 color: black;
 font-family: arial;
 font-size: 5vh;
 text-align: center
 }
-</style>
+
+        @media screen and (max-aspect-ratio: 0.75) {
+            .flex-container {
+                display: flex;
+                flex-flow: wrap;
+                align-content: flex-start;
+                align-items: flex-start;
+                justify-content: center;
+                padding: 0;
+                margin: 0;
+                height: auto;
+                width: auto;
+                max-width: 100vw;
+
+                margin-left: 1vh;
+                margin-right: 1vh;
+                margin-top: 1vh;
+                margin-bottom: auto;
+                gap: 1vh;
+            }
+
+            .flex-item {
+                flex: 0 1 auto;
+                height: auto;
+
+                width: auto;
+                max-width: 95vw;
+                align-self: center;
+            }
+        }
+
+        @media screen and (min-aspect-ratio: 0.75) {
+            .flex-container {
+                display: flex;
+                flex-flow: wrap;
+                align-content: flex-start;
+                align-items: flex-start;
+                justify-content: center;
+                padding: 0;
+                margin: 0;
+                height: auto;
+                width: auto;
+                max-width: 95vw;
+
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 1vh;
+                margin-bottom: auto;
+                gap: 1vh;
+            }
+
+            .flex-item {
+                flex: 0 1 200px;
+                height: auto;
+                max-height: 40vh;
+                width: auto;
+                align-self: center;
+            }
+        }
+    </style>
 </head>
+<title>favorites
+</title>
+
 <body>
 
-<h2>favorites</h2>
+    <h2>favorites</h2>
+    <p id="demo"></p>
 
-<img src="/images/favorites/favs_01.jpg" class="responsive">
-<img src="/images/favorites/favs_02.jpg" class="responsive">
-<img src="/images/favorites/favs_03.jpg" class="responsive">
-<img src="/images/favorites/favs_04.jpg" class="responsive">
-<img src="/images/favorites/favs_05.jpg" class="responsive">
-<img src="/images/favorites/favs_06.jpg" class="responsive">
-<img src="/images/favorites/favs_07.jpg" class="responsive">
-<img src="/images/favorites/favs_08.jpg" class="responsive">
-<img src="/images/favorites/favs_09.jpg" class="responsive">
-<img src="/images/favorites/favs_10.jpg" class="responsive">
-<img src="/images/favorites/favs_11.jpg" class="responsive">
-<img src="/images/favorites/favs_12.jpg" class="responsive">
-<img src="/images/favorites/favs_13.jpg" class="responsive">
-<img src="/images/favorites/favs_14.jpg" class="responsive">
-<img src="/images/favorites/favs_15.jpg" class="responsive">
-<img src="/images/favorites/favs_16.jpg" class="responsive">
-<img src="/images/favorites/favs_17.jpg" class="responsive">
-<img src="/images/favorites/favs_18.jpg" class="responsive">
-<img src="/images/favorites/favs_19.jpg" class="responsive">
-<img src="/images/favorites/favs_20.jpg" class="responsive">
-<img src="/images/favorites/favs_21.jpg" class="responsive">
-<img src="/images/favorites/favs_22.jpg" class="responsive">
-<img src="/images/favorites/favs_23.jpg" class="responsive">
-<img src="/images/favorites/favs_24.jpg" class="responsive">
-<img src="/images/favorites/favs_25.jpg" class="responsive">
-<img src="/images/favorites/favs_26.jpg" class="responsive">
-<img src="/images/favorites/favs_27.jpg" class="responsive">
-<img src="/images/favorites/favs_28.jpg" class="responsive">
-<img src="/images/favorites/favs_29.jpg" class="responsive">
-<img src="/images/favorites/favs_30.jpg" class="responsive">
-<img src="/images/favorites/favs_31.jpg" class="responsive">
-<img src="/images/favorites/favs_32.jpg" class="responsive">
-<img src="/images/favorites/favs_33.jpg" class="responsive">
-<img src="/images/favorites/favs_34.jpg" class="responsive">
-<img src="/images/favorites/favs_35.jpg" class="responsive">
-<img src="/images/favorites/favs_36.jpg" class="responsive">
-<img src="/images/favorites/favs_37.jpg" class="responsive">
+    <ul class="flex-container">
+        <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/Robert/D2N04455.jpg" class="flex-item">
+        <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/Robert/D2N04484.jpg" class="flex-item">
 
+
+        <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/images/favorites/favs_01.jpg" class="flex-item">
+        <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/images/favorites/favs_02.jpg" class="flex-item">
+        <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/images/favorites/favs_03.jpg" class="flex-item">
+        <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/images/favorites/favs_04.jpg" class="flex-item">
+        <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/images/favorites/favs_05.jpg" class="flex-item">
+        <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/images/favorites/favs_06.jpg" class="flex-item">
+        <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/images/favorites/favs_07.jpg" class="flex-item">
+        <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/images/favorites/favs_08.jpg" class="flex-item">
+        <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/images/favorites/favs_09.jpg" class="flex-item">
+        <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/images/favorites/favs_10.jpg" class="flex-item">
+        <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/images/favorites/favs_11.jpg" class="flex-item">
+        <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/images/favorites/favs_12.jpg" class="flex-item">
+        <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/images/favorites/favs_13.jpg" class="flex-item">
+        <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/images/favorites/favs_14.jpg" class="flex-item">
+        <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/images/favorites/favs_15.jpg" class="flex-item">
+        <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/images/favorites/favs_16.jpg" class="flex-item">
+        <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/images/favorites/favs_17.jpg" class="flex-item">
+        <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/images/favorites/favs_18.jpg" class="flex-item">
+        <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/images/favorites/favs_19.jpg" class="flex-item">
+        <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/images/favorites/favs_20.jpg" class="flex-item">
+        <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/images/favorites/favs_21.jpg" class="flex-item">
+        <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/images/favorites/favs_22.jpg" class="flex-item">
+        <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/images/favorites/favs_23.jpg" class="flex-item">
+        <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/images/favorites/favs_24.jpg" class="flex-item">
+        <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/images/favorites/favs_25.jpg" class="flex-item">
+        <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/images/favorites/favs_26.jpg" class="flex-item">
+        <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/images/favorites/favs_27.jpg" class="flex-item">
+        <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/images/favorites/favs_28.jpg" class="flex-item">
+        <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/images/favorites/favs_29.jpg" class="flex-item">
+        <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/images/favorites/favs_30.jpg" class="flex-item">
+        <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/images/favorites/favs_31.jpg" class="flex-item">
+        <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/images/favorites/favs_32.jpg" class="flex-item">
+        <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/images/favorites/favs_33.jpg" class="flex-item">
+        <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/images/favorites/favs_34.jpg" class="flex-item">
+        <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/images/favorites/favs_35.jpg" class="flex-item">
+        <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/images/favorites/favs_36.jpg" class="flex-item">
+        <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/images/favorites/favs_37.jpg" class="flex-item">
+
+    </ul>
+
+    <script>
+        let root = document.documentElement;
+        var x = document.documentElement.clientWidth / document.documentElement.clientHeight;
+        document.getElementById("demo").innerHTML = x;
+        root.style.setProperty('--ar', 'document.documentElement.clientWidth / document.documentElement.clientHeight');
+    </script>
 
 </body>
+
 </html>
