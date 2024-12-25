@@ -111,7 +111,6 @@ body {
 
 #navbar {
   overflow: hidden;
-  transition: 0.4s;
   position: fixed;
   width: 100%;
   top: 0;
@@ -120,7 +119,9 @@ body {
 
 #navbar a {
   float: left;
-  color: 79b473;
+  color: white;
+  mix-blend-mode: difference;
+  backdrop-filter: invert(100%);
   display: block;
   text-align: left;
   padding: 1vh;
@@ -132,14 +133,14 @@ body {
 #navbar #logo {
   font-family: Butler;
   font-size: 5vh;
-  color: 79b473;
-  transition: 0.4s;
+  color: white;
+  mix-blend-mode: difference;
 }
 #navbar #logo2 {
   font-family: Misto;
   font-size: 4vh;
-  color: 79b473;
-  transition: 0.4s;
+  color: white;
+  mix-blend-mode: difference;
 }
 #menu1{}
 #menu2{}
@@ -227,8 +228,8 @@ body {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 1vh;
-  margin-bottom: auto;
+  margin-top: 8vh;
+  margin-bottom: 1vh;
    }
 .p2{
   font-family: Butler;
@@ -240,10 +241,23 @@ body {
   margin-left: auto;
   margin-right: auto;
   margin-top: 1vh;
-  margin-bottom: auto;
+  margin-bottom: 8vh;
+}
+.table{
+font-family: Butler;
+  font-size: 2vmax;
+ 
+  color: white;
+  max-width: calc(100vh * 1.15);
+  display: block;
+  margin-left: 1vh;
+  margin-right: 1vh;
+  margin-top: 1vh;
+  margin-bottom: 8vh;
 }
 }
 @media screen and (max-aspect-ratio: 1.185){
+
 .flex-container {
   display: flex;
   flex-flow: wrap;
@@ -255,7 +269,6 @@ body {
   height: auto;
   width: auto;
   max-width: 95vw;
-  
   margin-left: auto;
   margin-right: auto;
   margin-top: 1vh;
@@ -272,7 +285,40 @@ body {
   align-self: center;
 }
 }
+.collapsible {
+  font-family: Butler;
+  text-align: left;
+  background-color: #000000;
+  max-width: calc(100vh * 1.15);
+  max-height: 0;
+  color: white;
+  cursor: pointer;
+  padding: 3vmax;
+  border: none;
+  outline: none;
+  font-size: 2vmax;
+}
 
+.active, .collapsible:hover {
+  background-color: #111;
+}
+
+.content {
+  
+  font-family: Butler;
+  font-size: 3vmax;
+  color: white;
+  max-width: calc(100vh * 1.15);
+  
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1vh;
+  margin-bottom: 8vh;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  
+}
 </style>
 
 <!-- Body -->
@@ -284,11 +330,12 @@ body {
   <a href="#default" id="logo">robert</a>
   <a href="#default" id="logo2">creimerman</a>
   <div id="navbar-right">
-    <a href="#about" id="menu1">about me</a>
-    <a href="#music"id="menu2">my music</a>
-    <a href="#concerts"id="menu3">my concerts</a>
-    <a href="#videos"id="menu4">videos</a>
+    <a href="#about" id="menu1">about</a>
+    <a href="#music"id="menu2">concerts</a>
+    <a href="#concerts"id="menu3">music</a>
+    <!--a href="#videos"id="menu4">videos</a -->
     <a href="#contact"id="menu5">contact</a>
+    <a href="#press"id="menu6">press</a>
   </div>
 </div>
 
@@ -296,42 +343,88 @@ body {
 <!-- Title Image -->
 <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/Robert/D2N04106low%20exp.jpg" class=responsivePhotoSingle>
 
-<!-- Video 1 - Rahmaninov -->
-<div class="container-iframe"> 
-  <iframe class="responsive-iframe" src="https://www.youtube.com/embed/cihdeUB-l28?start=53&autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-</div>
 
 <!-- About me -->
-<h2 id=about class=h2>About me</h2>
-<p2 class=p2>Hi my name is Robert, I've played Piano for a million years now</p2>
+<h2 id=about class=h2>About Robert Creimerman</h2>
+<p2 class=p2>a rising Romanian pianist, he captivates audiences with his dynamic performances, award-winning talent and bold ventures into conducting and composition, crafting a mesmerizing journey through music.
+</p2>
+<h2>A Collapsible:</h2>
+<button class="collapsible">Read More</button>
+<div class="content">
+  <p>Robert Creimerman, a rising Romanian pianist, captivates audiences with his dynamic performances and award-winning talent, honed at the prestigious Royal Conservatoire of Scotland. With accolades like the Scottish International Youth Piano Competition and collaborations with top orchestras, he showcases a repertoire spanning Beethoven to Liszt. Beyond performance, his venture into composition and conducting highlights his multifaceted artistry, making his story a compelling journey through classical music.</p>
+</div>
+<!-- Video 1 - Rahmaninov -->
+<div class="container-iframe"> 
+  <iframe class="responsive-iframe" src="https://www.youtube.com/embed/cihdeUB-l28?start=53&autoplay=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
 
-<!-- Flex Two Pics 1 -->
+
+<!-- Flex Two Pics 1 
 <ul class="flex-container">
   <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/Robert/D2N04455.jpg" class="flex-item">
   <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/Robert/D2N04484.jpg" class="flex-item">
-</ul>
-
-<!-- My Music -->
-<h2 id= music class=h2>My Music</h2>
-<p2 class=p2>Hi my name is Robert, I've played Piano for a million years now</p2>
-
-<!-- Flex Two Pics 2 -->
-<ul class="flex-container">
-  <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/Robert/D2N04479.jpg" class="flex-item">
-  <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/Robert/D2N04456.jpg" class="flex-item">
-</ul>
+</ul>-->
 
 <!-- My Concerts -->
 <h2 id=concerts class=h2>My Concerts</h2>
-<p2 class=p2>List of past and future Concerts</p2>
+<p2 class=table> 
+  <table class=table>
+    
+  <tr>
+    <th>Date</th>
+    <th>Location</th>
+  </tr>
+  <tr>
+    <td>10.11.2025</td>
+    <td>Inverness, Scotland</td>
+  </tr>
+  <tr>
+    <td>12.11.2025</td>
+    <td>Isle of Skye, Scotland</td>
+  </tr>
+  <tr>
+    <td>16.11.2025</td>
+    <td>Melrose, Scotland</td>
+  </tr>
+  <tr>
+    <td>19.11.2025</td>
+    <td>Biggar, Scotland</td>
+  </tr>
+  <tr>
+    <td>21.11.2025</td>
+    <td>Isle of Bute, Scotland</td>
+  </tr>
+</table> 
 
-<!-- Videos -->
+<!-- My Music -->
+<h2 id= music class=h2>Compositions</h2>
+<p2 class=p2>Robert Creimerman writes music in a variety of genres for groups ranging from the smallest chamber ensembles to full symphony orchestras. Among his works he counts the full score to Isabelle Konrads "Purpur" (2022, 104 min), Boris Creimerman & Tilman Siegls "Crème Brûlée" (2025, 10 min) and a jazz trio album to be released in late 2025</p2>
+
+<!-- Flex Two Pics 2 
+<ul class="flex-container">
+  <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/Robert/D2N04479.jpg" class="flex-item">
+  <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/Robert/D2N04456.jpg" class="flex-item">
+</ul>-->
+
+
+
+<!-- Videos 
 <h2 id=videos class=h2>Videos</h2>
 <p2 class=p2>Video References</p2>
 
 <!-- Contact -->
 <h2 id=contact class=h2>Contact</h2>
-<p2 class=p2>Email, Phone, Social Media</p2>
+<p2 class=p2>creimermanrobert@gmail.com</p2>
+<p2 class=p2> 
+<a href="https://www.instagram.com/robertcreimerman/">instagram</a>
+<a href="https://www.youtube.com/channel/UCqMa8t5WSg7PedHwLpFAImQ">youtube</a>
+<a href="https://www.operabase.com/robert-creimerman-a2182146/en">operabaase</a>
+
+
+
+<!-- Press Kit -->
+<h2 id=press class=h2>Press</h2>
+<p2 class=p2>Click here for an Electronic Press Kit, full resolution images and other resources for programmers.</p2>
 
 <!-- Bottom Image -->
 <img src="https://raw.githubusercontent.com/bcreimerman/bcreimerman.github.io/master/Robert/D2N04012low%20exp.jpg" class=responsivePhotoSingle>
@@ -353,6 +446,7 @@ function scrollFunction() {
     document.getElementById("menu3").style.fontSize = "1.5vh";
     document.getElementById("menu4").style.fontSize = "1.5vh";
     document.getElementById("menu5").style.fontSize = "1.5vh";
+    document.getElementById("menu6").style.fontSize = "1.5vh";
     document.getElementById("navbar-right").style.float = "none";
 
   } else {
@@ -366,7 +460,22 @@ function scrollFunction() {
     document.getElementById("menu3").style.fontSize = "2vh";
     document.getElementById("menu4").style.fontSize = "2vh";
     document.getElementById("menu5").style.fontSize = "2vh";
+    document.getElementById("menu6").style.fontSize = "2vh";
   }
+}
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    } 
+  });
 }
 </script>
 
