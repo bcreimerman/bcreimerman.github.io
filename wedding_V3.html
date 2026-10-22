@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Wedding Gallery</title>
+    <style>
+        /* --- CSS STYLES --- */
+        :root {
+            --bg-color: #faf9f7;
+            --text-color: #333;
+            --accent-color: #e74c3c;
+            --card-bg: #fff;
+            --font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-family);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            margin: 0 0 20px 0;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        select, button {
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            background: #fff;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        select:hover, button:hover {
+            border-color: #bbb;
+            background: #f0f0f0;
+        }
+
+        button.primary {
+            background: var(--text-color);
+            color: #fff;
+            border-color: var(--text-color);
+        }
+
+        button.primary:hover {
+            background: #555;
+        }
+
+        .gallery-container {
+            padding: 0 20px 40px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* RESPONSIVE GRID */
+        .grid {
+            display: grid;
+            gap: 15px;
+            /* Mobile: 2 images */
+            grid-template-columns: repeat(2, 1fr); 
+        }
+
+        /* Tablet: 3 images */
+        @media (min-width: 768px) {
+            .grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        /* Desktop: 4 images */
+        @media (min-width: 1024px) {
+            .grid { grid-template-columns: repeat(4, 1fr); }
+        }
+
+        .card {
+            position: relative;
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            aspect-ratio: 3 / 4; 
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            cursor: pointer; /* Indicates it can be clicked */
+        }
+
+        .actions {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            display: flex;
+            gap: 8px;
+            opacity: 0.9;
+        }
+
+        .icon-btn {
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--text-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: all 0.2s;
+        }
+
+        .icon-btn:hover {
+            background: #fff;
+            transform: scale(1.1);
+        }
+
+        .icon-btn svg {
+            width: 20px;
+            height: 20px;
+            stroke-width: 2;
+        }
+
+        .icon-btn.fav-btn.active { color: var(--accent-color); }
+        .icon-btn.fav-btn.active svg { fill: var(--accent-color); }
+
+        /* --- LIGHTBOX (FULL SCREEN VIEWER) STYLES --- */
+        .lightbox {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            touch-action: none; /* Prevents default mobile scrolling when swiping */
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .lb-content {
+            width: 100%; height: 100%;
+            display: flex; justify-content: center; align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lb-content img {
+            max-width: 95%; max-height: 95%;
+            object-fit: contain;
+            cursor: zoom-in;
+            user-select: none;
+            -webkit-user-drag: none;
+            transition: transform 0.3s ease;
+        }
+
+        .lb-btn {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px; height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 10000;
+            display: flex; justify-content: center; align-items: center;
+            transition: background 0.2s;
+        }
+
+        .lb-btn:hover { background: rgba(255, 255, 255, 0.3); }
+        .lb-prev { left: 20px; top: 50%; transform: translateY(-50%); }
+        .lb-next { right: 20px; top: 50%; transform: translateY(-50%); }
+        .lb-close {
+            top: 20px; right: 20px;
+            background: transparent;
+            font-size: 40px;
+            width: auto; height: auto;
+        }
+        .lb-close:hover { background: transparent; color: var(--accent-color); }
+
+        @media (max-width: 768px) {
+            .lb-btn { width: 40px; height: 40px; font-size: 18px; }
+            .lb-prev { left: 10px; }
+            .lb-next { right: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Our Wedding</h1>
+        <div class="controls">
+            <!-- Filter Dropdown -->
+            <select id="filter-select">
+                <option value="all">All Photos</option>
+                <option value="photographer">Photographer's Photos</option>
+                <option value="guest">Guest Uploads</option>
+            </select>
+
+            <!-- Sorting Dropdown -->
+            <select id="sort-select">
+                <option value="time-asc">Shooting Time (Oldest First)</option>
+                <option value="time-desc">Shooting Time (Newest First)</option>
+                <option value="favs">Favorites First</option>
+            </select>
+
+            <!-- Upload Button -->
+            <button class="primary" onclick="document.getElementById('upload-input').click()">
+                Upload Your Photos
+            </button>
+            <input type="file" id="upload-input" accept="image/*" multiple style="display: none;">
+        </div>
+    </header>
+
+    <main class="gallery-container">
+        <div class="grid" id="gallery">
+            <!-- Images will be injected here by JavaScript -->
+        </div>
+    </main>
+
+    <!-- LIGHTBOX OVERLAY -->
+    <div id="lightbox" class="lightbox">
+        <button class="lb-btn lb-close" onclick="closeLightbox(event)" title="Close">&times;</button>
+        <button class="lb-btn lb-prev" onclick="navigateLightbox(-1, event)" title="Previous">&#10094;</button>
+        <div class="lb-content" id="lb-content">
+            <img id="lb-img" src="" alt="Full Screen">
+        </div>
+        <button class="lb-btn lb-next" onclick="navigateLightbox(1, event)" title="Next">&#10095;</button>
+    </div>
+
+    <script>
+        // --- 1. DATA CONFIGURATION ---
+        // (Remember to replace these with your actual Drive URLs & IDs as explained before)
+        let images = [
+            { 
+                id: '1', 
+                url: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200', 
+                source: 'photographer', 
+                timestamp: 1672531200000 
+            },
+            { 
+                id: '2', 
+                url: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200', 
+                source: 'photographer', 
+                timestamp: 1672534800000 
+            },
+            { 
+                id: '3', 
+                url: 'https://images.unsplash.com/photo-1532712938736-59c79bb24e0d?auto=format&fit=crop&w=1200', 
+                source: 'photographer', 
+                timestamp: 1672530000000 
+            }
+        ];
+
+        // --- 2. STATE MANAGEMENT ---
+        let favorites = new Set(JSON.parse(localStorage.getItem('wedding_favs')) || []);
+        let currentRenderedImages = []; // Tracks the actively filtered/sorted images for the lightbox
+
+        // DOM Elements
+        const gallery = document.getElementById('gallery');
+        const filterSelect = document.getElementById('filter-select');
+        const sortSelect = document.getElementById('sort-select');
+        const uploadInput = document.getElementById('upload-input');
+
+        // SVG Icons
+        const heartIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
+        const downloadIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>`;
+
+        // --- 3. GALLERY RENDER LOGIC ---
+        function render() {
+            const filter = filterSelect.value;
+            const sort = sortSelect.value;
+
+            let filtered = images.filter(img => filter === 'all' || img.source === filter);
+
+            filtered.sort((a, b) => {
+                if (sort === 'favs') {
+                    const aFav = favorites.has(a.id) ? 1 : 0;
+                    const bFav = favorites.has(b.id) ? 1 : 0;
+                    if (aFav !== bFav) return bFav - aFav; 
+                    return a.timestamp - b.timestamp;      
+                } else if (sort === 'time-asc') {
+                    return a.timestamp - b.timestamp;
+                } else {
+                    return b.timestamp - a.timestamp;
+                }
+            });
+
+            // Save the exact array being shown to pass into the Lightbox viewer
+            currentRenderedImages = filtered;
+
+            gallery.innerHTML = '';
+            filtered.forEach((img, index) => {
+                const isFav = favorites.has(img.id);
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <img src="${img.url}" loading="lazy" alt="Wedding Photo" onclick="openLightbox(${index})">
+                    <div class="actions">
+                        <button class="icon-btn fav-btn ${isFav ? 'active' : ''}" onclick="toggleFav('${img.id}', event)" title="Mark as Favorite">
+                            ${heartIcon}
+                        </button>
+                        <button class="icon-btn" onclick="downloadImage('${img.url}', 'wedding_photo_${img.id}.jpg', event)" title="Download">
+                            ${downloadIcon}
+                        </button>
+                    </div>
+                `;
+                gallery.appendChild(card);
+            });
+        }
+
+        // Action Functions
+        window.toggleFav = function(id, e) {
+            if(e) e.stopPropagation(); // Prevent clicking favorite from opening the lightbox
+            if (favorites.has(id)) favorites.delete(id);
+            else favorites.add(id);
+            localStorage.setItem('wedding_favs', JSON.stringify([...favorites]));
+            render(); 
+        };
+
+        window.downloadImage = async function(url, filename, e) {
+            if(e) e.stopPropagation();
+            try {
+                const response = await fetch(url);
+                const blob = await response.blob();
+                const blobUrl = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = blobUrl;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(blobUrl);
+                document.body.removeChild(a);
+            } catch (err) {
+                window.open(url, '_blank');
+            }
+        };
+
+        uploadInput.addEventListener('change', function(e) {
+            const files = e.target.files;
+            if (!files.length) return;
+            Array.from(files).forEach((file, index) => {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    images.push({
+                        id: 'guest_' + Date.now() + '_' + index,
+                        url: event.target.result, 
+                        source: 'guest',
+                        timestamp: Date.now()
+                    });
+                    filterSelect.value = 'all';
+                    render();
+                };
+                reader.readAsDataURL(file);
+            });
+            uploadInput.value = '';
+        });
+
+        filterSelect.addEventListener('change', render);
+        sortSelect.addEventListener('change', render);
+
+        // --- 4. LIGHTBOX (FULL SCREEN & SWIPE/ZOOM) LOGIC ---
+        const lightbox = document.getElementById('lightbox');
+        const lbContent = document.getElementById('lb-content');
+        const lbImg = document.getElementById('lb-img');
+        
+        let currentLbIndex = 0;
+        let isZoomed = false;
+        let scale = 1, translateX = 0, translateY = 0;
+        let isDragging = false, touchStartX = 0, touchStartY = 0;
+        let lastTap = 0;
+
+        window.openLightbox = function(index) {
+            if (currentRenderedImages.length === 0) return;
+            currentLbIndex = index;
+            updateLightboxImage();
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Stop background scrolling
+        };
+
+        window.closeLightbox = function(e) {
+            if (e) e.stopPropagation();
+            lightbox.classList.remove('active');
+            document.body.style.overflow = ''; 
+        };
+
+        window.navigateLightbox = function(direction, e) {
+            if (e) e.stopPropagation();
+            currentLbIndex += direction;
+            if (currentLbIndex < 0) currentLbIndex = currentRenderedImages.length - 1;
+            if (currentLbIndex >= currentRenderedImages.length) currentLbIndex = 0;
+            updateLightboxImage();
+        };
+
+        function updateLightboxImage() {
+            lbImg.src = currentRenderedImages[currentLbIndex].url;
+            // Reset Zoom when changing pictures
+            isZoomed = false;
+            scale = 1; translateX = 0; translateY = 0;
+            lbImg.style.transition = 'none';
+            lbImg.style.transform = `translate(0px, 0px) scale(1)`;
+            setTimeout(() => lbImg.style.transition = 'transform 0.3s ease', 10);
+            lbImg.style.cursor = 'zoom-in';
+        }
+
+        function toggleZoom(e) {
+            if(e) e.preventDefault();
+            isZoomed = !isZoomed;
+            lbImg.style.transition = 'transform 0.3s ease';
+            if (isZoomed) {
+                scale = 2.5; translateX = 0; translateY = 0;
+                lbImg.style.transform = `translate(0px, 0px) scale(${scale})`;
+                lbImg.style.cursor = 'grab';
+            } else {
+                scale = 1; translateX = 0; translateY = 0;
+                lbImg.style.transform = `translate(0px, 0px) scale(${scale})`;
+                lbImg.style.cursor = 'zoom-in';
+            }
+        }
+
+        // Close when clicking on the dark background
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox || e.target === lbContent) closeLightbox();
+        });
+
+        // --- Keyboard Controls ---
+        window.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') navigateLightbox(-1);
+            if (e.key === 'ArrowRight') navigateLightbox(1);
+        });
+
+        // --- Desktop Mouse Drag (Pan) & Double Click (Zoom) ---
+        lbImg.addEventListener('dblclick', toggleZoom);
+
+        lbImg.addEventListener('mousedown', (e) => {
+            if (e.button !== 0 || !isZoomed) return;
+            isDragging = true;
+            touchStartX = e.clientX;
+            touchStartY = e.clientY;
+            lbImg.style.transition = 'none';
+            lbImg.style.cursor = 'grabbing';
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (isDragging && isZoomed) {
+                let deltaX = e.clientX - touchStartX;
+                let deltaY = e.clientY - touchStartY;
+                lbImg.style.transform = `translate(${translateX + deltaX}px, ${translateY + deltaY}px) scale(${scale})`;
+            }
+        });
+
+        window.addEventListener('mouseup', (e) => {
+            if (isDragging && isZoomed) {
+                translateX += e.clientX - touchStartX;
+                translateY += e.clientY - touchStartY;
+                isDragging = false;
+                lbImg.style.cursor = 'grab';
+            }
+        });
+
+        // --- Mobile Touch Events (Swipe to navigate, Drag to pan, Double tap to zoom) ---
+        lbContent.addEventListener('touchstart', (e) => {
+            if (e.touches.length === 1) {
+                touchStartX = e.touches[0].clientX;
+                touchStartY = e.touches[0].clientY;
+                if (isZoomed) {
+                    isDragging = true;
+                    lbImg.style.transition = 'none';
+                }
+            }
+        }, { passive: true });
+
+        // Global touchmove block to stop pulling page around on mobile
+        lightbox.addEventListener('touchmove', (e) => {
+            e.preventDefault(); 
+        }, { passive: false });
+
+        lbContent.addEventListener('touchmove', (e) => {
+            if (isDragging && isZoomed) {
+                let deltaX = e.touches[0].clientX - touchStartX;
+                let deltaY = e.touches[0].clientY - touchStartY;
+                lbImg.style.transform = `translate(${translateX + deltaX}px, ${translateY + deltaY}px) scale(${scale})`;
+            }
+        }, { passive: false });
+
+        lbContent.addEventListener('touchend', (e) => {
+            if (isDragging && isZoomed) {
+                // Save pan positions
+                translateX += e.changedTouches[0].clientX - touchStartX;
+                translateY += e.changedTouches[0].clientY - touchStartY;
+                isDragging = false;
+            } else if (!isZoomed && e.changedTouches.length === 1) {
+                let deltaX = e.changedTouches[0].clientX - touchStartX;
+                let deltaY = e.changedTouches[0].clientY - touchStartY;
+                
+                // Swipe Detection
+                if (Math.abs(deltaX) > 50) { 
+                    if (deltaX > 0) navigateLightbox(-1); // Swiped right -> prev image
+                    else navigateLightbox(1);             // Swiped left -> next image
+                } 
+                // Double Tap Detection (if barely moved)
+                else if (Math.abs(deltaX) < 10 && Math.abs(deltaY) < 10) { 
+                    let currentTime = new Date().getTime();
+                    let tapLength = currentTime - lastTap;
+                    if (tapLength < 300 && tapLength > 0) {
+                        toggleZoom(e);
+                    }
+                    lastTap = currentTime;
+                }
+            }
+        });
+
+        // Initialize App
+        render();
+
+    </script>
+</body>
+</html>
