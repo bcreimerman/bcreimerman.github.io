@@ -7,7 +7,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-    <!-- JSZip for bundling multi-select and favorite downloads into a single .zip -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" defer></script>
     <style>
         :root {
@@ -45,7 +44,7 @@
             position: relative;
             width: 100%;
             height: 100vh;
-            min-height: 580px;
+            min-height: 540px;
             background-color: #141312;
             overflow: hidden;
             display: flex;
@@ -62,7 +61,12 @@
             object-position: center 42%;
             filter: grayscale(35%) contrast(1.05) brightness(0.68);
             transform: scale(1.02);
-            transition: opacity 0.8s ease;
+            opacity: 0;
+            transition: opacity 0.7s ease;
+        }
+
+        .hero-bg.loaded {
+            opacity: 1;
         }
 
         .hero-vignette {
@@ -84,7 +88,7 @@
 
         .hero-brand {
             font-family: var(--serif);
-            font-size: clamp(20px, 2.2vw, 28px);
+            font-size: clamp(21px, 2.2vw, 28px);
             font-weight: 400;
             letter-spacing: 0.6px;
             color: var(--text-ivory);
@@ -135,24 +139,25 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(18, 16, 15, 0.92);
+            background: rgba(18, 16, 15, 0.94);
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
             border-top: 1px solid var(--border-subtle);
             border-bottom: 1px solid var(--border-subtle);
-            padding: 12px 24px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: space-between;
-            align-items: center;
         }
 
-        .toolbar-group {
+        .toolbar-bar {
+            padding: 12px 24px;
             display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
+            justify-content: space-between;
             align-items: center;
+            gap: 12px;
+        }
+
+        .toolbar-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
         .photo-meta-count {
@@ -160,7 +165,30 @@
             font-style: italic;
             font-size: 17px;
             color: var(--text-muted);
-            margin-right: 6px;
+            white-space: nowrap;
+        }
+
+        /* Mobile quick actions (hidden on desktop) */
+        .mobile-actions {
+            display: none;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Collapsible/Desktop Controls Container */
+        .toolbar-controls {
+            display: flex;
+            flex: 1;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toolbar-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
         }
 
         select, .btn {
@@ -180,11 +208,13 @@
             outline: none;
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 6px;
+            white-space: nowrap;
         }
 
         select {
-            padding-right: 30px;
+            padding-right: 32px;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23f5f0e8' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 12px center;
@@ -236,6 +266,7 @@
             font-size: 15px;
             cursor: pointer;
             transition: all 0.2s;
+            white-space: nowrap;
         }
 
         .view-toggle button.active {
@@ -243,12 +274,76 @@
             color: var(--bg-dark);
         }
 
+        /* Responsive Mobile Drawer Layout */
+        @media (max-width: 960px) {
+            .toolbar-bar {
+                padding: 10px 16px;
+            }
+
+            .mobile-actions {
+                display: flex;
+            }
+
+            .desktop-only-upload {
+                display: none;
+            }
+
+            .toolbar-controls {
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+                padding: 14px 16px 18px;
+                border-top: 1px solid var(--border-subtle);
+                background: var(--surface-dark);
+                gap: 12px;
+            }
+
+            .toolbar-controls.open {
+                display: flex;
+            }
+
+            .toolbar-group {
+                flex-direction: column;
+                align-items: stretch;
+                width: 100%;
+                gap: 10px;
+            }
+
+            .toolbar-controls select,
+            .toolbar-controls .btn {
+                width: 100%;
+                padding: 10px 16px;
+                font-size: 16px;
+            }
+
+            .toolbar-controls .view-toggle {
+                width: 100%;
+            }
+
+            .toolbar-controls .view-toggle button {
+                flex: 1;
+                padding: 8px 12px;
+            }
+
+            .mobile-row-pair {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+        }
+
+        @media (min-width: 961px) {
+            .mobile-row-pair {
+                display: contents;
+            }
+        }
+
         /* ================= GALLERY LAYOUTS ================= */
         .status-banner {
             text-align: center;
-            padding: 64px 20px;
+            padding: 48px 20px;
             font-family: var(--serif);
-            font-size: 22px;
+            font-size: 21px;
             color: var(--text-muted);
         }
 
@@ -625,7 +720,6 @@
 
         @media (max-width: 768px) {
             .hero-top { padding: 20px; }
-            .toolbar { padding: 10px 14px; }
             .lb-nav { width: 38px; height: 38px; font-size: 16px; }
             .lb-prev { left: 8px; }
             .lb-next { right: 8px; }
@@ -672,44 +766,58 @@
 
     <!-- STICKY GALLERY CONTROLS -->
     <nav class="toolbar" id="gallery-section">
-        <div class="toolbar-group">
-            <span class="photo-meta-count" id="photo-count">Loading...</span>
-
-            <select id="filter-select" title="Filter photos">
-                <option value="all">All Photos</option>
-                <option value="favorites">Favorites Only</option>
-                <option value="photographer">Photographer's Photos</option>
-                <option value="guest">Guest Uploads</option>
-            </select>
-
-            <select id="section-filter" style="display: none;" title="Filter by folder">
-                <option value="all">All Folders</option>
-            </select>
-
-            <select id="sort-select" title="Sort order">
-                <option value="time-asc">Shooting Time (Oldest &rarr; Newest)</option>
-                <option value="time-desc">Shooting Time (Newest &rarr; Oldest)</option>
-                <option value="favs">Favorites First</option>
-            </select>
-        </div>
-
-        <div class="toolbar-group">
-            <!-- View Switcher: Default 2-Col Full-Width vs 4-Col Card View -->
-            <div class="view-toggle" role="group" aria-label="Gallery layout">
-                <button id="view-full-btn" class="active" onclick="setViewMode('fullwidth')">Full-Width</button>
-                <button id="view-card-btn" onclick="setViewMode('cards')">Card View</button>
+        <div class="toolbar-bar">
+            <div class="toolbar-left">
+                <span class="photo-meta-count" id="photo-count">Loading...</span>
             </div>
 
-            <!-- Multi-Select & Bulk Download Controls -->
-            <button class="btn" id="select-mode-btn" onclick="toggleSelectMode()">Select</button>
-            <button class="btn" id="download-selected-btn" style="display: none;" onclick="downloadSelected()">
-                Download Selected (0)
-            </button>
-            <button class="btn" id="download-favs-btn" onclick="downloadAllFavorites()">
-                Download Favorites (<span id="fav-count">0</span>)
-            </button>
+            <!-- Compact Mobile Bar Buttons -->
+            <div class="mobile-actions">
+                <button class="btn" id="mobile-menu-btn" onclick="toggleMobileMenu()">Filter &amp; View</button>
+                <button class="btn primary" onclick="openUploadModal()">+ Upload</button>
+            </div>
 
-            <button class="btn primary" onclick="openUploadModal()">+ Upload Photos</button>
+            <!-- Full Controls (Always visible on desktop, expandable drawer on mobile) -->
+            <div class="toolbar-controls" id="toolbar-controls">
+                <div class="toolbar-group">
+                    <select id="filter-select" title="Filter photos">
+                        <option value="all">All Photos</option>
+                        <option value="favorites">Favorites Only</option>
+                        <option value="photographer">Photographer's Photos</option>
+                        <option value="guest">Guest Uploads</option>
+                    </select>
+
+                    <select id="section-filter" style="display: none;" title="Filter by folder">
+                        <option value="all">All Folders</option>
+                    </select>
+
+                    <select id="sort-select" title="Sort order">
+                        <option value="time-asc">Shooting Time (Oldest &rarr; Newest)</option>
+                        <option value="time-desc">Shooting Time (Newest &rarr; Oldest)</option>
+                        <option value="favs">Favorites First</option>
+                    </select>
+                </div>
+
+                <div class="toolbar-group">
+                    <div class="view-toggle" role="group" aria-label="Gallery layout">
+                        <button id="view-full-btn" class="active" onclick="setViewMode('fullwidth')">Full-Width</button>
+                        <button id="view-card-btn" onclick="setViewMode('cards')">Card View</button>
+                    </div>
+
+                    <div class="mobile-row-pair">
+                        <button class="btn" id="select-mode-btn" onclick="toggleSelectMode()">Select</button>
+                        <button class="btn" id="download-favs-btn" onclick="downloadAllFavorites()">
+                            Download Favorites (<span id="fav-count">0</span>)
+                        </button>
+                    </div>
+
+                    <button class="btn" id="download-selected-btn" style="display: none;" onclick="downloadSelected()">
+                        Download Selected (0)
+                    </button>
+
+                    <button class="btn primary desktop-only-upload" onclick="openUploadModal()">+ Upload Photos</button>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -759,8 +867,6 @@
         const MAIN_DRIVE_FOLDER_ID = '1xFbHK-BaMG07aLtQRISFLFv6Pa43v4b9';
         const GOOGLE_API_KEY = 'AIzaSyAzTgrpxgRzjXIIXyoLnuZ91Z1Qb199wVA';
 
-        // Separate Guest Upload Folder (optional: paste your separate guest folder ID
-        // and deployed Google Apps Script Web App URL below)
         const GUEST_UPLOAD_FOLDER_ID = '';
         const GUEST_UPLOAD_SCRIPT_URL = '';
         const HERO_FILENAME = 'IMG_4847.jpg';
@@ -770,6 +876,16 @@
         let currentRenderedImages = [];
         let selectedIds = new Set();
         let isSelectMode = false;
+        const visitedFolders = new Set();
+
+        // --- MOBILE TOOLBAR TOGGLE ---
+        window.toggleMobileMenu = function() {
+            const drawer = document.getElementById('toolbar-controls');
+            const btn = document.getElementById('mobile-menu-btn');
+            const isOpen = drawer.classList.toggle('open');
+            btn.classList.toggle('active', isOpen);
+            btn.textContent = isOpen ? 'Done' : 'Filter & View';
+        };
 
         // --- PERSISTENT COOKIE + LOCALSTORAGE FAVORITES ---
         function loadFavorites() {
@@ -824,16 +940,15 @@
             if (exifTime) {
                 const iso = exifTime.replace(/^(\d{4}):(\d{2}):(\d{2})/, '$1-$2-$3');
                 const ts = Date.parse(iso);
-                if (!isNaN(ts)) return { timestamp: ts, isExif: true, label: exifTime.replace(/^(\d{4}):(\d{2}):(\d{2})/, '$1-$2-$3') };
+                if (!isNaN(ts)) return { timestamp: ts, label: exifTime.replace(/^(\d{4}):(\d{2}):(\d{2})/, '$1-$2-$3') };
             }
             const nameMatch = file.name.match(/(20\d{2})[-_]?(\d{2})[-_]?(\d{2})[-_ ]?(\d{2})(\d{2})(\d{2})/);
             if (nameMatch) {
                 const iso = `${nameMatch[1]}-${nameMatch[2]}-${nameMatch[3]}T${nameMatch[4]}:${nameMatch[5]}:${nameMatch[6]}`;
                 const ts = Date.parse(iso);
-                if (!isNaN(ts)) return { timestamp: ts, isExif: false, label: `${nameMatch[1]}-${nameMatch[2]}-${nameMatch[3]} ${nameMatch[4]}:${nameMatch[5]}` };
+                if (!isNaN(ts)) return { timestamp: ts, label: `${nameMatch[1]}-${nameMatch[2]}-${nameMatch[3]} ${nameMatch[4]}:${nameMatch[5]}` };
             }
-            const fallback = Date.parse(file.createdTime) || 0;
-            return { timestamp: fallback, isExif: false, label: '' };
+            return { timestamp: Date.parse(file.createdTime) || 0, label: '' };
         }
 
         // --- DEDUPLICATION ---
@@ -852,4 +967,621 @@
                     seenHashes.add(item.md5Checksum);
                 } else if (item.size) {
                     const sig = `${item.name.toLowerCase().trim()}_${item.size}`;
-                    if (seen
+                    if (seenNameSize.has(sig)) continue;
+                    seenNameSize.add(sig);
+                }
+                unique.push(item);
+            }
+            return unique;
+        }
+
+        // Fetch helper with timeout so requests never hang indefinitely
+        async function fetchWithTimeout(url, timeoutMs = 12000) {
+            const controller = new AbortController();
+            const timer = setTimeout(() => controller.abort(), timeoutMs);
+            try {
+                return await fetch(url, { signal: controller.signal });
+            } finally {
+                clearTimeout(timer);
+            }
+        }
+
+        // Load hero image immediately without waiting for subfolder recursion
+        async function loadHeroImageFast() {
+            try {
+                const q = encodeURIComponent(`name = '${HERO_FILENAME}' and trashed = false`);
+                const fields = encodeURIComponent('files(id, name)');
+                const url = `https://www.googleapis.com/drive/v3/files?q=${q}&fields=${fields}&pageSize=5&key=${GOOGLE_API_KEY}`;
+                const res = await fetchWithTimeout(url, 8000);
+                if (!res.ok) return;
+                const data = await res.json();
+                if (data.files && data.files.length > 0) {
+                    setHeroSource(data.files[0].id);
+                }
+            } catch (_) {}
+        }
+
+        function setHeroSource(fileId) {
+            const heroImg = document.getElementById('hero-bg');
+            if (heroImg.dataset.loadedId === fileId) return;
+            heroImg.dataset.loadedId = fileId;
+            heroImg.onload = () => heroImg.classList.add('loaded');
+            heroImg.onerror = () => {
+                heroImg.onerror = null;
+                heroImg.src = `https://lh3.googleusercontent.com/d/${fileId}=w2000`;
+            };
+            heroImg.src = `https://drive.google.com/thumbnail?id=${fileId}&sz=w2000`;
+        }
+
+        // --- PROGRESSIVE GOOGLE DRIVE RECURSIVE SCANNER ---
+        async function scanDriveFolderProgressive(folderId, sectionName = 'Main Gallery', defaultSource = 'photographer') {
+            if (visitedFolders.has(folderId)) return;
+            visitedFolders.add(folderId);
+
+            let pageToken = null;
+            const subfolders = [];
+
+            do {
+                const query = encodeURIComponent(`'${folderId}' in parents and trashed = false`);
+                const fields = encodeURIComponent('nextPageToken, files(id, name, mimeType, size, md5Checksum, createdTime, imageMediaMetadata(time), shortcutDetails(targetId, targetMimeType))');
+                let apiUrl = `https://www.googleapis.com/drive/v3/files?q=${query}&fields=${fields}&pageSize=1000&key=${GOOGLE_API_KEY}`;
+                if (pageToken) apiUrl += `&pageToken=${pageToken}`;
+
+                const res = await fetchWithTimeout(apiUrl, 12000);
+                if (!res.ok) {
+                    const errBody = await res.json().catch(() => ({}));
+                    throw new Error(errBody.error?.message || `HTTP ${res.status}`);
+                }
+
+                const data = await res.json();
+                const batch = [];
+
+                for (const file of (data.files || [])) {
+                    const effectiveMime = file.mimeType === 'application/vnd.google-apps.shortcut'
+                        ? file.shortcutDetails?.targetMimeType
+                        : file.mimeType;
+                    const effectiveId = file.mimeType === 'application/vnd.google-apps.shortcut'
+                        ? file.shortcutDetails?.targetId
+                        : file.id;
+
+                    if (!effectiveId) continue;
+
+                    if (effectiveMime === 'application/vnd.google-apps.folder') {
+                        subfolders.push({ id: effectiveId, name: file.name });
+                    } else if (effectiveMime && effectiveMime.startsWith('image/')) {
+                        const isGuest = defaultSource === 'guest' || sectionName.toLowerCase().includes('guest');
+                        const shotInfo = extractShootingTimestamp(file);
+                        batch.push({
+                            id: effectiveId,
+                            name: file.name,
+                            size: file.size || 0,
+                            md5Checksum: file.md5Checksum || '',
+                            thumbUrl: `https://drive.google.com/thumbnail?id=${effectiveId}&sz=w1200`,
+                            fallbackThumbUrl: `https://lh3.googleusercontent.com/d/${effectiveId}=w1200`,
+                            fullUrl: `https://drive.google.com/thumbnail?id=${effectiveId}&sz=w2000`,
+                            fallbackFullUrl: `https://lh3.googleusercontent.com/d/${effectiveId}=w2000`,
+                            apiMediaUrl: `https://www.googleapis.com/drive/v3/files/${effectiveId}?alt=media&key=${GOOGLE_API_KEY}`,
+                            downloadUrl: `https://drive.google.com/uc?export=download&id=${effectiveId}`,
+                            source: isGuest ? 'guest' : 'photographer',
+                            section: sectionName,
+                            timestamp: shotInfo.timestamp,
+                            timeLabel: shotInfo.label
+                        });
+                    }
+                }
+
+                if (batch.length > 0) {
+                    allImages = deduplicatePhotos(allImages.concat(batch));
+                    const heroMatch = allImages.find(img => img.name.toLowerCase() === HERO_FILENAME.toLowerCase()) || allImages[0];
+                    if (heroMatch) setHeroSource(heroMatch.id);
+                    updateSectionDropdown();
+                    render(true);
+                }
+
+                pageToken = data.nextPageToken;
+            } while (pageToken);
+
+            // Process subfolders sequentially to avoid Drive API rate-limit bursts
+            for (const sub of subfolders) {
+                await scanDriveFolderProgressive(sub.id, sub.name, defaultSource);
+            }
+        }
+
+        function updateSectionDropdown() {
+            const sections = [...new Set(allImages.map(img => img.section))];
+            const sectionFilter = document.getElementById('section-filter');
+            if (sections.length > 1) {
+                const currentVal = sectionFilter.value;
+                sectionFilter.style.display = 'inline-block';
+                sectionFilter.innerHTML = '<option value="all">All Folders</option>';
+                sections.forEach(sec => {
+                    const opt = document.createElement('option');
+                    opt.value = sec;
+                    opt.textContent = sec;
+                    sectionFilter.appendChild(opt);
+                });
+                sectionFilter.value = sections.includes(currentVal) ? currentVal : 'all';
+            }
+        }
+
+        async function initGallery() {
+            const statusEl = document.getElementById('status');
+            loadHeroImageFast();
+
+            try {
+                await scanDriveFolderProgressive(MAIN_DRIVE_FOLDER_ID, 'Main Gallery', 'photographer');
+                if (GUEST_UPLOAD_FOLDER_ID) {
+                    await scanDriveFolderProgressive(GUEST_UPLOAD_FOLDER_ID, 'Guest Uploads', 'guest');
+                }
+                render(false);
+            } catch (err) {
+                if (allImages.length === 0) {
+                    statusEl.style.display = 'block';
+                    statusEl.className = 'status-banner error';
+                    statusEl.innerHTML = `<strong>Unable to load Drive folder:</strong> ${err.message}<br><small>Verify the folder is set to "Anyone with the link" and your API key allows this domain.</small>`;
+                    document.getElementById('photo-count').textContent = 'Connection error';
+                } else {
+                    render(false);
+                }
+            }
+        }
+
+        // --- VIEW MODE (2-COL FULL-WIDTH DEFAULT VS 4-COL CARD VIEW) ---
+        window.setViewMode = function(mode) {
+            const wrap = document.getElementById('gallery-wrap');
+            wrap.className = `gallery-wrap view-${mode}`;
+            document.getElementById('view-full-btn').classList.toggle('active', mode === 'fullwidth');
+            document.getElementById('view-card-btn').classList.toggle('active', mode === 'cards');
+        };
+
+        // --- RENDER GALLERY ---
+        const heartSvg = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
+        const dlSvg = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>`;
+
+        function render(isStillScanning = false) {
+            const filterVal = document.getElementById('filter-select').value;
+            const secVal = document.getElementById('section-filter').value;
+            const sortVal = document.getElementById('sort-select').value;
+            const gallery = document.getElementById('gallery');
+            const statusEl = document.getElementById('status');
+
+            let filtered = allImages.filter(img => {
+                if (filterVal === 'favorites' && !favorites.has(img.id)) return false;
+                if (filterVal === 'photographer' && img.source !== 'photographer') return false;
+                if (filterVal === 'guest' && img.source !== 'guest') return false;
+                if (secVal !== 'all' && img.section !== secVal) return false;
+                return true;
+            });
+
+            filtered.sort((a, b) => {
+                if (sortVal === 'favs') {
+                    const aFav = favorites.has(a.id) ? 1 : 0;
+                    const bFav = favorites.has(b.id) ? 1 : 0;
+                    if (aFav !== bFav) return bFav - aFav;
+                    return a.timestamp - b.timestamp;
+                }
+                return sortVal === 'time-asc'
+                    ? a.timestamp - b.timestamp
+                    : b.timestamp - a.timestamp;
+            });
+
+            currentRenderedImages = filtered;
+            document.getElementById('photo-count').textContent = isStillScanning
+                ? `${allImages.length} photos (scanning...)`
+                : `${filtered.length} of ${allImages.length} photos`;
+
+            gallery.innerHTML = '';
+
+            if (filtered.length === 0) {
+                statusEl.style.display = 'block';
+                statusEl.className = 'status-banner';
+                statusEl.textContent = isStillScanning
+                    ? 'Scanning wedding memories...'
+                    : (filterVal === 'favorites'
+                        ? 'No favorites marked yet — hover over any photo and click the heart icon to save it.'
+                        : 'No photos match this filter.');
+                return;
+            }
+            statusEl.style.display = 'none';
+
+            filtered.forEach((img, index) => {
+                const isFav = favorites.has(img.id);
+                const isSel = selectedIds.has(img.id);
+                const item = document.createElement('div');
+                item.className = `item${isSel ? ' selected' : ''}`;
+                item.dataset.id = img.id;
+                item.innerHTML = `
+                    <div class="select-check" onclick="toggleSelectItem('${img.id}', event)">${isSel ? '&#10003;' : ''}</div>
+                    <img src="${img.thumbUrl}" onerror="if(this.dataset.retried!=='1'){this.dataset.retried='1';this.src='${img.fallbackThumbUrl}';}" referrerpolicy="no-referrer" loading="lazy" alt="${img.name}" onclick="handleItemClick(${index}, '${img.id}')">
+                    ${img.source === 'guest' ? '<span class="badge">Guest</span>' : ''}
+                    <div class="actions">
+                        <button class="icon-btn fav-btn ${isFav ? 'active' : ''}" onclick="toggleFav('${img.id}', event)" title="Favorite">
+                            ${heartSvg}
+                        </button>
+                        <button class="icon-btn" onclick="downloadSingle(${index}, event)" title="Download Full Resolution">
+                            ${dlSvg}
+                        </button>
+                    </div>
+                `;
+                gallery.appendChild(item);
+            });
+        }
+
+        function handleItemClick(index, id) {
+            if (isSelectMode) {
+                toggleSelectItem(id);
+            } else {
+                openLightbox(index);
+            }
+        }
+
+        // --- FAVORITES ---
+        window.toggleFav = function(id, e) {
+            if (e) e.stopPropagation();
+            if (favorites.has(id)) favorites.delete(id);
+            else favorites.add(id);
+            saveFavorites(favorites);
+            render(false);
+            if (lightbox.classList.contains('active')) updateLightboxMeta();
+        };
+
+        // --- MULTI-SELECT & BULK ZIP DOWNLOADS ---
+        window.toggleSelectMode = function() {
+            isSelectMode = !isSelectMode;
+            document.body.classList.toggle('select-mode', isSelectMode);
+            const btn = document.getElementById('select-mode-btn');
+            const dlSelBtn = document.getElementById('download-selected-btn');
+            btn.classList.toggle('active', isSelectMode);
+            btn.textContent = isSelectMode ? 'Cancel Select' : 'Select';
+            dlSelBtn.style.display = isSelectMode ? 'inline-flex' : 'none';
+            if (!isSelectMode) {
+                selectedIds.clear();
+                updateSelectedCount();
+                render(false);
+            }
+        };
+
+        window.toggleSelectItem = function(id, e) {
+            if (e) e.stopPropagation();
+            if (selectedIds.has(id)) selectedIds.delete(id);
+            else selectedIds.add(id);
+            updateSelectedCount();
+            render(false);
+        };
+
+        function updateSelectedCount() {
+            const btn = document.getElementById('download-selected-btn');
+            btn.textContent = `Download Selected (${selectedIds.size})`;
+            btn.disabled = selectedIds.size === 0;
+        }
+
+        async function fetchImageBlob(imgObj) {
+            if (imgObj.apiMediaUrl.startsWith('data:')) {
+                const res = await fetch(imgObj.apiMediaUrl);
+                return await res.blob();
+            }
+            const res = await fetch(imgObj.apiMediaUrl);
+            if (!res.ok) throw new Error('Fetch failed');
+            return await res.blob();
+        }
+
+        window.downloadSingle = async function(index, e) {
+            if (e) e.stopPropagation();
+            const imgObj = currentRenderedImages[index];
+            try {
+                const blob = await fetchImageBlob(imgObj);
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = imgObj.name || 'wedding-photo.jpg';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            } catch (_) {
+                window.open(imgObj.downloadUrl, '_blank', 'noopener');
+            }
+        };
+
+        async function downloadZipBundle(photoList, zipFilename, triggerBtn) {
+            if (!photoList.length) {
+                alert('No photos selected to download.');
+                return;
+            }
+            if (typeof JSZip === 'undefined') {
+                alert('Download helper is still loading — please try again in a second.');
+                return;
+            }
+            const originalLabel = triggerBtn.innerHTML;
+            triggerBtn.disabled = true;
+
+            try {
+                const zip = new JSZip();
+                let completed = 0;
+                for (const photo of photoList) {
+                    completed++;
+                    triggerBtn.textContent = `Zipping ${completed}/${photoList.length}...`;
+                    const blob = await fetchImageBlob(photo);
+                    const safeName = `${String(completed).padStart(3, '0')}_${photo.name}`;
+                    zip.file(safeName, blob);
+                }
+                triggerBtn.textContent = 'Building ZIP...';
+                const zipBlob = await zip.generateAsync({ type: 'blob' });
+                const url = URL.createObjectURL(zipBlob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = zipFilename;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            } catch (err) {
+                alert('Could not bundle some photos into a ZIP. Try downloading individually.');
+            } finally {
+                triggerBtn.disabled = false;
+                triggerBtn.innerHTML = originalLabel;
+            }
+        }
+
+        window.downloadSelected = function() {
+            const chosen = allImages.filter(img => selectedIds.has(img.id));
+            downloadZipBundle(chosen, 'Ada-and-Boris-Selected-Photos.zip', document.getElementById('download-selected-btn'));
+        };
+
+        window.downloadAllFavorites = function() {
+            const favPhotos = allImages.filter(img => favorites.has(img.id));
+            downloadZipBundle(favPhotos, 'Ada-and-Boris-Favorites.zip', document.getElementById('download-favs-btn'));
+        };
+
+        // --- GUEST UPLOAD MODAL & SEPARATE DRIVE FOLDER UPLOAD ---
+        window.openUploadModal = function() {
+            document.getElementById('upload-modal').classList.add('active');
+        };
+        window.closeUploadModal = function() {
+            document.getElementById('upload-modal').classList.remove('active');
+        };
+
+        const dropzone = document.getElementById('dropzone');
+        const uploadInput = document.getElementById('upload-input');
+        const uploadProgress = document.getElementById('upload-progress');
+
+        dropzone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropzone.classList.add('dragover');
+        });
+        dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
+        dropzone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropzone.classList.remove('dragover');
+            if (e.dataTransfer.files.length) handleGuestFiles(e.dataTransfer.files);
+        });
+        uploadInput.addEventListener('change', (e) => {
+            if (e.target.files.length) handleGuestFiles(e.target.files);
+            uploadInput.value = '';
+        });
+
+        async function handleGuestFiles(fileList) {
+            const files = Array.from(fileList).filter(f => f.type.startsWith('image/'));
+            if (!files.length) return;
+
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                uploadProgress.textContent = `Uploading ${i + 1} of ${files.length}: ${file.name}...`;
+
+                const dataUrl = await new Promise((resolve) => {
+                    const reader = new FileReader();
+                    reader.onload = ev => resolve(ev.target.result);
+                    reader.readAsDataURL(file);
+                });
+
+                if (GUEST_UPLOAD_SCRIPT_URL) {
+                    try {
+                        const base64Data = dataUrl.split(',')[1];
+                        const res = await fetch(GUEST_UPLOAD_SCRIPT_URL, {
+                            method: 'POST',
+                            body: JSON.stringify({
+                                filename: file.name,
+                                mimeType: file.type,
+                                data: base64Data
+                            })
+                        });
+                        const result = await res.json();
+                        if (result.id) {
+                            allImages.push({
+                                id: result.id,
+                                name: file.name,
+                                size: file.size,
+                                md5Checksum: '',
+                                thumbUrl: `https://drive.google.com/thumbnail?id=${result.id}&sz=w1200`,
+                                fallbackThumbUrl: `https://lh3.googleusercontent.com/d/${result.id}=w1200`,
+                                fullUrl: `https://drive.google.com/thumbnail?id=${result.id}&sz=w2000`,
+                                fallbackFullUrl: `https://lh3.googleusercontent.com/d/${result.id}=w2000`,
+                                apiMediaUrl: `https://www.googleapis.com/drive/v3/files/${result.id}?alt=media&key=${GOOGLE_API_KEY}`,
+                                downloadUrl: `https://drive.google.com/uc?export=download&id=${result.id}`,
+                                source: 'guest',
+                                section: 'Guest Uploads',
+                                timestamp: file.lastModified || Date.now(),
+                                timeLabel: ''
+                            });
+                            continue;
+                        }
+                    } catch (_) {}
+                }
+
+                allImages.push({
+                    id: 'guest_' + Date.now() + '_' + i,
+                    name: file.name,
+                    size: file.size,
+                    md5Checksum: '',
+                    thumbUrl: dataUrl,
+                    fallbackThumbUrl: dataUrl,
+                    fullUrl: dataUrl,
+                    fallbackFullUrl: dataUrl,
+                    apiMediaUrl: dataUrl,
+                    downloadUrl: dataUrl,
+                    source: 'guest',
+                    section: 'Guest Uploads',
+                    timestamp: file.lastModified || Date.now(),
+                    timeLabel: ''
+                });
+            }
+
+            uploadProgress.textContent = GUEST_UPLOAD_SCRIPT_URL
+                ? `Uploaded ${files.length} photo(s) to the Guest Uploads Drive folder!`
+                : `Added ${files.length} photo(s) to your view. (Connect GUEST_UPLOAD_SCRIPT_URL in code to save permanently to Drive.)`;
+            document.getElementById('filter-select').value = 'all';
+            render(false);
+        }
+
+        document.getElementById('filter-select').addEventListener('change', () => render(false));
+        document.getElementById('section-filter').addEventListener('change', () => render(false));
+        document.getElementById('sort-select').addEventListener('change', () => render(false));
+
+        // --- FULL-SCREEN LIGHTBOX (SWIPE, ZOOM, PAN, KEYBOARD) ---
+        const lightbox = document.getElementById('lightbox');
+        const lbContent = document.getElementById('lb-content');
+        const lbImg = document.getElementById('lb-img');
+        const lbCounter = document.getElementById('lb-counter');
+        const lbTimestamp = document.getElementById('lb-timestamp');
+        const lbFavBtn = document.getElementById('lb-fav-btn');
+        const lbDlBtn = document.getElementById('lb-dl-btn');
+
+        let currentLbIndex = 0;
+        let isZoomed = false;
+        let scale = 1, translateX = 0, translateY = 0;
+        let isDragging = false, touchStartX = 0, touchStartY = 0;
+        let lastTap = 0;
+
+        window.openLightbox = function(index) {
+            if (!currentRenderedImages.length) return;
+            currentLbIndex = index;
+            updateLightboxImage();
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+
+        window.closeLightbox = function(e) {
+            if (e) e.stopPropagation();
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        window.navigateLightbox = function(direction, e) {
+            if (e) e.stopPropagation();
+            currentLbIndex = (currentLbIndex + direction + currentRenderedImages.length) % currentRenderedImages.length;
+            updateLightboxImage();
+        };
+
+        function updateLightboxMeta() {
+            const item = currentRenderedImages[currentLbIndex];
+            lbCounter.textContent = `${currentLbIndex + 1} / ${currentRenderedImages.length}`;
+            lbTimestamp.textContent = item.timeLabel ? `Shot ${item.timeLabel}` : item.name;
+            lbFavBtn.classList.toggle('fav-active', favorites.has(item.id));
+            lbFavBtn.onclick = (e) => toggleFav(item.id, e);
+            lbDlBtn.onclick = (e) => downloadSingle(currentLbIndex, e);
+        }
+
+        function updateLightboxImage() {
+            const item = currentRenderedImages[currentLbIndex];
+            lbImg.onerror = () => {
+                lbImg.onerror = null;
+                lbImg.src = item.fallbackFullUrl;
+            };
+            lbImg.src = item.fullUrl;
+            updateLightboxMeta();
+            isZoomed = false;
+            scale = 1; translateX = 0; translateY = 0;
+            lbImg.style.transition = 'none';
+            lbImg.style.transform = 'translate(0px, 0px) scale(1)';
+            setTimeout(() => lbImg.style.transition = 'transform 0.25s ease', 10);
+            lbImg.style.cursor = 'zoom-in';
+        }
+
+        function toggleZoom(e) {
+            if (e) e.preventDefault();
+            isZoomed = !isZoomed;
+            lbImg.style.transition = 'transform 0.25s ease';
+            scale = isZoomed ? 2.5 : 1;
+            translateX = 0; translateY = 0;
+            lbImg.style.transform = `translate(0px, 0px) scale(${scale})`;
+            lbImg.style.cursor = isZoomed ? 'grab' : 'zoom-in';
+        }
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox || e.target === lbContent) closeLightbox();
+        });
+
+        window.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') navigateLightbox(-1);
+            if (e.key === 'ArrowRight') navigateLightbox(1);
+        });
+
+        lbImg.addEventListener('dblclick', toggleZoom);
+
+        lbImg.addEventListener('mousedown', (e) => {
+            if (e.button !== 0 || !isZoomed) return;
+            isDragging = true;
+            touchStartX = e.clientX;
+            touchStartY = e.clientY;
+            lbImg.style.transition = 'none';
+            lbImg.style.cursor = 'grabbing';
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (isDragging && isZoomed) {
+                lbImg.style.transform = `translate(${translateX + e.clientX - touchStartX}px, ${translateY + e.clientY - touchStartY}px) scale(${scale})`;
+            }
+        });
+
+        window.addEventListener('mouseup', (e) => {
+            if (isDragging && isZoomed) {
+                translateX += e.clientX - touchStartX;
+                translateY += e.clientY - touchStartY;
+                isDragging = false;
+                lbImg.style.cursor = 'grab';
+            }
+        });
+
+        lbContent.addEventListener('touchstart', (e) => {
+            if (e.touches.length === 1) {
+                touchStartX = e.touches[0].clientX;
+                touchStartY = e.touches[0].clientY;
+                if (isZoomed) {
+                    isDragging = true;
+                    lbImg.style.transition = 'none';
+                }
+            }
+        }, { passive: true });
+
+        lightbox.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
+
+        lbContent.addEventListener('touchmove', (e) => {
+            if (isDragging && isZoomed) {
+                lbImg.style.transform = `translate(${translateX + e.touches[0].clientX - touchStartX}px, ${translateY + e.touches[0].clientY - touchStartY}px) scale(${scale})`;
+            }
+        }, { passive: false });
+
+        lbContent.addEventListener('touchend', (e) => {
+            if (isDragging && isZoomed) {
+                translateX += e.changedTouches[0].clientX - touchStartX;
+                translateY += e.changedTouches[0].clientY - touchStartY;
+                isDragging = false;
+            } else if (!isZoomed && e.changedTouches.length === 1) {
+                const deltaX = e.changedTouches[0].clientX - touchStartX;
+                const deltaY = e.changedTouches[0].clientY - touchStartY;
+                if (Math.abs(deltaX) > 50) {
+                    navigateLightbox(deltaX > 0 ? -1 : 1);
+                } else if (Math.abs(deltaX) < 10 && Math.abs(deltaY) < 10) {
+                    const now = Date.now();
+                    if (now - lastTap < 300 && now - lastTap > 0) toggleZoom(e);
+                    lastTap = now;
+                }
+            }
+        });
+
+        initGallery();
+    </script>
+</body>
+</html>
