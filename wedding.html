@@ -3,177 +3,409 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Wedding Gallery</title>
+    <title>Ada &amp; Boris's Wedding</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- JSZip for bundling multi-select and favorite downloads into a single .zip -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" defer></script>
     <style>
         :root {
-            --bg-color: #faf9f7;
-            --text-color: #2c2c2c;
-            --muted-text: #6e6a66;
-            --accent-color: #e74c3c;
-            --card-bg: #fff;
-            --serif-font: 'Cormorant Garamond', Georgia, serif;
-            --sans-font: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+            --bg-dark: #0e0d0c;
+            --surface-dark: #181615;
+            --surface-elevated: #23201e;
+            --border-subtle: rgba(245, 240, 232, 0.14);
+            --text-ivory: #f5f0e8;
+            --text-muted: rgba(245, 240, 232, 0.62);
+            --accent-rose: #e05a47;
+            --accent-gold: #d4b886;
+            --serif: 'Cormorant Garamond', Georgia, serif;
+            --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
 
         * { box-sizing: border-box; }
 
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg-dark);
+            color: var(--text-ivory);
+        }
+
         body {
             margin: 0;
             padding: 0;
-            font-family: var(--sans-font);
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            font-family: var(--sans);
+            background-color: var(--bg-dark);
+            color: var(--text-ivory);
+            overflow-x: hidden;
         }
 
-        header {
-            text-align: center;
-            padding: 42px 20px 30px;
-            background-color: #fff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            margin-bottom: 22px;
+        /* ================= HERO SECTION ================= */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 580px;
+            background-color: #141312;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        h1 {
-            margin: 0 0 6px 0;
-            font-family: var(--serif-font);
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 42%;
+            filter: grayscale(35%) contrast(1.05) brightness(0.68);
+            transform: scale(1.02);
+            transition: opacity 0.8s ease;
+        }
+
+        .hero-vignette {
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(180deg, rgba(10, 9, 8, 0.55) 0%, rgba(10, 9, 8, 0.12) 45%, rgba(10, 9, 8, 0.72) 100%);
+            pointer-events: none;
+        }
+
+        .hero-top {
+            position: relative;
+            z-index: 3;
+            padding: 28px 36px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hero-brand {
+            font-family: var(--serif);
+            font-size: clamp(20px, 2.2vw, 28px);
             font-weight: 400;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            font-size: 42px;
-            line-height: 1.15;
+            letter-spacing: 0.6px;
+            color: var(--text-ivory);
+            text-decoration: none;
         }
 
-        .subtitle {
-            margin: 0 0 24px 0;
-            font-family: var(--serif-font);
+        .hero-scroll-cue {
+            font-family: var(--serif);
+            font-size: 16px;
             font-style: italic;
-            font-size: 18px;
-            color: var(--muted-text);
+            color: var(--text-muted);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: color 0.2s;
         }
 
-        .controls {
+        .hero-scroll-cue:hover {
+            color: var(--text-ivory);
+        }
+
+        /* Wavy Scrolling Marquee at Bottom of Hero */
+        .wave-marquee-wrap {
+            position: relative;
+            z-index: 3;
+            width: 100%;
+            padding-bottom: 14px;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .wave-svg {
+            width: 100%;
+            height: clamp(115px, 16vw, 210px);
+            display: block;
+            overflow: visible;
+        }
+
+        .wave-text {
+            font-family: var(--serif);
+            font-weight: 400;
+            font-size: 104px;
+            fill: var(--text-ivory);
+            letter-spacing: 2px;
+        }
+
+        /* ================= STICKY EDITORIAL TOOLBAR ================= */
+        .toolbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(18, 16, 15, 0.92);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 12px 24px;
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            max-width: 1000px;
-            margin: 0 auto;
         }
 
-        select, button {
-            padding: 9px 18px;
-            border: 1px solid #ddd;
-            border-radius: 25px;
-            background: #fff;
-            color: var(--text-color);
-            font-family: var(--serif-font);
+        .toolbar-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .photo-meta-count {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 17px;
+            color: var(--text-muted);
+            margin-right: 6px;
+        }
+
+        select, .btn {
+            appearance: none;
+            -webkit-appearance: none;
+            background: var(--surface-elevated);
+            color: var(--text-ivory);
+            border: 1px solid var(--border-subtle);
+            border-radius: 999px;
+            padding: 7px 15px;
+            font-family: var(--serif);
             font-size: 16px;
-            font-weight: 500;
+            font-weight: 400;
             letter-spacing: 0.3px;
             cursor: pointer;
             transition: all 0.2s ease;
             outline: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        select:hover, button:hover {
-            border-color: #aaa;
-            background: #f5f5f5;
+        select {
+            padding-right: 30px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23f5f0e8' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
         }
 
-        button.primary {
-            background: var(--text-color);
-            color: #fff;
-            border-color: var(--text-color);
+        select:hover, .btn:hover {
+            border-color: rgba(245, 240, 232, 0.42);
+            background-color: #2d2926;
         }
 
-        button.primary:hover {
-            background: #4a4a4a;
+        .btn.active {
+            background: var(--text-ivory);
+            color: var(--bg-dark);
+            border-color: var(--text-ivory);
         }
 
+        .btn.primary {
+            background: var(--text-ivory);
+            color: var(--bg-dark);
+            border-color: var(--text-ivory);
+            font-weight: 500;
+        }
+
+        .btn.primary:hover {
+            background: #e2dacd;
+        }
+
+        .btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        /* View Toggle Pill */
+        .view-toggle {
+            display: inline-flex;
+            background: var(--surface-elevated);
+            border: 1px solid var(--border-subtle);
+            border-radius: 999px;
+            padding: 2px;
+        }
+
+        .view-toggle button {
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            padding: 5px 13px;
+            border-radius: 999px;
+            font-family: var(--serif);
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .view-toggle button.active {
+            background: var(--text-ivory);
+            color: var(--bg-dark);
+        }
+
+        /* ================= GALLERY LAYOUTS ================= */
         .status-banner {
             text-align: center;
-            padding: 40px 20px;
-            font-family: var(--serif-font);
-            font-size: 20px;
-            color: var(--muted-text);
+            padding: 64px 20px;
+            font-family: var(--serif);
+            font-size: 22px;
+            color: var(--text-muted);
         }
 
         .status-banner.error {
-            font-family: var(--sans-font);
+            font-family: var(--sans);
             font-size: 14px;
-            color: #b00020;
-            background: #fdecea;
+            color: #ffb4ab;
+            background: rgba(180, 35, 24, 0.2);
+            border: 1px solid rgba(255, 180, 171, 0.3);
             max-width: 680px;
-            margin: 20px auto;
+            margin: 32px auto;
             border-radius: 10px;
             padding: 20px;
         }
 
-        .gallery-container {
-            padding: 0 16px 50px;
-            max-width: 1400px;
-            margin: 0 auto;
+        /* DEFAULT: Full-Width Edge-to-Edge Seamless Gallery */
+        .gallery-wrap.view-fullwidth {
+            width: 100%;
+            padding: 0;
+            margin: 0;
         }
 
-        /* RESPONSIVE GRID: 2 on mobile (9x16), 3 on tablet/small laptop, 4 on desktop */
-        .grid {
+        .gallery-wrap.view-fullwidth .grid {
             display: grid;
-            gap: 12px;
+            gap: 0;
             grid-template-columns: repeat(2, 1fr);
         }
 
         @media (min-width: 768px) {
-            .grid {
-                gap: 16px;
+            .gallery-wrap.view-fullwidth .grid {
                 grid-template-columns: repeat(3, 1fr);
             }
         }
 
-        @media (min-width: 1100px) {
-            .grid {
+        @media (min-width: 1150px) {
+            .gallery-wrap.view-fullwidth .grid {
                 grid-template-columns: repeat(4, 1fr);
             }
         }
 
-        .card {
+        .gallery-wrap.view-fullwidth .item {
             position: relative;
-            background: #eee;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            background: #161514;
+        }
+
+        /* ALTERNATIVE: Framed Card View */
+        .gallery-wrap.view-cards {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 24px 20px 60px;
+        }
+
+        .gallery-wrap.view-cards .grid {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (min-width: 768px) {
+            .gallery-wrap.view-cards .grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 1150px) {
+            .gallery-wrap.view-cards .grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .gallery-wrap.view-cards .item {
+            position: relative;
+            aspect-ratio: 3 / 4;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.06);
-            aspect-ratio: 3 / 4;
+            background: var(--surface-dark);
+            border: 1px solid var(--border-subtle);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
             transition: transform 0.25s ease;
         }
 
-        .card:hover {
+        .gallery-wrap.view-cards .item:hover {
             transform: translateY(-4px);
         }
 
-        .card img {
+        /* Shared Item Internals */
+        .item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
             cursor: pointer;
+            transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), filter 0.3s ease;
+        }
+
+        .item:hover img {
+            transform: scale(1.03);
+        }
+
+        .item.selected img {
+            filter: brightness(0.72);
+            transform: scale(0.96);
+        }
+
+        .item.selected {
+            outline: 2px solid var(--accent-gold);
+            outline-offset: -2px;
         }
 
         .badge {
             position: absolute;
             top: 10px;
             left: 10px;
-            background: rgba(0, 0, 0, 0.55);
-            color: #fff;
-            font-family: var(--serif-font);
+            background: rgba(14, 13, 12, 0.68);
+            color: var(--text-ivory);
+            border: 1px solid var(--border-subtle);
+            font-family: var(--serif);
             font-size: 13px;
-            letter-spacing: 0.5px;
-            padding: 3px 10px;
-            border-radius: 12px;
-            backdrop-filter: blur(4px);
+            letter-spacing: 0.4px;
+            padding: 2px 10px;
+            border-radius: 999px;
+            backdrop-filter: blur(6px);
             pointer-events: none;
+        }
+
+        .select-check {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(255, 255, 255, 0.85);
+            background: rgba(14, 13, 12, 0.5);
+            color: var(--bg-dark);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            z-index: 4;
+        }
+
+        body.select-mode .select-check {
+            display: flex;
+        }
+
+        body.select-mode .badge {
+            left: 46px;
+        }
+
+        .item.selected .select-check {
+            background: var(--accent-gold);
+            border-color: var(--accent-gold);
         }
 
         .actions {
@@ -181,44 +413,119 @@
             bottom: 10px;
             right: 10px;
             display: flex;
-            gap: 8px;
+            gap: 7px;
+            opacity: 0.88;
+            transition: opacity 0.2s;
+        }
+
+        .item:hover .actions {
+            opacity: 1;
         }
 
         .icon-btn {
-            background: rgba(255, 255, 255, 0.92);
-            border: none;
+            background: rgba(18, 16, 15, 0.72);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             border-radius: 50%;
-            width: 38px;
-            height: 38px;
+            width: 36px;
+            height: 36px;
             padding: 0;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            color: var(--text-color);
-            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            color: var(--text-ivory);
             transition: transform 0.15s ease, background 0.15s ease;
         }
 
         .icon-btn:hover {
-            background: #fff;
+            background: rgba(18, 16, 15, 0.95);
             transform: scale(1.08);
         }
 
         .icon-btn svg {
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
             stroke-width: 2;
         }
 
-        .icon-btn.fav-btn.active { color: var(--accent-color); }
-        .icon-btn.fav-btn.active svg { fill: var(--accent-color); }
+        .icon-btn.fav-btn.active {
+            color: var(--accent-rose);
+            border-color: rgba(224, 90, 71, 0.5);
+        }
+        .icon-btn.fav-btn.active svg {
+            fill: var(--accent-rose);
+        }
 
-        /* --- FULL-SCREEN LIGHTBOX --- */
+        /* ================= UPLOAD MODAL ================= */
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.82);
+            backdrop-filter: blur(8px);
+            z-index: 9500;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-backdrop.active {
+            display: flex;
+        }
+
+        .modal-card {
+            background: var(--surface-dark);
+            border: 1px solid var(--border-subtle);
+            border-radius: 14px;
+            max-width: 480px;
+            width: 100%;
+            padding: 28px;
+            color: var(--text-ivory);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
+        }
+
+        .modal-card h2 {
+            margin: 0 0 8px;
+            font-family: var(--serif);
+            font-weight: 400;
+            font-size: 28px;
+        }
+
+        .modal-card p {
+            margin: 0 0 18px;
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--text-muted);
+        }
+
+        .dropzone {
+            border: 1.5px dashed rgba(245, 240, 232, 0.3);
+            border-radius: 10px;
+            padding: 32px 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.2s, background 0.2s;
+            margin-bottom: 16px;
+        }
+
+        .dropzone:hover, .dropzone.dragover {
+            border-color: var(--accent-gold);
+            background: rgba(212, 184, 134, 0.06);
+        }
+
+        .upload-progress {
+            font-size: 13px;
+            color: var(--accent-gold);
+            margin-bottom: 14px;
+            min-height: 20px;
+        }
+
+        /* ================= FULL-SCREEN LIGHTBOX ================= */
         .lightbox {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.95);
+            background: rgba(8, 7, 7, 0.97);
             z-index: 9999;
             display: flex;
             justify-content: center;
@@ -246,7 +553,7 @@
 
         .lb-content img {
             max-width: 94%;
-            max-height: 90%;
+            max-height: 88%;
             object-fit: contain;
             cursor: zoom-in;
             user-select: none;
@@ -254,15 +561,26 @@
             transition: transform 0.25s ease;
         }
 
-        .lb-counter {
+        .lb-info {
             position: absolute;
-            top: 22px;
+            top: 20px;
             left: 24px;
-            color: rgba(255,255,255,0.8);
-            font-family: var(--serif-font);
-            font-size: 18px;
-            letter-spacing: 1px;
             z-index: 10000;
+        }
+
+        .lb-counter {
+            color: var(--text-ivory);
+            font-family: var(--serif);
+            font-size: 19px;
+            letter-spacing: 0.8px;
+        }
+
+        .lb-timestamp {
+            color: var(--text-muted);
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 14px;
+            margin-top: 2px;
         }
 
         .lb-toolbar {
@@ -270,42 +588,40 @@
             top: 16px;
             right: 20px;
             display: flex;
-            gap: 12px;
+            gap: 10px;
             align-items: center;
             z-index: 10000;
         }
 
         .lb-action {
-            background: rgba(255, 255, 255, 0.14);
-            color: #fff;
-            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-ivory);
+            border: 1px solid rgba(255, 255, 255, 0.14);
             border-radius: 50%;
-            width: 44px;
-            height: 44px;
+            width: 42px;
+            height: 42px;
             padding: 0;
-            font-family: var(--sans-font);
-            font-size: 20px;
+            font-size: 19px;
             cursor: pointer;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        .lb-action:hover { background: rgba(255, 255, 255, 0.28); }
-        .lb-action.fav-active { color: var(--accent-color); }
+        .lb-action:hover { background: rgba(255, 255, 255, 0.24); }
+        .lb-action.fav-active { color: var(--accent-rose); border-color: var(--accent-rose); }
 
         .lb-nav {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.12);
-            color: #fff;
-            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-ivory);
+            border: 1px solid rgba(255, 255, 255, 0.14);
             border-radius: 50%;
-            width: 48px;
-            height: 48px;
-            font-family: var(--sans-font);
-            font-size: 22px;
+            width: 46px;
+            height: 46px;
+            font-size: 20px;
             cursor: pointer;
             z-index: 10000;
             display: flex;
@@ -313,13 +629,14 @@
             align-items: center;
         }
 
-        .lb-nav:hover { background: rgba(255, 255, 255, 0.28); }
+        .lb-nav:hover { background: rgba(255, 255, 255, 0.24); }
         .lb-prev { left: 16px; }
         .lb-next { right: 16px; }
 
         @media (max-width: 768px) {
-            h1 { font-size: 32px; }
-            .lb-nav { width: 38px; height: 38px; font-size: 18px; }
+            .hero-top { padding: 20px; }
+            .toolbar { padding: 10px 14px; }
+            .lb-nav { width: 38px; height: 38px; font-size: 16px; }
             .lb-prev { left: 8px; }
             .lb-next { right: 8px; }
         }
@@ -327,42 +644,118 @@
 </head>
 <body>
 
-    <header>
-        <h1>Our Wedding</h1>
-        <p class="subtitle" id="photo-count">Loading gallery...</p>
-        <div class="controls">
-            <select id="source-filter">
-                <option value="all">All Photos (Photographer &amp; Guests)</option>
+    <!-- FULL-WIDTH HERO WITH IMG_4847.JPG & WAVY SCROLLING TEXT -->
+    <section class="hero">
+        <img id="hero-bg" class="hero-bg" referrerpolicy="no-referrer" alt="Ada & Boris's Wedding">
+        <div class="hero-vignette"></div>
+
+        <div class="hero-top">
+            <a href="#" class="hero-brand">Ada &amp; Boris's Wedding</a>
+            <a href="#gallery-section" class="hero-scroll-cue">View Gallery &darr;</a>
+        </div>
+
+        <div class="wave-marquee-wrap" aria-hidden="true">
+            <svg class="wave-svg" viewBox="0 0 1440 200" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                    <!-- Smooth continuous sine wave spanning wider than viewport for seamless looping -->
+                    <path id="wedding-wave-path"
+                          d="M -720 120
+                             Q -540 68, -360 120
+                             T 0 120
+                             T 360 120
+                             T 720 120
+                             T 1080 120
+                             T 1440 120
+                             T 1800 120
+                             T 2160 120
+                             T 2520 120
+                             T 2880 120"
+                          fill="none" />
+                </defs>
+                <text class="wave-text">
+                    <textPath id="wave-text-path" href="#wedding-wave-path" startOffset="0">
+                        2026 &nbsp;&nbsp;19 septembrie &nbsp;&nbsp;&nbsp;&nbsp;2026 &nbsp;&nbsp;19 septembrie &nbsp;&nbsp;&nbsp;&nbsp;2026 &nbsp;&nbsp;19 septembrie &nbsp;&nbsp;&nbsp;&nbsp;2026 &nbsp;&nbsp;19 septembrie &nbsp;&nbsp;&nbsp;&nbsp;2026 &nbsp;&nbsp;19 septembrie &nbsp;&nbsp;&nbsp;&nbsp;
+                    </textPath>
+                </text>
+            </svg>
+        </div>
+    </section>
+
+    <!-- STICKY GALLERY CONTROLS -->
+    <nav class="toolbar" id="gallery-section">
+        <div class="toolbar-group">
+            <span class="photo-meta-count" id="photo-count">Loading...</span>
+
+            <select id="filter-select" title="Filter photos">
+                <option value="all">All Photos</option>
+                <option value="favorites">Favorites Only</option>
                 <option value="photographer">Photographer's Photos</option>
                 <option value="guest">Guest Uploads</option>
             </select>
 
-            <select id="section-filter" style="display: none;">
-                <option value="all">All Moments / Folders</option>
+            <select id="section-filter" style="display: none;" title="Filter by folder">
+                <option value="all">All Folders</option>
             </select>
 
-            <select id="sort-select">
-                <option value="time-asc">Shooting Time (Morning &rarr; Night)</option>
-                <option value="time-desc">Shooting Time (Night &rarr; Morning)</option>
+            <select id="sort-select" title="Sort order">
+                <option value="time-asc">Shooting Time (Oldest &rarr; Newest)</option>
+                <option value="time-desc">Shooting Time (Newest &rarr; Oldest)</option>
                 <option value="favs">Favorites First</option>
             </select>
-
-            <button class="primary" id="upload-btn">Upload Your Photos</button>
-            <input type="file" id="upload-input" accept="image/*" multiple style="display: none;">
         </div>
-    </header>
 
-    <main class="gallery-container">
-        <div id="status" class="status-banner">Scanning Google Drive folder...</div>
+        <div class="toolbar-group">
+            <!-- View Switcher: Default Full-Width vs Card View -->
+            <div class="view-toggle" role="group" aria-label="Gallery layout">
+                <button id="view-full-btn" class="active" onclick="setViewMode('fullwidth')">Full-Width</button>
+                <button id="view-card-btn" onclick="setViewMode('cards')">Card View</button>
+            </div>
+
+            <!-- Multi-Select & Bulk Download Controls -->
+            <button class="btn" id="select-mode-btn" onclick="toggleSelectMode()">Select</button>
+            <button class="btn" id="download-selected-btn" style="display: none;" onclick="downloadSelected()">
+                Download Selected (0)
+            </button>
+            <button class="btn" id="download-favs-btn" onclick="downloadAllFavorites()">
+                Download Favorites (<span id="fav-count">0</span>)
+            </button>
+
+            <button class="btn primary" onclick="openUploadModal()">+ Upload Photos</button>
+        </div>
+    </nav>
+
+    <!-- GALLERY CONTAINER -->
+    <main class="gallery-wrap view-fullwidth" id="gallery-wrap">
+        <div id="status" class="status-banner">Loading wedding memories...</div>
         <div class="grid" id="gallery"></div>
     </main>
 
+    <!-- GUEST UPLOAD MODAL -->
+    <div id="upload-modal" class="modal-backdrop" onclick="if(event.target===this) closeUploadModal()">
+        <div class="modal-card">
+            <h2>Share Your Photos</h2>
+            <p>Upload photos you took at Ada &amp; Boris's wedding. They will appear in the gallery under <strong>Guest Uploads</strong>.</p>
+            <div class="dropzone" id="dropzone" onclick="document.getElementById('upload-input').click()">
+                <div style="font-family: var(--serif); font-size: 20px; margin-bottom: 6px;">Tap to choose photos or drag &amp; drop</div>
+                <div style="font-size: 12px; color: var(--text-muted);">JPEG, PNG, HEIC, WebP</div>
+            </div>
+            <input type="file" id="upload-input" accept="image/*" multiple style="display: none;">
+            <div class="upload-progress" id="upload-progress"></div>
+            <div style="display: flex; justify-content: flex-end; gap: 10px;">
+                <button class="btn" onclick="closeUploadModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
     <!-- FULL-SCREEN LIGHTBOX -->
     <div id="lightbox" class="lightbox">
-        <div class="lb-counter" id="lb-counter"></div>
+        <div class="lb-info">
+            <div class="lb-counter" id="lb-counter"></div>
+            <div class="lb-timestamp" id="lb-timestamp"></div>
+        </div>
         <div class="lb-toolbar">
             <button class="lb-action" id="lb-fav-btn" title="Favorite">&#9829;</button>
-            <button class="lb-action" id="lb-dl-btn" title="Download Full Resolution">&#8681;</button>
+            <button class="lb-action" id="lb-dl-btn" title="Download Original">&#8681;</button>
             <button class="lb-action" onclick="closeLightbox(event)" title="Close">&times;</button>
         </div>
         <button class="lb-nav lb-prev" onclick="navigateLightbox(-1, event)" title="Previous">&#10094;</button>
@@ -374,97 +767,197 @@
 
     <script>
         // ================= CONFIGURATION =================
-        const GOOGLE_DRIVE_FOLDER_ID = '1xFbHK-BaMG07aLtQRISFLFv6Pa43v4b9';
+        const MAIN_DRIVE_FOLDER_ID = '1xFbHK-BaMG07aLtQRISFLFv6Pa43v4b9';
         const GOOGLE_API_KEY = 'AIzaSyAzTgrpxgRzjXIIXyoLnuZ91Z1Qb199wVA';
 
-        // Optional: Paste a Google Form link (linked to a "Guest Uploads" subfolder)
-        // for persistent shared uploads. Leave empty ('') for instant local preview uploads.
-        const GUEST_UPLOAD_FORM_URL = '';
+        // Separate Guest Upload Folder (optional: if you create a separate public folder for guest uploads,
+        // paste its Folder ID here so the gallery also scans it, and paste your Apps Script Web App URL below)
+        const GUEST_UPLOAD_FOLDER_ID = '';
+        const GUEST_UPLOAD_SCRIPT_URL = ''; // Paste deployed Google Apps Script Web App URL here
+        const HERO_FILENAME = 'IMG_4847.jpg';
         // =================================================
 
-        let images = [];
-        let favorites = new Set(JSON.parse(localStorage.getItem('wedding_favs') || '[]'));
+        let allImages = [];
         let currentRenderedImages = [];
+        let selectedIds = new Set();
+        let isSelectMode = false;
 
-        const gallery = document.getElementById('gallery');
-        const statusEl = document.getElementById('status');
-        const photoCountEl = document.getElementById('photo-count');
-        const sourceFilter = document.getElementById('source-filter');
-        const sectionFilter = document.getElementById('section-filter');
-        const sortSelect = document.getElementById('sort-select');
-        const uploadBtn = document.getElementById('upload-btn');
-        const uploadInput = document.getElementById('upload-input');
-
-        const heartIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
-        const downloadIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>`;
-
-        function parseTimestamp(file) {
-            const exifTime = file.imageMediaMetadata && file.imageMediaMetadata.time;
-            if (exifTime) {
-                const isoFormatted = exifTime.replace(/^(\d{4}):(\d{2}):(\d{2})/, '$1-$2-$3');
-                const parsed = Date.parse(isoFormatted);
-                if (!isNaN(parsed)) return parsed;
+        // --- PERSISTENT COOKIE + LOCALSTORAGE FAVORITES ---
+        function loadFavorites() {
+            const ids = new Set();
+            // 1. Read from persistent cookie
+            const cookieMatch = document.cookie.split('; ').find(row => row.startsWith('wedding_favs='));
+            if (cookieMatch) {
+                try {
+                    const parsed = JSON.parse(decodeURIComponent(cookieMatch.split('=')[1]));
+                    if (Array.isArray(parsed)) parsed.forEach(id => ids.add(id));
+                } catch (_) {}
             }
-            return Date.parse(file.createdTime) || 0;
+            // 2. Merge from localStorage backup (protects against 4KB cookie ceiling if >100 favorites)
+            try {
+                const lsParsed = JSON.parse(localStorage.getItem('wedding_favs') || '[]');
+                if (Array.isArray(lsParsed)) lsParsed.forEach(id => ids.add(id));
+            } catch (_) {}
+            return ids;
         }
 
-        async function fetchDriveFolderRecursive(folderId, sectionName = 'Main Gallery') {
+        function saveFavorites(favSet) {
+            const arr = [...favSet];
+            // 1-year persistent cookie (not session-scoped)
+            const oneYearSeconds = 60 * 60 * 24 * 365;
+            const encoded = encodeURIComponent(JSON.stringify(arr.slice(0, 110)));
+            document.cookie = `wedding_favs=${encoded}; max-age=${oneYearSeconds}; path=/; SameSite=Lax`;
+            try {
+                localStorage.setItem('wedding_favs', JSON.stringify(arr));
+            } catch (_) {}
+            document.getElementById('fav-count').textContent = arr.length;
+        }
+
+        let favorites = loadFavorites();
+        document.getElementById('fav-count').textContent = favorites.size;
+
+        // --- WAVY SCROLLING MARQUEE ANIMATION ---
+        (function initWaveMarquee() {
+            const textPath = document.getElementById('wave-text-path');
+            let offset = 0;
+            const speed = 0.75; // pixels per frame
+            const cycleLength = 720; // exact wavelength of one sine period in SVG units
+
+            function tick() {
+                offset -= speed;
+                if (offset <= -cycleLength) offset += cycleLength;
+                textPath.setAttribute('startOffset', offset.toFixed(2));
+                requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+        })();
+
+        // --- EXIF SHOOTING DATE PARSER ---
+        function extractShootingTimestamp(file) {
+            // 1. Primary: True EXIF camera shooting date ("YYYY:MM:DD HH:MM:SS")
+            const exifTime = file.imageMediaMetadata && file.imageMediaMetadata.time;
+            if (exifTime) {
+                const iso = exifTime.replace(/^(\d{4}):(\d{2}):(\d{2})/, '$1-$2-$3');
+                const ts = Date.parse(iso);
+                if (!isNaN(ts)) return { timestamp: ts, isExif: true, label: exifTime.replace(/^(\d{4}):(\d{2}):(\d{2})/, '$1-$2-$3') };
+            }
+            // 2. Fallback: Timestamp encoded in camera filename (e.g. IMG_20260919_183045.jpg)
+            const nameMatch = file.name.match(/(20\d{2})[-_]?(\d{2})[-_]?(\d{2})[-_ ]?(\d{2})(\d{2})(\d{2})/);
+            if (nameMatch) {
+                const iso = `${nameMatch[1]}-${nameMatch[2]}-${nameMatch[3]}T${nameMatch[4]}:${nameMatch[5]}:${nameMatch[6]}`;
+                const ts = Date.parse(iso);
+                if (!isNaN(ts)) return { timestamp: ts, isExif: false, label: `${nameMatch[1]}-${nameMatch[2]}-${nameMatch[3]} ${nameMatch[4]}:${nameMatch[5]}` };
+            }
+            // 3. Last resort: createdTime
+            const fallback = Date.parse(file.createdTime) || 0;
+            return { timestamp: fallback, isExif: false, label: '' };
+        }
+
+        // --- DEDUPLICATION ---
+        function deduplicatePhotos(rawList) {
+            const seenIds = new Set();
+            const seenHashes = new Set();
+            const seenNameSize = new Set();
+            const unique = [];
+
+            for (const item of rawList) {
+                if (seenIds.has(item.id)) continue;
+                seenIds.add(item.id);
+
+                if (item.md5Checksum) {
+                    if (seenHashes.has(item.md5Checksum)) continue;
+                    seenHashes.add(item.md5Checksum);
+                } else if (item.size) {
+                    const sig = `${item.name.toLowerCase().trim()}_${item.size}`;
+                    if (seenNameSize.has(sig)) continue;
+                    seenNameSize.add(sig);
+                }
+                unique.push(item);
+            }
+            return unique;
+        }
+
+        // --- GOOGLE DRIVE RECURSIVE SCANNER ---
+        async function fetchDriveRecursive(folderId, sectionName = 'Main Gallery', defaultSource = 'photographer') {
             let pageToken = null;
             const subfolders = [];
+            const collected = [];
 
             do {
                 const query = encodeURIComponent(`'${folderId}' in parents and trashed = false`);
-                const fields = encodeURIComponent('nextPageToken, files(id, name, mimeType, createdTime, imageMediaMetadata(time), shortcutDetails(targetId, targetMimeType))');
+                const fields = encodeURIComponent('nextPageToken, files(id, name, mimeType, size, md5Checksum, createdTime, imageMediaMetadata(time), shortcutDetails(targetId, targetMimeType))');
                 let apiUrl = `https://www.googleapis.com/drive/v3/files?q=${query}&fields=${fields}&pageSize=1000&key=${GOOGLE_API_KEY}`;
                 if (pageToken) apiUrl += `&pageToken=${pageToken}`;
 
-                const response = await fetch(apiUrl);
-                if (!response.ok) {
-                    const errData = await response.json().catch(() => ({}));
-                    throw new Error(errData.error?.message || `HTTP ${response.status}`);
+                const res = await fetch(apiUrl);
+                if (!res.ok) {
+                    const errBody = await res.json().catch(() => ({}));
+                    throw new Error(errBody.error?.message || `HTTP ${res.status}`);
                 }
 
-                const data = await response.json();
-                for (const item of (data.files || [])) {
-                    const effectiveMime = item.mimeType === 'application/vnd.google-apps.shortcut'
-                        ? item.shortcutDetails?.targetMimeType
-                        : item.mimeType;
-                    const effectiveId = item.mimeType === 'application/vnd.google-apps.shortcut'
-                        ? item.shortcutDetails?.targetId
-                        : item.id;
+                const data = await res.json();
+                for (const file of (data.files || [])) {
+                    const effectiveMime = file.mimeType === 'application/vnd.google-apps.shortcut'
+                        ? file.shortcutDetails?.targetMimeType
+                        : file.mimeType;
+                    const effectiveId = file.mimeType === 'application/vnd.google-apps.shortcut'
+                        ? file.shortcutDetails?.targetId
+                        : file.id;
 
                     if (!effectiveId) continue;
 
                     if (effectiveMime === 'application/vnd.google-apps.folder') {
-                        subfolders.push({ id: effectiveId, name: item.name });
+                        subfolders.push({ id: effectiveId, name: file.name });
                     } else if (effectiveMime && effectiveMime.startsWith('image/')) {
-                        const isGuest = sectionName.toLowerCase().includes('guest');
-                        images.push({
+                        const isGuest = defaultSource === 'guest' || sectionName.toLowerCase().includes('guest');
+                        const shotInfo = extractShootingTimestamp(file);
+                        collected.push({
                             id: effectiveId,
-                            name: item.name,
-                            thumbUrl: `https://drive.google.com/thumbnail?id=${effectiveId}&sz=w800`,
+                            name: file.name,
+                            size: file.size || 0,
+                            md5Checksum: file.md5Checksum || '',
+                            thumbUrl: `https://drive.google.com/thumbnail?id=${effectiveId}&sz=w900`,
                             fullUrl: `https://drive.google.com/thumbnail?id=${effectiveId}&sz=w2400`,
+                            apiMediaUrl: `https://www.googleapis.com/drive/v3/files/${effectiveId}?alt=media&key=${GOOGLE_API_KEY}`,
                             downloadUrl: `https://drive.google.com/uc?export=download&id=${effectiveId}`,
                             source: isGuest ? 'guest' : 'photographer',
                             section: sectionName,
-                            timestamp: parseTimestamp(item)
+                            timestamp: shotInfo.timestamp,
+                            timeLabel: shotInfo.label
                         });
                     }
                 }
                 pageToken = data.nextPageToken;
             } while (pageToken);
 
-            await Promise.all(
-                subfolders.map(sub => fetchDriveFolderRecursive(sub.id, sub.name))
+            const nestedResults = await Promise.all(
+                subfolders.map(sub => fetchDriveRecursive(sub.id, sub.name, defaultSource))
             );
+            return collected.concat(...nestedResults);
         }
 
         async function initGallery() {
+            const statusEl = document.getElementById('status');
             try {
-                await fetchDriveFolderRecursive(GOOGLE_DRIVE_FOLDER_ID);
-                statusEl.style.display = 'none';
+                const tasks = [fetchDriveRecursive(MAIN_DRIVE_FOLDER_ID, 'Main Gallery', 'photographer')];
+                if (GUEST_UPLOAD_FOLDER_ID) {
+                    tasks.push(fetchDriveRecursive(GUEST_UPLOAD_FOLDER_ID, 'Guest Uploads', 'guest'));
+                }
 
-                const sections = [...new Set(images.map(img => img.section))];
+                const results = await Promise.all(tasks);
+                const rawCombined = results.flat();
+                allImages = deduplicatePhotos(rawCombined);
+
+                // Set IMG_4847.jpg as the full-width top hero image
+                const heroMatch = allImages.find(img => img.name.toLowerCase() === HERO_FILENAME.toLowerCase())
+                    || allImages[0];
+                if (heroMatch) {
+                    document.getElementById('hero-bg').src = heroMatch.fullUrl;
+                }
+
+                // Populate subfolder dropdown if multiple folders exist
+                const sections = [...new Set(allImages.map(img => img.section))];
+                const sectionFilter = document.getElementById('section-filter');
                 if (sections.length > 1) {
                     sectionFilter.style.display = 'inline-block';
                     sections.forEach(sec => {
@@ -475,23 +968,40 @@
                     });
                 }
 
+                statusEl.style.display = 'none';
                 render();
             } catch (err) {
                 statusEl.className = 'status-banner error';
-                statusEl.innerHTML = `<strong>Could not load Google Drive folder:</strong> ${err.message}<br><small>Make sure the folder is shared as "Anyone with the link" and Google Drive API is enabled for your API key.</small>`;
-                photoCountEl.textContent = 'Connection error';
+                statusEl.innerHTML = `<strong>Unable to load Drive folder:</strong> ${err.message}<br><small>Verify the folder is set to "Anyone with the link" and Google Drive API is enabled for your API key.</small>`;
+                document.getElementById('photo-count').textContent = 'Connection error';
             }
         }
 
-        function render() {
-            const srcVal = sourceFilter.value;
-            const secVal = sectionFilter.value;
-            const sortVal = sortSelect.value;
+        // --- VIEW MODE (FULL-WIDTH DEFAULT VS CARD VIEW) ---
+        window.setViewMode = function(mode) {
+            const wrap = document.getElementById('gallery-wrap');
+            wrap.className = `gallery-wrap view-${mode}`;
+            document.getElementById('view-full-btn').classList.toggle('active', mode === 'fullwidth');
+            document.getElementById('view-card-btn').classList.toggle('active', mode === 'cards');
+        };
 
-            let filtered = images.filter(img => {
-                const matchSource = srcVal === 'all' || img.source === srcVal;
-                const matchSection = secVal === 'all' || img.section === secVal;
-                return matchSource && matchSection;
+        // --- RENDER GALLERY ---
+        const heartSvg = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
+        const dlSvg = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>`;
+
+        function render() {
+            const filterVal = document.getElementById('filter-select').value;
+            const secVal = document.getElementById('section-filter').value;
+            const sortVal = document.getElementById('sort-select').value;
+            const gallery = document.getElementById('gallery');
+            const statusEl = document.getElementById('status');
+
+            let filtered = allImages.filter(img => {
+                if (filterVal === 'favorites' && !favorites.has(img.id)) return false;
+                if (filterVal === 'photographer' && img.source !== 'photographer') return false;
+                if (filterVal === 'guest' && img.source !== 'guest') return false;
+                if (secVal !== 'all' && img.section !== secVal) return false;
+                return true;
             });
 
             filtered.sort((a, b) => {
@@ -507,99 +1017,279 @@
             });
 
             currentRenderedImages = filtered;
-            photoCountEl.textContent = `Showing ${filtered.length} of ${images.length} photos`;
+            document.getElementById('photo-count').textContent = `${filtered.length} of ${allImages.length} photos`;
             gallery.innerHTML = '';
 
             if (filtered.length === 0) {
                 statusEl.style.display = 'block';
                 statusEl.className = 'status-banner';
-                statusEl.textContent = 'No photos match this filter yet.';
+                statusEl.textContent = filterVal === 'favorites'
+                    ? 'No favorites marked yet — tap the heart icon on any photo to save it.'
+                    : 'No photos match this filter.';
                 return;
             }
             statusEl.style.display = 'none';
 
             filtered.forEach((img, index) => {
                 const isFav = favorites.has(img.id);
-                const card = document.createElement('div');
-                card.className = 'card';
-                card.innerHTML = `
-                    <img src="${img.thumbUrl}" referrerpolicy="no-referrer" loading="lazy" alt="${img.name}" onclick="openLightbox(${index})">
+                const isSel = selectedIds.has(img.id);
+                const item = document.createElement('div');
+                item.className = `item${isSel ? ' selected' : ''}`;
+                item.dataset.id = img.id;
+                item.innerHTML = `
+                    <div class="select-check" onclick="toggleSelectItem('${img.id}', event)">${isSel ? '&#10003;' : ''}</div>
+                    <img src="${img.thumbUrl}" referrerpolicy="no-referrer" loading="lazy" alt="${img.name}" onclick="handleItemClick(${index}, '${img.id}')">
                     ${img.source === 'guest' ? '<span class="badge">Guest</span>' : ''}
                     <div class="actions">
-                        <button class="icon-btn fav-btn ${isFav ? 'active' : ''}" onclick="toggleFav('${img.id}', event)" title="Mark as Favorite">
-                            ${heartIcon}
+                        <button class="icon-btn fav-btn ${isFav ? 'active' : ''}" onclick="toggleFav('${img.id}', event)" title="Favorite">
+                            ${heartSvg}
                         </button>
-                        <button class="icon-btn" onclick="downloadImage('${img.downloadUrl}', '${img.name}', event)" title="Download Full Resolution">
-                            ${downloadIcon}
+                        <button class="icon-btn" onclick="downloadSingle(${index}, event)" title="Download Full Resolution">
+                            ${dlSvg}
                         </button>
                     </div>
                 `;
-                gallery.appendChild(card);
+                gallery.appendChild(item);
             });
         }
 
+        function handleItemClick(index, id) {
+            if (isSelectMode) {
+                toggleSelectItem(id);
+            } else {
+                openLightbox(index);
+            }
+        }
+
+        // --- FAVORITES ---
         window.toggleFav = function(id, e) {
             if (e) e.stopPropagation();
             if (favorites.has(id)) favorites.delete(id);
             else favorites.add(id);
-            localStorage.setItem('wedding_favs', JSON.stringify([...favorites]));
+            saveFavorites(favorites);
             render();
             if (lightbox.classList.contains('active')) updateLightboxMeta();
         };
 
-        window.downloadImage = function(url, filename, e) {
-            if (e) e.stopPropagation();
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = filename || 'wedding-photo.jpg';
-            a.target = '_blank';
-            a.rel = 'noopener';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
+        // --- MULTI-SELECT & BULK ZIP DOWNLOADS ---
+        window.toggleSelectMode = function() {
+            isSelectMode = !isSelectMode;
+            document.body.classList.toggle('select-mode', isSelectMode);
+            const btn = document.getElementById('select-mode-btn');
+            const dlSelBtn = document.getElementById('download-selected-btn');
+            btn.classList.toggle('active', isSelectMode);
+            btn.textContent = isSelectMode ? 'Cancel Select' : 'Select';
+            dlSelBtn.style.display = isSelectMode ? 'inline-flex' : 'none';
+            if (!isSelectMode) {
+                selectedIds.clear();
+                updateSelectedCount();
+                render();
+            }
         };
 
-        uploadBtn.addEventListener('click', () => {
-            if (GUEST_UPLOAD_FORM_URL) {
-                window.open(GUEST_UPLOAD_FORM_URL, '_blank', 'noopener');
-            } else {
-                uploadInput.click();
-            }
-        });
+        window.toggleSelectItem = function(id, e) {
+            if (e) e.stopPropagation();
+            if (selectedIds.has(id)) selectedIds.delete(id);
+            else selectedIds.add(id);
+            updateSelectedCount();
+            render();
+        };
 
-        uploadInput.addEventListener('change', function(e) {
-            const files = e.target.files;
-            if (!files.length) return;
-            Array.from(files).forEach((file, index) => {
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    images.push({
-                        id: 'guest_' + Date.now() + '_' + index,
-                        name: file.name,
-                        thumbUrl: event.target.result,
-                        fullUrl: event.target.result,
-                        downloadUrl: event.target.result,
-                        source: 'guest',
-                        section: 'Guest Uploads',
-                        timestamp: file.lastModified || Date.now()
-                    });
-                    sourceFilter.value = 'all';
-                    render();
-                };
-                reader.readAsDataURL(file);
-            });
+        function updateSelectedCount() {
+            const btn = document.getElementById('download-selected-btn');
+            btn.textContent = `Download Selected (${selectedIds.size})`;
+            btn.disabled = selectedIds.size === 0;
+        }
+
+        async function fetchImageBlob(imgObj) {
+            // Data URLs (local guest previews)
+            if (imgObj.apiMediaUrl.startsWith('data:')) {
+                const res = await fetch(imgObj.apiMediaUrl);
+                return await res.blob();
+            }
+            // Google Drive API v3 CORS-enabled original file stream
+            const res = await fetch(imgObj.apiMediaUrl);
+            if (!res.ok) throw new Error('Fetch failed');
+            return await res.blob();
+        }
+
+        window.downloadSingle = async function(index, e) {
+            if (e) e.stopPropagation();
+            const imgObj = currentRenderedImages[index];
+            try {
+                const blob = await fetchImageBlob(imgObj);
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = imgObj.name || 'wedding-photo.jpg';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            } catch (_) {
+                window.open(imgObj.downloadUrl, '_blank', 'noopener');
+            }
+        };
+
+        async function downloadZipBundle(photoList, zipFilename, triggerBtn) {
+            if (!photoList.length) {
+                alert('No photos selected to download.');
+                return;
+            }
+            if (typeof JSZip === 'undefined') {
+                alert('Download helper is still loading — please try again in a second.');
+                return;
+            }
+            const originalLabel = triggerBtn.innerHTML;
+            triggerBtn.disabled = true;
+
+            try {
+                const zip = new JSZip();
+                let completed = 0;
+                for (const photo of photoList) {
+                    completed++;
+                    triggerBtn.textContent = `Zipping ${completed}/${photoList.length}...`;
+                    const blob = await fetchImageBlob(photo);
+                    // Avoid filename collisions inside the zip
+                    const safeName = `${String(completed).padStart(3, '0')}_${photo.name}`;
+                    zip.file(safeName, blob);
+                }
+                triggerBtn.textContent = 'Building ZIP...';
+                const zipBlob = await zip.generateAsync({ type: 'blob' });
+                const url = URL.createObjectURL(zipBlob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = zipFilename;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            } catch (err) {
+                alert('Could not bundle some photos into a ZIP. Try downloading individually.');
+            } finally {
+                triggerBtn.disabled = false;
+                triggerBtn.innerHTML = originalLabel;
+            }
+        }
+
+        window.downloadSelected = function() {
+            const chosen = allImages.filter(img => selectedIds.has(img.id));
+            downloadZipBundle(chosen, 'Ada-and-Boris-Selected-Photos.zip', document.getElementById('download-selected-btn'));
+        };
+
+        window.downloadAllFavorites = function() {
+            const favPhotos = allImages.filter(img => favorites.has(img.id));
+            downloadZipBundle(favPhotos, 'Ada-and-Boris-Favorites.zip', document.getElementById('download-favs-btn'));
+        };
+
+        // --- GUEST UPLOAD MODAL & SEPARATE DRIVE FOLDER UPLOAD ---
+        window.openUploadModal = function() {
+            document.getElementById('upload-modal').classList.add('active');
+        };
+        window.closeUploadModal = function() {
+            document.getElementById('upload-modal').classList.remove('active');
+        };
+
+        const dropzone = document.getElementById('dropzone');
+        const uploadInput = document.getElementById('upload-input');
+        const uploadProgress = document.getElementById('upload-progress');
+
+        dropzone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropzone.classList.add('dragover');
+        });
+        dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
+        dropzone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropzone.classList.remove('dragover');
+            if (e.dataTransfer.files.length) handleGuestFiles(e.dataTransfer.files);
+        });
+        uploadInput.addEventListener('change', (e) => {
+            if (e.target.files.length) handleGuestFiles(e.target.files);
             uploadInput.value = '';
         });
 
-        sourceFilter.addEventListener('change', render);
-        sectionFilter.addEventListener('change', render);
-        sortSelect.addEventListener('change', render);
+        async function handleGuestFiles(fileList) {
+            const files = Array.from(fileList).filter(f => f.type.startsWith('image/'));
+            if (!files.length) return;
+
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                uploadProgress.textContent = `Uploading ${i + 1} of ${files.length}: ${file.name}...`;
+
+                const dataUrl = await new Promise((resolve) => {
+                    const reader = new FileReader();
+                    reader.onload = ev => resolve(ev.target.result);
+                    reader.readAsDataURL(file);
+                });
+
+                // If the separate Google Apps Script upload endpoint is configured, push directly to the guest Drive folder
+                if (GUEST_UPLOAD_SCRIPT_URL) {
+                    try {
+                        const base64Data = dataUrl.split(',')[1];
+                        const res = await fetch(GUEST_UPLOAD_SCRIPT_URL, {
+                            method: 'POST',
+                            body: JSON.stringify({
+                                filename: file.name,
+                                mimeType: file.type,
+                                data: base64Data
+                            })
+                        });
+                        const result = await res.json();
+                        if (result.id) {
+                            allImages.push({
+                                id: result.id,
+                                name: file.name,
+                                size: file.size,
+                                md5Checksum: '',
+                                thumbUrl: `https://drive.google.com/thumbnail?id=${result.id}&sz=w900`,
+                                fullUrl: `https://drive.google.com/thumbnail?id=${result.id}&sz=w2400`,
+                                apiMediaUrl: `https://www.googleapis.com/drive/v3/files/${result.id}?alt=media&key=${GOOGLE_API_KEY}`,
+                                downloadUrl: `https://drive.google.com/uc?export=download&id=${result.id}`,
+                                source: 'guest',
+                                section: 'Guest Uploads',
+                                timestamp: file.lastModified || Date.now(),
+                                timeLabel: ''
+                            });
+                            continue;
+                        }
+                    } catch (_) {}
+                }
+
+                // Immediate gallery display fallback
+                allImages.push({
+                    id: 'guest_' + Date.now() + '_' + i,
+                    name: file.name,
+                    size: file.size,
+                    md5Checksum: '',
+                    thumbUrl: dataUrl,
+                    fullUrl: dataUrl,
+                    apiMediaUrl: dataUrl,
+                    downloadUrl: dataUrl,
+                    source: 'guest',
+                    section: 'Guest Uploads',
+                    timestamp: file.lastModified || Date.now(),
+                    timeLabel: ''
+                });
+            }
+
+            uploadProgress.textContent = GUEST_UPLOAD_SCRIPT_URL
+                ? `Uploaded ${files.length} photo(s) to the Guest Uploads Drive folder!`
+                : `Added ${files.length} photo(s) to your view. (Connect GUEST_UPLOAD_SCRIPT_URL in code to save permanently to Drive.)`;
+            document.getElementById('filter-select').value = 'all';
+            render();
+        }
+
+        document.getElementById('filter-select').addEventListener('change', render);
+        document.getElementById('section-filter').addEventListener('change', render);
+        document.getElementById('sort-select').addEventListener('change', render);
 
         // --- FULL-SCREEN LIGHTBOX (SWIPE, ZOOM, PAN, KEYBOARD) ---
         const lightbox = document.getElementById('lightbox');
         const lbContent = document.getElementById('lb-content');
         const lbImg = document.getElementById('lb-img');
         const lbCounter = document.getElementById('lb-counter');
+        const lbTimestamp = document.getElementById('lb-timestamp');
         const lbFavBtn = document.getElementById('lb-fav-btn');
         const lbDlBtn = document.getElementById('lb-dl-btn');
 
@@ -632,9 +1322,10 @@
         function updateLightboxMeta() {
             const item = currentRenderedImages[currentLbIndex];
             lbCounter.textContent = `${currentLbIndex + 1} / ${currentRenderedImages.length}`;
+            lbTimestamp.textContent = item.timeLabel ? `Shot ${item.timeLabel}` : item.name;
             lbFavBtn.classList.toggle('fav-active', favorites.has(item.id));
             lbFavBtn.onclick = (e) => toggleFav(item.id, e);
-            lbDlBtn.onclick = (e) => downloadImage(item.downloadUrl, item.name, e);
+            lbDlBtn.onclick = (e) => downloadSingle(currentLbIndex, e);
         }
 
         function updateLightboxImage() {
