@@ -24,19 +24,16 @@
 
         * { box-sizing: border-box; }
 
-        html {
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
             scroll-behavior: smooth;
             background-color: var(--bg-dark);
             color: var(--text-ivory);
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
             font-family: var(--sans);
-            background-color: var(--bg-dark);
-            color: var(--text-ivory);
-            overflow-x: hidden;
         }
 
         /* ================= HERO SECTION ================= */
@@ -44,7 +41,7 @@
             position: relative;
             width: 100%;
             height: 100vh;
-            min-height: 540px;
+            min-height: 520px;
             background-color: #141312;
             overflow: hidden;
             display: flex;
@@ -117,6 +114,7 @@
             padding-bottom: 14px;
             pointer-events: none;
             user-select: none;
+            overflow: hidden;
         }
 
         .wave-svg {
@@ -139,25 +137,29 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(18, 16, 15, 0.94);
+            width: 100%;
+            background: rgba(18, 16, 15, 0.95);
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
             border-top: 1px solid var(--border-subtle);
             border-bottom: 1px solid var(--border-subtle);
         }
 
-        .toolbar-bar {
+        .toolbar-inner {
+            width: 100%;
             padding: 12px 24px;
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
-        .toolbar-left {
+        .toolbar-header-row {
             display: flex;
             align-items: center;
-            gap: 12px;
+            justify-content: space-between;
+            gap: 10px;
         }
 
         .photo-meta-count {
@@ -168,15 +170,13 @@
             white-space: nowrap;
         }
 
-        /* Mobile quick actions (hidden on desktop) */
         .mobile-actions {
             display: none;
             align-items: center;
             gap: 8px;
         }
 
-        /* Collapsible/Desktop Controls Container */
-        .toolbar-controls {
+        .toolbar-drawer {
             display: flex;
             flex: 1;
             justify-content: space-between;
@@ -247,7 +247,6 @@
             cursor: not-allowed;
         }
 
-        /* View Toggle Pill */
         .view-toggle {
             display: inline-flex;
             background: var(--surface-elevated);
@@ -274,10 +273,15 @@
             color: var(--bg-dark);
         }
 
-        /* Responsive Mobile Drawer Layout */
+        /* Mobile Toolbar: Expands strictly DOWNWARDS, never sideways */
         @media (max-width: 960px) {
-            .toolbar-bar {
-                padding: 10px 16px;
+            .toolbar-inner {
+                display: block;
+                padding: 10px 14px;
+            }
+
+            .toolbar-header-row {
+                width: 100%;
             }
 
             .mobile-actions {
@@ -288,39 +292,41 @@
                 display: none;
             }
 
-            .toolbar-controls {
+            .toolbar-drawer {
                 display: none;
+                width: 100%;
                 flex-direction: column;
                 align-items: stretch;
-                padding: 14px 16px 18px;
+                margin-top: 12px;
+                padding-top: 12px;
                 border-top: 1px solid var(--border-subtle);
-                background: var(--surface-dark);
-                gap: 12px;
+                gap: 10px;
             }
 
-            .toolbar-controls.open {
+            .toolbar-drawer.open {
                 display: flex;
             }
 
             .toolbar-group {
+                display: flex;
                 flex-direction: column;
                 align-items: stretch;
                 width: 100%;
                 gap: 10px;
             }
 
-            .toolbar-controls select,
-            .toolbar-controls .btn {
+            .toolbar-drawer select,
+            .toolbar-drawer .btn {
                 width: 100%;
                 padding: 10px 16px;
                 font-size: 16px;
             }
 
-            .toolbar-controls .view-toggle {
+            .toolbar-drawer .view-toggle {
                 width: 100%;
             }
 
-            .toolbar-controls .view-toggle button {
+            .toolbar-drawer .view-toggle button {
                 flex: 1;
                 padding: 8px 12px;
             }
@@ -329,6 +335,7 @@
                 display: grid;
                 grid-template-columns: 1fr 1fr;
                 gap: 10px;
+                width: 100%;
             }
         }
 
@@ -338,7 +345,7 @@
             }
         }
 
-        /* ================= GALLERY LAYOUTS ================= */
+        /* ================= PROPORTIONAL GALLERY LAYOUTS ================= */
         .status-banner {
             text-align: center;
             padding: 48px 20px;
@@ -359,59 +366,71 @@
             padding: 20px;
         }
 
-        /* DEFAULT: 2-Column Full-Width Edge-to-Edge Seamless Gallery */
+        /* DEFAULT: 2-Column Full-Width Edge-to-Edge Proportional Gallery */
         .gallery-wrap.view-fullwidth {
             width: 100%;
             padding: 0;
             margin: 0;
         }
 
-        .gallery-wrap.view-fullwidth .grid {
-            display: grid;
+        .gallery-wrap.view-fullwidth .gallery-rows {
+            display: flex;
+            flex-direction: column;
             gap: 0;
-            grid-template-columns: repeat(2, 1fr);
+            width: 100%;
+        }
+
+        .gallery-wrap.view-fullwidth .gallery-row {
+            display: flex;
+            width: 100%;
+            gap: 0;
         }
 
         .gallery-wrap.view-fullwidth .item {
             position: relative;
-            aspect-ratio: 4 / 3;
+            min-width: 0;
             overflow: hidden;
             background: #161514;
         }
 
-        /* ALTERNATIVE: 4-Column Framed Card View */
+        /* ALTERNATIVE: 4-Column Framed Card View (Proportional Aspect Ratios) */
         .gallery-wrap.view-cards {
             max-width: 1440px;
             margin: 0 auto;
-            padding: 24px 20px 60px;
+            padding: 22px 18px 60px;
         }
 
-        .gallery-wrap.view-cards .grid {
-            display: grid;
+        .gallery-wrap.view-cards .gallery-rows {
+            display: flex;
+            flex-direction: column;
             gap: 16px;
-            grid-template-columns: repeat(2, 1fr);
+            width: 100%;
         }
 
-        @media (min-width: 768px) {
-            .gallery-wrap.view-cards .grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        @media (min-width: 1100px) {
-            .gallery-wrap.view-cards .grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
+        .gallery-wrap.view-cards .gallery-row {
+            display: flex;
+            width: 100%;
+            gap: 16px;
         }
 
         .gallery-wrap.view-cards .item {
             position: relative;
-            aspect-ratio: 3 / 4;
+            min-width: 0;
             border-radius: 8px;
             overflow: hidden;
             background: var(--surface-dark);
             border: 1px solid var(--border-subtle);
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+        }
+
+        @media (max-width: 768px) {
+            .gallery-wrap.view-cards {
+                padding: 14px 10px 48px;
+            }
+            .gallery-wrap.view-cards .gallery-rows,
+            .gallery-wrap.view-cards .gallery-row {
+                gap: 10px;
+            }
         }
 
         /* Shared Item Internals (No hover zoom) */
@@ -482,38 +501,40 @@
             border-color: var(--accent-gold);
         }
 
-        /* Favorite & Download appear only on hover */
+        /* Favorite & Download: hidden at rest; visible on desktop hover OR while scrolling on mobile */
         .actions {
             position: absolute;
-            bottom: 12px;
-            right: 12px;
+            bottom: 10px;
+            right: 10px;
             display: flex;
             gap: 8px;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.2s ease;
+            transition: opacity 0.25s ease;
         }
 
-        .item:hover .actions,
-        .item:focus-within .actions {
-            opacity: 1;
-            pointer-events: auto;
+        @media (hover: hover) {
+            .item:hover .actions,
+            .item:focus-within .actions {
+                opacity: 1;
+                pointer-events: auto;
+            }
         }
 
         @media (hover: none) {
-            .actions {
-                opacity: 0.9;
+            body.is-scrolling .actions {
+                opacity: 0.94;
                 pointer-events: auto;
             }
         }
 
         .icon-btn {
-            background: rgba(18, 16, 15, 0.76);
+            background: rgba(18, 16, 15, 0.78);
             backdrop-filter: blur(6px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.22);
             border-radius: 50%;
-            width: 38px;
-            height: 38px;
+            width: 36px;
+            height: 36px;
             padding: 0;
             display: flex;
             align-items: center;
@@ -529,8 +550,8 @@
         }
 
         .icon-btn svg {
-            width: 16px;
-            height: 16px;
+            width: 15px;
+            height: 15px;
             stroke-width: 2;
         }
 
@@ -766,19 +787,17 @@
 
     <!-- STICKY GALLERY CONTROLS -->
     <nav class="toolbar" id="gallery-section">
-        <div class="toolbar-bar">
-            <div class="toolbar-left">
+        <div class="toolbar-inner">
+            <div class="toolbar-header-row">
                 <span class="photo-meta-count" id="photo-count">Loading...</span>
+                <div class="mobile-actions">
+                    <button class="btn" id="mobile-menu-btn" onclick="toggleMobileMenu()">Filter &amp; View</button>
+                    <button class="btn primary" onclick="openUploadModal()">+ Upload</button>
+                </div>
             </div>
 
-            <!-- Compact Mobile Bar Buttons -->
-            <div class="mobile-actions">
-                <button class="btn" id="mobile-menu-btn" onclick="toggleMobileMenu()">Filter &amp; View</button>
-                <button class="btn primary" onclick="openUploadModal()">+ Upload</button>
-            </div>
-
-            <!-- Full Controls (Always visible on desktop, expandable drawer on mobile) -->
-            <div class="toolbar-controls" id="toolbar-controls">
+            <!-- Expands downwards on mobile, inline on desktop -->
+            <div class="toolbar-drawer" id="toolbar-drawer">
                 <div class="toolbar-group">
                     <select id="filter-select" title="Filter photos">
                         <option value="all">All Photos</option>
@@ -824,7 +843,7 @@
     <!-- GALLERY CONTAINER -->
     <main class="gallery-wrap view-fullwidth" id="gallery-wrap">
         <div id="status" class="status-banner">Loading wedding memories...</div>
-        <div class="grid" id="gallery"></div>
+        <div class="gallery-rows" id="gallery"></div>
     </main>
 
     <!-- GUEST UPLOAD MODAL -->
@@ -876,11 +895,24 @@
         let currentRenderedImages = [];
         let selectedIds = new Set();
         let isSelectMode = false;
+        let currentViewMode = 'fullwidth';
         const visitedFolders = new Set();
 
-        // --- MOBILE TOOLBAR TOGGLE ---
+        // --- SHOW PHOTO BUTTONS ON MOBILE ONLY WHILE SCROLLING ---
+        (function initMobileScrollButtons() {
+            let scrollTimer = null;
+            window.addEventListener('scroll', () => {
+                document.body.classList.add('is-scrolling');
+                clearTimeout(scrollTimer);
+                scrollTimer = setTimeout(() => {
+                    document.body.classList.remove('is-scrolling');
+                }, 1200);
+            }, { passive: true });
+        })();
+
+        // --- MOBILE TOOLBAR TOGGLE (EXPANDS DOWNWARDS) ---
         window.toggleMobileMenu = function() {
-            const drawer = document.getElementById('toolbar-controls');
+            const drawer = document.getElementById('toolbar-drawer');
             const btn = document.getElementById('mobile-menu-btn');
             const isOpen = drawer.classList.toggle('open');
             btn.classList.toggle('active', isOpen);
@@ -934,21 +966,45 @@
             requestAnimationFrame(tick);
         })();
 
-        // --- EXIF SHOOTING DATE PARSER ---
-        function extractShootingTimestamp(file) {
-            const exifTime = file.imageMediaMetadata && file.imageMediaMetadata.time;
-            if (exifTime) {
-                const iso = exifTime.replace(/^(\d{4}):(\d{2}):(\d{2})/, '$1-$2-$3');
+        // --- EXIF SHOOTING DATE & NATIVE ASPECT RATIO PARSER ---
+        function extractPhotoMetadata(file) {
+            const meta = file.imageMediaMetadata || {};
+            let timestamp = 0;
+            let label = '';
+
+            if (meta.time) {
+                const iso = meta.time.replace(/^(\d{4}):(\d{2}):(\d{2})/, '$1-$2-$3');
                 const ts = Date.parse(iso);
-                if (!isNaN(ts)) return { timestamp: ts, label: exifTime.replace(/^(\d{4}):(\d{2}):(\d{2})/, '$1-$2-$3') };
+                if (!isNaN(ts)) {
+                    timestamp = ts;
+                    label = meta.time.replace(/^(\d{4}):(\d{2}):(\d{2})/, '$1-$2-$3');
+                }
             }
-            const nameMatch = file.name.match(/(20\d{2})[-_]?(\d{2})[-_]?(\d{2})[-_ ]?(\d{2})(\d{2})(\d{2})/);
-            if (nameMatch) {
-                const iso = `${nameMatch[1]}-${nameMatch[2]}-${nameMatch[3]}T${nameMatch[4]}:${nameMatch[5]}:${nameMatch[6]}`;
-                const ts = Date.parse(iso);
-                if (!isNaN(ts)) return { timestamp: ts, label: `${nameMatch[1]}-${nameMatch[2]}-${nameMatch[3]} ${nameMatch[4]}:${nameMatch[5]}` };
+            if (!timestamp) {
+                const nameMatch = file.name.match(/(20\d{2})[-_]?(\d{2})[-_]?(\d{2})[-_ ]?(\d{2})(\d{2})(\d{2})/);
+                if (nameMatch) {
+                    const iso = `${nameMatch[1]}-${nameMatch[2]}-${nameMatch[3]}T${nameMatch[4]}:${nameMatch[5]}:${nameMatch[6]}`;
+                    const ts = Date.parse(iso);
+                    if (!isNaN(ts)) {
+                        timestamp = ts;
+                        label = `${nameMatch[1]}-${nameMatch[2]}-${nameMatch[3]} ${nameMatch[4]}:${nameMatch[5]}`;
+                    }
+                }
             }
-            return { timestamp: Date.parse(file.createdTime) || 0, label: '' };
+            if (!timestamp) {
+                timestamp = Date.parse(file.createdTime) || 0;
+            }
+
+            // Calculate true native aspect ratio accounting for EXIF 90/270 rotation
+            let w = Number(meta.width) || 0;
+            let h = Number(meta.height) || 0;
+            const rot = Number(meta.rotation) || 0;
+            if (rot === 90 || rot === 270) {
+                [w, h] = [h, w];
+            }
+            const aspectRatio = (w > 0 && h > 0) ? (w / h) : 1.333;
+
+            return { timestamp, label, aspectRatio };
         }
 
         // --- DEDUPLICATION ---
@@ -975,7 +1031,6 @@
             return unique;
         }
 
-        // Fetch helper with timeout so requests never hang indefinitely
         async function fetchWithTimeout(url, timeoutMs = 12000) {
             const controller = new AbortController();
             const timer = setTimeout(() => controller.abort(), timeoutMs);
@@ -986,7 +1041,6 @@
             }
         }
 
-        // Load hero image immediately without waiting for subfolder recursion
         async function loadHeroImageFast() {
             try {
                 const q = encodeURIComponent(`name = '${HERO_FILENAME}' and trashed = false`);
@@ -1023,7 +1077,7 @@
 
             do {
                 const query = encodeURIComponent(`'${folderId}' in parents and trashed = false`);
-                const fields = encodeURIComponent('nextPageToken, files(id, name, mimeType, size, md5Checksum, createdTime, imageMediaMetadata(time), shortcutDetails(targetId, targetMimeType))');
+                const fields = encodeURIComponent('nextPageToken, files(id, name, mimeType, size, md5Checksum, createdTime, imageMediaMetadata(time, width, height, rotation), shortcutDetails(targetId, targetMimeType))');
                 let apiUrl = `https://www.googleapis.com/drive/v3/files?q=${query}&fields=${fields}&pageSize=1000&key=${GOOGLE_API_KEY}`;
                 if (pageToken) apiUrl += `&pageToken=${pageToken}`;
 
@@ -1050,7 +1104,7 @@
                         subfolders.push({ id: effectiveId, name: file.name });
                     } else if (effectiveMime && effectiveMime.startsWith('image/')) {
                         const isGuest = defaultSource === 'guest' || sectionName.toLowerCase().includes('guest');
-                        const shotInfo = extractShootingTimestamp(file);
+                        const metaInfo = extractPhotoMetadata(file);
                         batch.push({
                             id: effectiveId,
                             name: file.name,
@@ -1064,8 +1118,9 @@
                             downloadUrl: `https://drive.google.com/uc?export=download&id=${effectiveId}`,
                             source: isGuest ? 'guest' : 'photographer',
                             section: sectionName,
-                            timestamp: shotInfo.timestamp,
-                            timeLabel: shotInfo.label
+                            timestamp: metaInfo.timestamp,
+                            timeLabel: metaInfo.label,
+                            aspectRatio: metaInfo.aspectRatio
                         });
                     }
                 }
@@ -1081,7 +1136,6 @@
                 pageToken = data.nextPageToken;
             } while (pageToken);
 
-            // Process subfolders sequentially to avoid Drive API rate-limit bursts
             for (const sub of subfolders) {
                 await scanDriveFolderProgressive(sub.id, sub.name, defaultSource);
             }
@@ -1128,13 +1182,31 @@
 
         // --- VIEW MODE (2-COL FULL-WIDTH DEFAULT VS 4-COL CARD VIEW) ---
         window.setViewMode = function(mode) {
+            currentViewMode = mode;
             const wrap = document.getElementById('gallery-wrap');
             wrap.className = `gallery-wrap view-${mode}`;
             document.getElementById('view-full-btn').classList.toggle('active', mode === 'fullwidth');
             document.getElementById('view-card-btn').classList.toggle('active', mode === 'cards');
+            render(false);
         };
 
-        // --- RENDER GALLERY ---
+        function getTargetColumns() {
+            if (currentViewMode === 'fullwidth') return 2;
+            if (window.innerWidth >= 1100) return 4;
+            if (window.innerWidth >= 768) return 3;
+            return 2;
+        }
+
+        let lastColCount = getTargetColumns();
+        window.addEventListener('resize', () => {
+            const nextCols = getTargetColumns();
+            if (nextCols !== lastColCount) {
+                lastColCount = nextCols;
+                render(false);
+            }
+        });
+
+        // --- RENDER PROPORTIONAL ROWS (ZERO PORTRAIT CROPPING) ---
         const heartSvg = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
         const dlSvg = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>`;
 
@@ -1178,33 +1250,58 @@
                 statusEl.textContent = isStillScanning
                     ? 'Scanning wedding memories...'
                     : (filterVal === 'favorites'
-                        ? 'No favorites marked yet — hover over any photo and click the heart icon to save it.'
+                        ? 'No favorites marked yet — tap the heart icon on any photo to save it.'
                         : 'No photos match this filter.');
                 return;
             }
             statusEl.style.display = 'none';
 
-            filtered.forEach((img, index) => {
-                const isFav = favorites.has(img.id);
-                const isSel = selectedIds.has(img.id);
-                const item = document.createElement('div');
-                item.className = `item${isSel ? ' selected' : ''}`;
-                item.dataset.id = img.id;
-                item.innerHTML = `
-                    <div class="select-check" onclick="toggleSelectItem('${img.id}', event)">${isSel ? '&#10003;' : ''}</div>
-                    <img src="${img.thumbUrl}" onerror="if(this.dataset.retried!=='1'){this.dataset.retried='1';this.src='${img.fallbackThumbUrl}';}" referrerpolicy="no-referrer" loading="lazy" alt="${img.name}" onclick="handleItemClick(${index}, '${img.id}')">
-                    ${img.source === 'guest' ? '<span class="badge">Guest</span>' : ''}
-                    <div class="actions">
-                        <button class="icon-btn fav-btn ${isFav ? 'active' : ''}" onclick="toggleFav('${img.id}', event)" title="Favorite">
-                            ${heartSvg}
-                        </button>
-                        <button class="icon-btn" onclick="downloadSingle(${index}, event)" title="Download Full Resolution">
-                            ${dlSvg}
-                        </button>
-                    </div>
-                `;
-                gallery.appendChild(item);
-            });
+            const cols = getTargetColumns();
+            lastColCount = cols;
+
+            for (let i = 0; i < filtered.length; i += cols) {
+                const rowSlice = filtered.slice(i, i + cols);
+                const rowEl = document.createElement('div');
+                rowEl.className = 'gallery-row';
+                const isIncompleteLastRow = rowSlice.length < cols;
+
+                rowSlice.forEach((img, offsetIdx) => {
+                    const globalIndex = i + offsetIdx;
+                    const isFav = favorites.has(img.id);
+                    const isSel = selectedIds.has(img.id);
+                    const ratio = img.aspectRatio || 1.333;
+
+                    const item = document.createElement('div');
+                    item.className = `item${isSel ? ' selected' : ''}`;
+                    item.dataset.id = img.id;
+
+                    // Size each item proportionally to its native aspect ratio so portraits are never heavily cropped
+                    if (isIncompleteLastRow) {
+                        const pct = (100 / cols).toFixed(2);
+                        item.style.flex = `0 0 calc(${pct}% - ${currentViewMode === 'cards' ? '12px' : '0px'})`;
+                    } else {
+                        item.style.flex = `${ratio} 1 0%`;
+                    }
+                    item.style.aspectRatio = `${ratio}`;
+
+                    item.innerHTML = `
+                        <div class="select-check" onclick="toggleSelectItem('${img.id}', event)">${isSel ? '&#10003;' : ''}</div>
+                        <img src="${img.thumbUrl}" onerror="if(this.dataset.retried!=='1'){this.dataset.retried='1';this.src='${img.fallbackThumbUrl}';}" referrerpolicy="no-referrer" loading="lazy" alt="${img.name}" onclick="handleItemClick(${globalIndex}, '${img.id}')">
+                        ${img.source === 'guest' ? '<span class="badge">Guest</span>' : ''}
+                        <div class="actions">
+                            <button class="icon-btn fav-btn ${isFav ? 'active' : ''}" onclick="toggleFav('${img.id}', event)" title="Favorite">
+                                ${heartSvg}
+                            </button>
+                            <button class="icon-btn" onclick="downloadSingle(${globalIndex}, event)" title="Download Full Resolution">
+                                ${dlSvg}
+                            </button>
+                        </div>
+                    `;
+                    rowEl.appendChild(item);
+                });
+
+                gallery.appendChild(rowEl);
+            }
         }
 
         function handleItemClick(index, id) {
@@ -1368,9 +1465,17 @@
                 const file = files[i];
                 uploadProgress.textContent = `Uploading ${i + 1} of ${files.length}: ${file.name}...`;
 
-                const dataUrl = await new Promise((resolve) => {
+                const { dataUrl, aspectRatio } = await new Promise((resolve) => {
                     const reader = new FileReader();
-                    reader.onload = ev => resolve(ev.target.result);
+                    reader.onload = ev => {
+                        const probe = new Image();
+                        probe.onload = () => resolve({
+                            dataUrl: ev.target.result,
+                            aspectRatio: (probe.naturalWidth && probe.naturalHeight) ? (probe.naturalWidth / probe.naturalHeight) : 1.333
+                        });
+                        probe.onerror = () => resolve({ dataUrl: ev.target.result, aspectRatio: 1.333 });
+                        probe.src = ev.target.result;
+                    };
                     reader.readAsDataURL(file);
                 });
 
@@ -1401,7 +1506,8 @@
                                 source: 'guest',
                                 section: 'Guest Uploads',
                                 timestamp: file.lastModified || Date.now(),
-                                timeLabel: ''
+                                timeLabel: '',
+                                aspectRatio
                             });
                             continue;
                         }
@@ -1422,7 +1528,8 @@
                     source: 'guest',
                     section: 'Guest Uploads',
                     timestamp: file.lastModified || Date.now(),
-                    timeLabel: ''
+                    timeLabel: '',
+                    aspectRatio
                 });
             }
 
