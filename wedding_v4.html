@@ -106,3 +106,634 @@
             font-family: var(--sans-font);
             font-size: 14px;
             color: #b00020;
+            background: #fdecea;
+            max-width: 680px;
+            margin: 20px auto;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .gallery-container {
+            padding: 0 16px 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* RESPONSIVE GRID: 2 on mobile (9x16), 3 on tablet/small laptop, 4 on desktop */
+        .grid {
+            display: grid;
+            gap: 12px;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (min-width: 768px) {
+            .grid {
+                gap: 16px;
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 1100px) {
+            .grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .card {
+            position: relative;
+            background: #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+            aspect-ratio: 3 / 4;
+            transition: transform 0.25s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            cursor: pointer;
+        }
+
+        .badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.55);
+            color: #fff;
+            font-family: var(--serif-font);
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            padding: 3px 10px;
+            border-radius: 12px;
+            backdrop-filter: blur(4px);
+            pointer-events: none;
+        }
+
+        .actions {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .icon-btn {
+            background: rgba(255, 255, 255, 0.92);
+            border: none;
+            border-radius: 50%;
+            width: 38px;
+            height: 38px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--text-color);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            transition: transform 0.15s ease, background 0.15s ease;
+        }
+
+        .icon-btn:hover {
+            background: #fff;
+            transform: scale(1.08);
+        }
+
+        .icon-btn svg {
+            width: 18px;
+            height: 18px;
+            stroke-width: 2;
+        }
+
+        .icon-btn.fav-btn.active { color: var(--accent-color); }
+        .icon-btn.fav-btn.active svg { fill: var(--accent-color); }
+
+        /* --- FULL-SCREEN LIGHTBOX --- */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+            touch-action: none;
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .lb-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lb-content img {
+            max-width: 94%;
+            max-height: 90%;
+            object-fit: contain;
+            cursor: zoom-in;
+            user-select: none;
+            -webkit-user-drag: none;
+            transition: transform 0.25s ease;
+        }
+
+        .lb-counter {
+            position: absolute;
+            top: 22px;
+            left: 24px;
+            color: rgba(255,255,255,0.8);
+            font-family: var(--serif-font);
+            font-size: 18px;
+            letter-spacing: 1px;
+            z-index: 10000;
+        }
+
+        .lb-toolbar {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            z-index: 10000;
+        }
+
+        .lb-action {
+            background: rgba(255, 255, 255, 0.14);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            padding: 0;
+            font-family: var(--sans-font);
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lb-action:hover { background: rgba(255, 255, 255, 0.28); }
+        .lb-action.fav-active { color: var(--accent-color); }
+
+        .lb-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            font-family: var(--sans-font);
+            font-size: 22px;
+            cursor: pointer;
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lb-nav:hover { background: rgba(255, 255, 255, 0.28); }
+        .lb-prev { left: 16px; }
+        .lb-next { right: 16px; }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 32px; }
+            .lb-nav { width: 38px; height: 38px; font-size: 18px; }
+            .lb-prev { left: 8px; }
+            .lb-next { right: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Our Wedding</h1>
+        <p class="subtitle" id="photo-count">Loading gallery...</p>
+        <div class="controls">
+            <select id="source-filter">
+                <option value="all">All Photos (Photographer &amp; Guests)</option>
+                <option value="photographer">Photographer's Photos</option>
+                <option value="guest">Guest Uploads</option>
+            </select>
+
+            <select id="section-filter" style="display: none;">
+                <option value="all">All Moments / Folders</option>
+            </select>
+
+            <select id="sort-select">
+                <option value="time-asc">Shooting Time (Morning &rarr; Night)</option>
+                <option value="time-desc">Shooting Time (Night &rarr; Morning)</option>
+                <option value="favs">Favorites First</option>
+            </select>
+
+            <button class="primary" id="upload-btn">Upload Your Photos</button>
+            <input type="file" id="upload-input" accept="image/*" multiple style="display: none;">
+        </div>
+    </header>
+
+    <main class="gallery-container">
+        <div id="status" class="status-banner">Scanning Google Drive folder...</div>
+        <div class="grid" id="gallery"></div>
+    </main>
+
+    <!-- FULL-SCREEN LIGHTBOX -->
+    <div id="lightbox" class="lightbox">
+        <div class="lb-counter" id="lb-counter"></div>
+        <div class="lb-toolbar">
+            <button class="lb-action" id="lb-fav-btn" title="Favorite">&#9829;</button>
+            <button class="lb-action" id="lb-dl-btn" title="Download Full Resolution">&#8681;</button>
+            <button class="lb-action" onclick="closeLightbox(event)" title="Close">&times;</button>
+        </div>
+        <button class="lb-nav lb-prev" onclick="navigateLightbox(-1, event)" title="Previous">&#10094;</button>
+        <div class="lb-content" id="lb-content">
+            <img id="lb-img" referrerpolicy="no-referrer" src="" alt="Full Screen Wedding Photo">
+        </div>
+        <button class="lb-nav lb-next" onclick="navigateLightbox(1, event)" title="Next">&#10095;</button>
+    </div>
+
+    <script>
+        // ================= CONFIGURATION =================
+        const GOOGLE_DRIVE_FOLDER_ID = '1xFbHK-BaMG07aLtQRISFLFv6Pa43v4b9';
+        const GOOGLE_API_KEY = 'AIzaSyAzTgrpxgRzjXIIXyoLnuZ91Z1Qb199wVA';
+
+        // Optional: Paste a Google Form link (linked to a "Guest Uploads" subfolder)
+        // for persistent shared uploads. Leave empty ('') for instant local preview uploads.
+        const GUEST_UPLOAD_FORM_URL = '';
+        // =================================================
+
+        let images = [];
+        let favorites = new Set(JSON.parse(localStorage.getItem('wedding_favs') || '[]'));
+        let currentRenderedImages = [];
+
+        const gallery = document.getElementById('gallery');
+        const statusEl = document.getElementById('status');
+        const photoCountEl = document.getElementById('photo-count');
+        const sourceFilter = document.getElementById('source-filter');
+        const sectionFilter = document.getElementById('section-filter');
+        const sortSelect = document.getElementById('sort-select');
+        const uploadBtn = document.getElementById('upload-btn');
+        const uploadInput = document.getElementById('upload-input');
+
+        const heartIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
+        const downloadIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>`;
+
+        function parseTimestamp(file) {
+            const exifTime = file.imageMediaMetadata && file.imageMediaMetadata.time;
+            if (exifTime) {
+                const isoFormatted = exifTime.replace(/^(\d{4}):(\d{2}):(\d{2})/, '$1-$2-$3');
+                const parsed = Date.parse(isoFormatted);
+                if (!isNaN(parsed)) return parsed;
+            }
+            return Date.parse(file.createdTime) || 0;
+        }
+
+        async function fetchDriveFolderRecursive(folderId, sectionName = 'Main Gallery') {
+            let pageToken = null;
+            const subfolders = [];
+
+            do {
+                const query = encodeURIComponent(`'${folderId}' in parents and trashed = false`);
+                const fields = encodeURIComponent('nextPageToken, files(id, name, mimeType, createdTime, imageMediaMetadata(time), shortcutDetails(targetId, targetMimeType))');
+                let apiUrl = `https://www.googleapis.com/drive/v3/files?q=${query}&fields=${fields}&pageSize=1000&key=${GOOGLE_API_KEY}`;
+                if (pageToken) apiUrl += `&pageToken=${pageToken}`;
+
+                const response = await fetch(apiUrl);
+                if (!response.ok) {
+                    const errData = await response.json().catch(() => ({}));
+                    throw new Error(errData.error?.message || `HTTP ${response.status}`);
+                }
+
+                const data = await response.json();
+                for (const item of (data.files || [])) {
+                    const effectiveMime = item.mimeType === 'application/vnd.google-apps.shortcut'
+                        ? item.shortcutDetails?.targetMimeType
+                        : item.mimeType;
+                    const effectiveId = item.mimeType === 'application/vnd.google-apps.shortcut'
+                        ? item.shortcutDetails?.targetId
+                        : item.id;
+
+                    if (!effectiveId) continue;
+
+                    if (effectiveMime === 'application/vnd.google-apps.folder') {
+                        subfolders.push({ id: effectiveId, name: item.name });
+                    } else if (effectiveMime && effectiveMime.startsWith('image/')) {
+                        const isGuest = sectionName.toLowerCase().includes('guest');
+                        images.push({
+                            id: effectiveId,
+                            name: item.name,
+                            thumbUrl: `https://drive.google.com/thumbnail?id=${effectiveId}&sz=w800`,
+                            fullUrl: `https://drive.google.com/thumbnail?id=${effectiveId}&sz=w2400`,
+                            downloadUrl: `https://drive.google.com/uc?export=download&id=${effectiveId}`,
+                            source: isGuest ? 'guest' : 'photographer',
+                            section: sectionName,
+                            timestamp: parseTimestamp(item)
+                        });
+                    }
+                }
+                pageToken = data.nextPageToken;
+            } while (pageToken);
+
+            await Promise.all(
+                subfolders.map(sub => fetchDriveFolderRecursive(sub.id, sub.name))
+            );
+        }
+
+        async function initGallery() {
+            try {
+                await fetchDriveFolderRecursive(GOOGLE_DRIVE_FOLDER_ID);
+                statusEl.style.display = 'none';
+
+                const sections = [...new Set(images.map(img => img.section))];
+                if (sections.length > 1) {
+                    sectionFilter.style.display = 'inline-block';
+                    sections.forEach(sec => {
+                        const opt = document.createElement('option');
+                        opt.value = sec;
+                        opt.textContent = sec;
+                        sectionFilter.appendChild(opt);
+                    });
+                }
+
+                render();
+            } catch (err) {
+                statusEl.className = 'status-banner error';
+                statusEl.innerHTML = `<strong>Could not load Google Drive folder:</strong> ${err.message}<br><small>Make sure the folder is shared as "Anyone with the link" and Google Drive API is enabled for your API key.</small>`;
+                photoCountEl.textContent = 'Connection error';
+            }
+        }
+
+        function render() {
+            const srcVal = sourceFilter.value;
+            const secVal = sectionFilter.value;
+            const sortVal = sortSelect.value;
+
+            let filtered = images.filter(img => {
+                const matchSource = srcVal === 'all' || img.source === srcVal;
+                const matchSection = secVal === 'all' || img.section === secVal;
+                return matchSource && matchSection;
+            });
+
+            filtered.sort((a, b) => {
+                if (sortVal === 'favs') {
+                    const aFav = favorites.has(a.id) ? 1 : 0;
+                    const bFav = favorites.has(b.id) ? 1 : 0;
+                    if (aFav !== bFav) return bFav - aFav;
+                    return a.timestamp - b.timestamp;
+                }
+                return sortVal === 'time-asc'
+                    ? a.timestamp - b.timestamp
+                    : b.timestamp - a.timestamp;
+            });
+
+            currentRenderedImages = filtered;
+            photoCountEl.textContent = `Showing ${filtered.length} of ${images.length} photos`;
+            gallery.innerHTML = '';
+
+            if (filtered.length === 0) {
+                statusEl.style.display = 'block';
+                statusEl.className = 'status-banner';
+                statusEl.textContent = 'No photos match this filter yet.';
+                return;
+            }
+            statusEl.style.display = 'none';
+
+            filtered.forEach((img, index) => {
+                const isFav = favorites.has(img.id);
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <img src="${img.thumbUrl}" referrerpolicy="no-referrer" loading="lazy" alt="${img.name}" onclick="openLightbox(${index})">
+                    ${img.source === 'guest' ? '<span class="badge">Guest</span>' : ''}
+                    <div class="actions">
+                        <button class="icon-btn fav-btn ${isFav ? 'active' : ''}" onclick="toggleFav('${img.id}', event)" title="Mark as Favorite">
+                            ${heartIcon}
+                        </button>
+                        <button class="icon-btn" onclick="downloadImage('${img.downloadUrl}', '${img.name}', event)" title="Download Full Resolution">
+                            ${downloadIcon}
+                        </button>
+                    </div>
+                `;
+                gallery.appendChild(card);
+            });
+        }
+
+        window.toggleFav = function(id, e) {
+            if (e) e.stopPropagation();
+            if (favorites.has(id)) favorites.delete(id);
+            else favorites.add(id);
+            localStorage.setItem('wedding_favs', JSON.stringify([...favorites]));
+            render();
+            if (lightbox.classList.contains('active')) updateLightboxMeta();
+        };
+
+        window.downloadImage = function(url, filename, e) {
+            if (e) e.stopPropagation();
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename || 'wedding-photo.jpg';
+            a.target = '_blank';
+            a.rel = 'noopener';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        };
+
+        uploadBtn.addEventListener('click', () => {
+            if (GUEST_UPLOAD_FORM_URL) {
+                window.open(GUEST_UPLOAD_FORM_URL, '_blank', 'noopener');
+            } else {
+                uploadInput.click();
+            }
+        });
+
+        uploadInput.addEventListener('change', function(e) {
+            const files = e.target.files;
+            if (!files.length) return;
+            Array.from(files).forEach((file, index) => {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    images.push({
+                        id: 'guest_' + Date.now() + '_' + index,
+                        name: file.name,
+                        thumbUrl: event.target.result,
+                        fullUrl: event.target.result,
+                        downloadUrl: event.target.result,
+                        source: 'guest',
+                        section: 'Guest Uploads',
+                        timestamp: file.lastModified || Date.now()
+                    });
+                    sourceFilter.value = 'all';
+                    render();
+                };
+                reader.readAsDataURL(file);
+            });
+            uploadInput.value = '';
+        });
+
+        sourceFilter.addEventListener('change', render);
+        sectionFilter.addEventListener('change', render);
+        sortSelect.addEventListener('change', render);
+
+        // --- FULL-SCREEN LIGHTBOX (SWIPE, ZOOM, PAN, KEYBOARD) ---
+        const lightbox = document.getElementById('lightbox');
+        const lbContent = document.getElementById('lb-content');
+        const lbImg = document.getElementById('lb-img');
+        const lbCounter = document.getElementById('lb-counter');
+        const lbFavBtn = document.getElementById('lb-fav-btn');
+        const lbDlBtn = document.getElementById('lb-dl-btn');
+
+        let currentLbIndex = 0;
+        let isZoomed = false;
+        let scale = 1, translateX = 0, translateY = 0;
+        let isDragging = false, touchStartX = 0, touchStartY = 0;
+        let lastTap = 0;
+
+        window.openLightbox = function(index) {
+            if (!currentRenderedImages.length) return;
+            currentLbIndex = index;
+            updateLightboxImage();
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+
+        window.closeLightbox = function(e) {
+            if (e) e.stopPropagation();
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        window.navigateLightbox = function(direction, e) {
+            if (e) e.stopPropagation();
+            currentLbIndex = (currentLbIndex + direction + currentRenderedImages.length) % currentRenderedImages.length;
+            updateLightboxImage();
+        };
+
+        function updateLightboxMeta() {
+            const item = currentRenderedImages[currentLbIndex];
+            lbCounter.textContent = `${currentLbIndex + 1} / ${currentRenderedImages.length}`;
+            lbFavBtn.classList.toggle('fav-active', favorites.has(item.id));
+            lbFavBtn.onclick = (e) => toggleFav(item.id, e);
+            lbDlBtn.onclick = (e) => downloadImage(item.downloadUrl, item.name, e);
+        }
+
+        function updateLightboxImage() {
+            const item = currentRenderedImages[currentLbIndex];
+            lbImg.src = item.fullUrl;
+            updateLightboxMeta();
+            isZoomed = false;
+            scale = 1; translateX = 0; translateY = 0;
+            lbImg.style.transition = 'none';
+            lbImg.style.transform = 'translate(0px, 0px) scale(1)';
+            setTimeout(() => lbImg.style.transition = 'transform 0.25s ease', 10);
+            lbImg.style.cursor = 'zoom-in';
+        }
+
+        function toggleZoom(e) {
+            if (e) e.preventDefault();
+            isZoomed = !isZoomed;
+            lbImg.style.transition = 'transform 0.25s ease';
+            scale = isZoomed ? 2.5 : 1;
+            translateX = 0; translateY = 0;
+            lbImg.style.transform = `translate(0px, 0px) scale(${scale})`;
+            lbImg.style.cursor = isZoomed ? 'grab' : 'zoom-in';
+        }
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox || e.target === lbContent) closeLightbox();
+        });
+
+        window.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') navigateLightbox(-1);
+            if (e.key === 'ArrowRight') navigateLightbox(1);
+        });
+
+        lbImg.addEventListener('dblclick', toggleZoom);
+
+        lbImg.addEventListener('mousedown', (e) => {
+            if (e.button !== 0 || !isZoomed) return;
+            isDragging = true;
+            touchStartX = e.clientX;
+            touchStartY = e.clientY;
+            lbImg.style.transition = 'none';
+            lbImg.style.cursor = 'grabbing';
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (isDragging && isZoomed) {
+                lbImg.style.transform = `translate(${translateX + e.clientX - touchStartX}px, ${translateY + e.clientY - touchStartY}px) scale(${scale})`;
+            }
+        });
+
+        window.addEventListener('mouseup', (e) => {
+            if (isDragging && isZoomed) {
+                translateX += e.clientX - touchStartX;
+                translateY += e.clientY - touchStartY;
+                isDragging = false;
+                lbImg.style.cursor = 'grab';
+            }
+        });
+
+        lbContent.addEventListener('touchstart', (e) => {
+            if (e.touches.length === 1) {
+                touchStartX = e.touches[0].clientX;
+                touchStartY = e.touches[0].clientY;
+                if (isZoomed) {
+                    isDragging = true;
+                    lbImg.style.transition = 'none';
+                }
+            }
+        }, { passive: true });
+
+        lightbox.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
+
+        lbContent.addEventListener('touchmove', (e) => {
+            if (isDragging && isZoomed) {
+                lbImg.style.transform = `translate(${translateX + e.touches[0].clientX - touchStartX}px, ${translateY + e.touches[0].clientY - touchStartY}px) scale(${scale})`;
+            }
+        }, { passive: false });
+
+        lbContent.addEventListener('touchend', (e) => {
+            if (isDragging && isZoomed) {
+                translateX += e.changedTouches[0].clientX - touchStartX;
+                translateY += e.changedTouches[0].clientY - touchStartY;
+                isDragging = false;
+            } else if (!isZoomed && e.changedTouches.length === 1) {
+                const deltaX = e.changedTouches[0].clientX - touchStartX;
+                const deltaY = e.changedTouches[0].clientY - touchStartY;
+                if (Math.abs(deltaX) > 50) {
+                    navigateLightbox(deltaX > 0 ? -1 : 1);
+                } else if (Math.abs(deltaX) < 10 && Math.abs(deltaY) < 10) {
+                    const now = Date.now();
+                    if (now - lastTap < 300 && now - lastTap > 0) toggleZoom(e);
+                    lastTap = now;
+                }
+            }
+        });
+
+        initGallery();
+    </script>
+</body>
+</html>
